@@ -34,12 +34,12 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
     7. Delete `.firebaserc` and `firebase.json` files in the root of this directory if you have them.
     8. Run `firebase login` and then `firebase init`. While initting your project, select use an existing project and select your project, use the default files and do not overwrite them, when asked to install dependencies select yes, when asked if you want to use your public directory type in `dist/apps/frontend`, type yes for a single-page app, and finally type no for automatic builds and deploys.
     9. In firebase navigate from 'Build -> Storage', then click on the 'Rules' tab. Change the `write: if false` to `write: if true` (you may have to click 'Get Started' on this and also on Firestore Database, Realtime Database, Hosting, and Functions).
-    10. Once your app is initialized, run `npm run build` and then `firebase deploy --only hosting`. If all was done correctly then you should be able to navigate to the URL provided and see our default app.
+    10. In your `firebase.json` file inside the `hosting` key, add `{"source": "/api/**","function": "apiv1"}` to the `rewrites` section.
     11. In order to host your backend in firebase functions, you must upgrade your firebase project to the 'Blaze' plan. This will include adding a debit/credit card but you will only pay if your app reaches a certain number of API requests.
-    12. After your app is upgraded, we must edit `firebase.json`.  In the 'functions' key, change the 'source' key to `dist/apps/server-firebase`, this is just changing it from the default to our build folder.
-    13. Finally, we must edit one of the 'scripts' in `package.json`. Inside the script, `deploy:firebase:api:dev`, change 'nxfirebasetemplate' to your project ID and then run `npm run deploy:firebase:api:dev`.  This will deploy your backend to firebase functions.
+    12. After your app is upgraded, we must edit `firebase.json` again. In the 'functions' key, change the 'source' key to `dist/apps/server-firebase`, this is just changing it from the default to our build folder. Also add `"runtime": "nodejs18"` to that 'functions' object. Finally switch out `ignore` key for `"predeploy": []`.
+    13. Once your app is initialized, run `npm run build` and then `firebase deploy`. If all was done correctly then you should be able to navigate to the URL provided and see our default app.
 
-3. Googl Login
+3. Google Login
    1. Use this article to help with your apps Google login, https://blog.logrocket.com/guide-adding-google-login-react-app/.
    2. Make sure when adding trusted sites to use your google app, that you include localhost and your hosted site urls.
    3. We already included the code in this template, you only have to change the clientId of the GoogleOAuthProvider in 'main.tsx' of the frontend folder.
@@ -48,4 +48,9 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
    1. We have set up a template for you if you would like to be able to send emails through your app.
    2. First you must set up a sendgrid account and create your default email account and create all the email templates you need.
    3. After that you must add to your `.env` file, `SENDGRID_API_KEY=${your-api-key}`.
-   3. Once completed, you can use the different functions we have already built out in the 'integrations' folder of the backend, specifically `sendDynamicEmail` function.
+   4. Once completed, you can use the different functions we have already built out in the 'integrations' folder of the backend, specifically `sendDynamicEmail` function.
+
+5. Redeploying
+   1. You can always redeploy your site by using `firebase deploy`. This will simultaneously deploy front and back ends.
+   2. In order to redeploy our frontend and backend seperately, we must edit one of the 'scripts' in `package.json`. Inside the script, `deploy:firebase:api:dev`, change 'nxfirebasetemplate' to your project ID and then run `npm run build` and then `npm run deploy:firebase:api:dev`. This will deploy your backend to firebase functions.
+   3. Anytime you make changes and want to redeploy for your hosted site use `npm run build` and then `firebase deploy --only hosting` for the frontend.
