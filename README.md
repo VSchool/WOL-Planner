@@ -54,3 +54,9 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
    1. You can always redeploy your site by using `firebase deploy`. This will simultaneously deploy front and back ends.
    2. In order to redeploy our frontend and backend seperately, we must edit one of the 'scripts' in `package.json`. Inside the script, `deploy:firebase:api:dev`, change 'nxfirebasetemplate' to your project ID and then run `npm run build` and then `npm run deploy:firebase:api:dev`. This will deploy your backend to firebase functions.
    3. Anytime you make changes and want to redeploy for your hosted site use `npm run build` and then `firebase deploy --only hosting` for the frontend.
+
+
+6. Setting up Auto-deployments
+   1. Go to your Github repository and click on 'Actions', and enable actions in this repository.
+   2. In the terminal use `firebase init hosting:github`, choose your project and select your repository. Select 'yes' when asked to set up a workflow. Overwrite the files and use the basic scripts. You can choose another branch to be your hosting branch but 'main' is just fine.
+   3. NOTE: Auto deployments sometimes only deploy to one of the two domains that firebase hosting provides.
