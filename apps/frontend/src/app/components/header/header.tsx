@@ -71,12 +71,14 @@ export default function Header() {
   }
 
     return (
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header className="py-10">
+
         <nav
-        className="relative flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-start"
-        data-te-navbar-ref>
+        className="relative z-50 flex justify-between">
         <div className="flex w-full flex-wrap items-center justify-between px-3">
           <div className="flex items-center">
-            
+
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
               className="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out lg:hidden"
@@ -86,7 +88,7 @@ export default function Header() {
               aria-controls="navbarSupportedContentY"
               aria-expanded="false"
               aria-label="Toggle navigation">
-              
+
               <span className="[&>svg]:w-5">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -103,10 +105,16 @@ export default function Header() {
               </span>
             </button>
           </div>
-          
-    
-          <Logo className="h-10 w-auto" />
-          
+
+          <NavLink
+            to='/home'
+            data-te-nav-link-ref
+            data-te-ripple-init
+            data-te-ripple-color="light"
+            onClick={() => onMenuItemClick('home')}
+            >
+              <Logo className="h-10 w-auto" />
+          </NavLink>
           <div
             className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7"
             id="navbarSupportedContentY"
@@ -116,14 +124,14 @@ export default function Header() {
               data-te-navbar-nav-ref>
               <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                 <NavLink
-                  className={`block transition duration-150 ease-in-out lg:p-2 ${currentHeader === 'home' ? 'text-white bg-black rounded' : ''}`}
-                  to='/home'
+                  className={`block transition duration-150 ease-in-out lg:p-2 ${currentHeader === 'about' ? 'text-white bg-black rounded' : ''}`}
+                  to='/about'
                   data-te-nav-link-ref
                   data-te-ripple-init
                   data-te-ripple-color="light"
-                  onClick={() => onMenuItemClick('home')}
+                  onClick={() => onMenuItemClick('about')}
                   >
-                    Home
+                    About
                 </NavLink>
               </li>
               <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
@@ -140,7 +148,8 @@ export default function Header() {
               </li>
             </ul>
           </div>
-          <div className='flex w-fit'>
+          <div className='flex items-center'>
+            <span className="block transition duration-150 ease-in-out lg:p-2">Sign In</span>
             {hasAdminAccess && (
               <div className="relative flex-shrink-0 z-50 mr-10" ref={adminContainer}>
                   <div>
@@ -278,5 +287,7 @@ export default function Header() {
             </div>
             )}
       </nav>
+      </header>
+      </div>
     )
     }
