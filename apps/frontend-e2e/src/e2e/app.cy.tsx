@@ -1,6 +1,4 @@
 /* eslint-disable cypress/unsafe-to-chain-command */
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import App from "apps/frontend/src/app/app";
 
 describe('frontend', () => {
   beforeEach(() => cy.visit('/blogs'));
@@ -39,6 +37,4 @@ describe('frontend', () => {
     cy.get('article').contains('My First Blog (Edited)').should('not.exist');
   });
 
-
-  
 });
