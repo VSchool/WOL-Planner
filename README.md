@@ -92,5 +92,12 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
    1. Use Prettier to format your code. To get Prettier go to the 'Extensions' sidebar in Visual studio Code and search and install Prettier.
    2. Use ESLint to check your code for bugs. Get ESLint in the 'Extensions' sidebar.
-   3. Testing your code. Two folders are provided for you to create tests for your code, `server-e2e` and `frontend-e2e`. Building tests are a great way to make sure any edits in your code do not accidentally break something elsewhere. To use run `npx nx e2e SPECIFIC-FOLDER --skip-cache`. NOTE: running certain frontend tests locally that require API requests, require you to have your backend running locally too.
-   4. We use TypeScript instead of JavaScript in order to help keep functions in order and organized. Since we use TypeScript, creating interfaces or using correct types can save a lot of headache from moving data around incorrectly.
+   3. We use TypeScript instead of JavaScript in order to help keep functions in order and organized. Since we use TypeScript, creating interfaces or using correct types can save a lot of headache from moving data around incorrectly.
+
+
+# Testing
+
+   1. Testing your code. Two folders are provided for you to create tests for your code, `server-e2e` and `frontend-e2e`.
+   2. Building tests are a great way to make sure any edits in your code do not accidentally break something elsewhere. To use run `npx nx e2e SPECIFIC-FOLDER --skip-cache`.
+   3. Coding some tests on the frontend require a backend, like the tests provided in `frontend-e2e` folder (tests that require CRUD functionality). This means that you must have your localhost backend running when calling this folder to test the application.
+   4. Tests from the frontend that require a backend will also fail in Github actions because of the need for a running server. In the `tests.yml` file, which is commented out for now, you will see that command to run `frontend-e2e` folder is called, but these tests will not pass in Github actions because no server is set up inside of Github.
