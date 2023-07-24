@@ -1,163 +1,90 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 
+import React from 'react';
+import { Button } from '../../components/home-page/Button';
+import logoLaravel from '../../images/logos/laravel.svg'
+import logoMirage from '../../images/logos/mirage.svg'
+import logoStatamic from '../../images/logos/statamic.svg'
+import logoStaticKit from '../../images/logos/statickit.svg'
+import logoTransistor from '../../images/logos/transistor.svg'
+import logoTuple from '../../images/logos/tuple.svg'
+
+    {/* <div className="container px-4 mx-auto">
+        <h1>You Are Currently Signed Out</h1>
+    </div> */}
+    // How to change button styles?
 
 export const UnsignedInHome = () => {
     return (
-        <div className="antialiased w-full h-full font-inter p-10 bg-gray-200">
-    <div className="container px-4 mx-auto">
-        <h1>You Are Currently Signed Out</h1>
-      <div>
-        <div id="title" className="text-center my-10">
-          <h1 className="font-bold text-4xl">Pricing Plans</h1>
-          <p className="text-light text-gray-500 text-xl">
-            Here are our pricing plans
-          </p>
-        </div>
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-evenly gap-10 pt-10"
+    <div className="pb-16 pt-20 text-center lg:pt-32">
+      <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
+        Accounting{' '}
+        <span className="relative whitespace-nowrap text-blue-600">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 418 42"
+            className="absolute left-0 top-2/3 h-[0.58em] w-full fill-blue-300/70"
+            preserveAspectRatio="none"
+          >
+            <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z" />
+          </svg>
+          <span className="relative">made simple</span>
+        </span>{' '}
+        for small businesses.
+      </h1>
+      <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
+        Most bookkeeping software is accurate, but hard to use. We make the
+        opposite trade-off, and hope you don’t get audited. Sign in to get started.
+      </p>
+      <div className="mt-10 flex justify-center gap-x-6">
+        <Button href="/register" className="text-black flex items-center">Get 6 months free</Button>
+        <Button
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          variant="outline"
         >
-          <div
-            id="plan"
-            className="rounded-lg text-center overflow-hidden w-full transform hover:shadow-2xl hover:scale-105 transition duration-200 ease-in"
+          <svg
+            aria-hidden="true"
+            className="h-3 w-3 flex-none fill-blue-600 group-active:fill-current"
           >
-            <div id="title" className="w-full py-5 border-b border-gray-800">
-              <h2 className="font-bold text-3xl">Startup</h2>
-              <h3 className="font-normal text-indigo-500 text-xl mt-2">
-                $9<sup>,99</sup>/month
-              </h3>
-            </div>
-            <div id="content" className="">
-              <div id="icon" className="my-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 mx-auto fill-stroke text-indigo-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1"
-                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                <p className="text-gray-500 text-sm pt-2">
-                  Perfect individuals or startups
-                </p>
-              </div>
-              <div id="contain" className="leading-8 mb-10 text-lg font-light">
-                <ul>
-                  <li>10 hours of support</li>
-                  <li>128MB of storage</li>
-                  <li>2048MB bandwith</li>
-                  <li>Subdomain included</li>
-                </ul>
-                <div id="choose" className="w-full mt-10 px-6">
-                  <a
-                    className="w-full block bg-gray-900 font-medium text-xl text-white py-4 rounded-xl hover:shadow-lg transition duration-200 ease-in-out hover:bg-indigo-600 hover"
-                    >Choose</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            id="plan"
-            className="rounded-lg text-center overflow-hidden w-full transform hover:shadow-2xl hover:scale-105 transition duration-200 ease-in"
-          >
-            <div id="title" className="w-full py-5 border-b border-gray-800">
-              <h2 className="font-bold text-3xl">Corporate</h2>
-              <h3 className="font-normal text-indigo-500 text-xl mt-2">
-                $12<sup>,99</sup>/month
-              </h3>
-            </div>
-            <div id="content" className="">
-              <div id="icon" className="my-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 mx-auto fill-stroke text-indigo-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1"
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                  />
-                </svg>
-                <p className="text-gray-500 text-sm pt-2">
-                  Perfect for teams up to 12 people
-                </p>
-              </div>
-              <div id="contain" className="leading-8 mb-10 text-lg font-light">
-                <ul>
-                  <li>10 hours of support</li>
-                  <li>1024MB of storage</li>
-                  <li>4GB bandwith</li>
-                  <li>Domain included</li>
-                </ul>
-                <div id="choose" className="w-full mt-10 px-6">
-                  <a
-                    className="w-full block bg-gray-900 font-medium text-xl text-white py-4 rounded-xl hover:shadow-lg transition duration-200 ease-in-out hover:bg-indigo-600 hover"
-                    >Choose</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            id="plan"
-            className="rounded-lg text-center overflow-hidden w-full transform hover:shadow-2xl hover:scale-105 transition duration-200 ease-in"
-          >
-            <div id="title" className="w-full py-5 border-b border-gray-800">
-              <h2 className="font-bold text-3xl">Enterprise</h2>
-              <h3 className="font-normal text-indigo-500 text-xl mt-2">
-                $19<sup>,99</sup>/month
-              </h3>
-            </div>
-            <div id="content" className="">
-              <div id="icon" className="my-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 mx-auto fill-stroke text-indigo-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1"
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  />
-                </svg>
-                <p className="text-gray-500 text-sm pt-2">
-                  Perfect large scale team
-                </p>
-              </div>
-              <div id="contain" className="leading-8 mb-10 text-lg font-light">
-                <ul>
-                  <li>10 hours of support</li>
-                  <li>10GB of storage</li>
-                  <li>100GB bandwith</li>
-                  <li>Domain included</li>
-                </ul>
-                <div id="choose" className="w-full mt-10 px-6">
-                  <a
-                    className="w-full block bg-gray-900 font-medium text-xl text-white py-4 rounded-xl hover:shadow-lg transition duration-200 ease-in-out hover:bg-indigo-600 hover"
-                    >Choose</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            <path d="m9.997 6.91-7.583 3.447A1 1 0 0 1 1 9.447V2.553a1 1 0 0 1 1.414-.91L9.997 5.09c.782.355.782 1.465 0 1.82Z" />
+          </svg>
+          <span className="ml-3">Watch video</span>
+        </Button>
+      </div>
+      <div className="mt-36 lg:mt-44">
+        <p className="font-display text-base text-slate-900">
+          Trusted by these six companies so far
+        </p>
+        <ul
+          role="list"
+          className="mt-8 flex items-center justify-center gap-x-8 sm:flex-col sm:gap-x-0 sm:gap-y-10 xl:flex-row xl:gap-x-12 xl:gap-y-0"
+        >
+          {[
+            [
+              { name: 'Transistor', logo: logoTransistor },
+              { name: 'Tuple', logo: logoTuple },
+              { name: 'StaticKit', logo: logoStaticKit },
+            ],
+            [
+              { name: 'Mirage', logo: logoMirage },
+              { name: 'Laravel', logo: logoLaravel },
+              { name: 'Statamic', logo: logoStatamic },
+            ],
+          ].map((group, groupIndex) => (
+            <li key={groupIndex}>
+              <ul
+                role="list"
+                className="flex flex-col items-center gap-y-8 sm:flex-row sm:gap-x-12 sm:gap-y-0"
+              >
+                {group.map((company) => (
+                  <li key={company.name} className="flex">
+                    <img src={company.logo} alt={company.name}/>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
-  </div>
     )
 }

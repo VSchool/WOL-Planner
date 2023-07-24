@@ -107,7 +107,7 @@ export default function Header() {
           </div>
 
           <NavLink
-            to='/home'
+            to='/'
             data-te-nav-link-ref
             data-te-ripple-init
             data-te-ripple-color="light"

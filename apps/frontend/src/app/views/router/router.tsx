@@ -5,6 +5,7 @@ import { BlogsPage } from '../blogs/BlogsPage';
 import { Home } from '../home/home';
 import {About} from '../about/about';
 import {Login} from '../login/Login';
+import { Navigate } from "react-router-dom";
 import IndividualBlogPage from '../blogs/IndividualBlogPage';
 import AdminPage from '../admin/AdminPage';
 
@@ -19,6 +20,7 @@ export default function Router() {
         <Route path='/blogs/blog/:id' element={<IndividualBlogPage />} />
         <Route path='/account' element={<AccountPage/>} />
         <Route path='/admin' element={<AdminPage/>} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );
  }
