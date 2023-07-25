@@ -13,7 +13,7 @@
     "test:lint": "npm run lint && npm run test",
     "test:affected": "nx affected:test --codeCoverage",
     "test:codeCoverage": "nx run-many --all --target=test --skip-nx-cache --codeCoverage",
-    "deploy:firebase:api:dev": "nx run server:build-firebase --skip-nx-cache && firebase use nxfirebasetemplate && firebase deploy --only functions"
+    "deploy:firebase:api:dev": "nx run server:build-firebase --skip-nx-cache && firebase use wol-planner-7e216 && firebase deploy --only functions"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +35,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
+    "firebase": "^10.1.0",
     "firebase-admin": "^11.8.0",
     "firebase-functions": "^4.4.0",
     "prism": "^4.1.2",
