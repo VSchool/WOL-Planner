@@ -55,8 +55,8 @@ export const BlogsPage = () => {
     }
 
     return (
-        <div className="mb-10">
-            {createBlogModal && 
+        <div className="mb-10 mx-auto max-w-4xl">
+            {createBlogModal &&
                 <Modal
                     setShowModal={closeModal}
                     title={editBlog ? `Edit Blog` :`Create Blog`}
@@ -64,6 +64,7 @@ export const BlogsPage = () => {
                     <CreateBlogsForm addNewBlog={addNewBlog} setCreateBlogModal={setCreateBlogModal} editBlog={editBlog} updateBlogList={updateBlogsList} />
                 </Modal>
             }
+
             <BlogsList list={blogs} setCreateBlogModal={setCreateBlogModal} setEditBlog={setEditBlog} removeBlog={removeBlog} downloadableBlogs={downloadableBlogs}/>
         </div>
 

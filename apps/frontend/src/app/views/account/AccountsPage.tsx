@@ -19,7 +19,7 @@ export const AccountPage = () => {
     const [submittingForm, setSubmittingForm] = useState(false);
     const [file, setFile] = useState('');
     const [uploadedFiles, setUploadedFiles] = useState([] as any);
-    
+
     const initialFormValidationState = initYourAccountValidationState();
     const [validation, setValidation] = useState(initialFormValidationState);
 
@@ -77,8 +77,8 @@ export const AccountPage = () => {
 
 
     return (
-        <div className="">
-          <div className="container mx-auto w-7/12 px-4 sm:px-6 lg:px-8">
+        <>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-screen">
             {!user.id ? (
                 <Login />
             ) : (
@@ -122,6 +122,6 @@ export const AccountPage = () => {
             </>
             )}
           </div>
-        </div>
+        </>
       );
 }
