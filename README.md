@@ -32,7 +32,7 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
     5. Copy the `projectId` and paste it in `firebase.ts` in the `libs` folder inside the 'settings' constant (we already have most things set up for you). Also copy and paste `authDomain`, `databaseURL`, `projectId`, and `storageBucket` in `firebase.ts` in `apps/frontend/src/app/firebase` (these are also in 'Project Settings' after the app is created if not provided).
     6. Next navigate in firebase to 'Project Settings -> Service Accounts' and generate a new private key. Create a `.env` file in the root directory and add this key (make the entire object is in a string, on one line, and has no spaces).
     7. Delete `.firebaserc` and `firebase.json` files in the root of this directory if you have them.
-    8. Run `firebase login` and then `firebase init`. While initting your project, select use an existing project and select your project, use the default files and do not overwrite them, when asked to install dependencies select yes, when asked if you want to use your public directory type in `dist/apps/frontend`, type yes for a single-page app, and finally type no for automatic builds and deploys.
+    8. Run `npm install firebase`, then `npm install -g firebase-tools`, then `firebase login`, and finally `firebase init`. While initting your project, select use an existing project and select your project, use the default files and do not overwrite them, when asked to install dependencies select yes, when asked if you want to use your public directory type in `dist/apps/frontend`, type yes for a single-page app, and finally type no for automatic builds and deploys.
     9. In firebase navigate from 'Build -> Storage', then click on the 'Rules' tab. Change the `write: if false` to `write: if true` (you may have to click 'Get Started' on this and also on Firestore Database, Realtime Database, Hosting, and Functions).
     10. In your `firebase.json` file inside the `hosting` key, add `{"source": "/api/**","function": "apiv1"}` to the `rewrites` section.
     11. In order to host your backend in firebase functions, you must upgrade your firebase project to the 'Blaze' plan. This will include adding a debit/credit card but you will only pay if your app reaches a certain number of API requests.
@@ -54,7 +54,6 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
    1. You can always redeploy your site by using `firebase deploy`. This will simultaneously deploy front and back ends. NOTE: if you havent changed `storage.rules` to `if true` then it will be overwritten and cause firebase storage problems.
    2. In order to redeploy our frontend and backend seperately, we must edit one of the 'scripts' in `package.json`. Inside the script, `deploy:firebase:api:dev`, change 'nxfirebasetemplate' to your project ID and then run `npm run build` and then `npm run deploy:firebase:api:dev`. This will deploy your backend to firebase functions.
    3. Anytime you make changes and want to redeploy for your hosted site use `npm run build` and then `firebase deploy --only hosting` for the frontend.
-
 
 6. Setting up Auto-deployments
    1. Go to your Github repository and click on 'Actions', and enable actions in this repository.
@@ -93,5 +92,12 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
    1. Use Prettier to format your code. To get Prettier go to the 'Extensions' sidebar in Visual studio Code and search and install Prettier.
    2. Use ESLint to check your code for bugs. Get ESLint in the 'Extensions' sidebar.
-   3. Testing your code. Two folders are provided for you to create tests for your code, `server-e2e` and `frontend-e2e`. Building tests are a great way to make sure any edits in your code do not accidentally break something elsewhere.
-   4. We use TypeScript instead of JavaScript in order to help keep functions in order and organized. Since we use TypeScript, creating interfaces or using correct types can save a lot of headache from moving data around incorrectly.
+   3. We use TypeScript instead of JavaScript in order to help keep functions in order and organized. Since we use TypeScript, creating interfaces or using correct types can save a lot of headache from moving data around incorrectly.
+
+
+# Testing
+
+   1. Testing your code. Two folders are provided for you to create tests for your code, `server-e2e` and `frontend-e2e`.
+   2. Building tests are a great way to make sure any edits in your code do not accidentally break something elsewhere. To use run `npx nx e2e SPECIFIC-FOLDER --skip-cache`.
+   3. Coding some tests on the frontend require a backend, like the tests provided in `frontend-e2e` folder (tests that require CRUD functionality). This means that you must have your localhost backend running when calling this folder to test the application.
+   4. Tests from the frontend that require a backend will also fail in Github actions because of the need for a running server. In the `tests.yml` file, which is commented out for now, you will see that command to run `frontend-e2e` folder is called, but these tests will not pass in Github actions because no server is set up inside of Github.
