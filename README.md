@@ -32,12 +32,22 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
     5. Copy the `projectId` and paste it in `firebase.ts` in the `libs` folder inside the 'settings' constant (we already have most things set up for you). Also copy and paste `authDomain`, `databaseURL`, `projectId`, and `storageBucket` in `firebase.ts` in `apps/frontend/src/app/firebase` (these are also in 'Project Settings' after the app is created if not provided).
     6. Next navigate in firebase to 'Project Settings -> Service Accounts' and generate a new private key. Create a `.env` file in the root directory and add this key (make the entire object is in a string, on one line, and has no spaces).
     7. Delete `.firebaserc` and `firebase.json` files in the root of this directory if you have them.
-    8. Run `npm install firebase`, then `npm install -g firebase-tools`, then `firebase login`, and finally `firebase init`. While initting your project, select use an existing project and select your project, use the default files and do not overwrite them, when asked to install dependencies select yes, when asked if you want to use your public directory type in `dist/apps/frontend`, type yes for a single-page app, and finally type no for automatic builds and deploys.
+    8. Run `npm install firebase`, then `npm install -g firebase-tools`, then `firebase login`, and finally `firebase init`. While initting your project, select use an existing project and select your project, when selecting features choose; firestore/realtime database/both hostings/storage, use the default files and do not overwrite them, when asked to install dependencies select yes, when asked if you want to use your public directory type in `dist/apps/frontend`, type yes for a single-page app, and finally type no for automatic builds and deploys.
     9. In firebase navigate from 'Build -> Storage', then click on the 'Rules' tab. Change the `write: if false` to `write: if true` (you may have to click 'Get Started' on this and also on Firestore Database, Realtime Database, Hosting, and Functions).
-    10. In your `firebase.json` file inside the `hosting` key, add `{"source": "/api/**","function": "apiv1"}` to the `rewrites` section.
+    10. In your `firebase.json` file inside the `hosting` key, change the `rewrites` section to 
+    `[
+      {
+        "source": "/api/**",
+        "function": "apiv1"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]`.
     11. In order to host your backend in firebase functions, you must upgrade your firebase project to the 'Blaze' plan. This will include adding a debit/credit card but you will only pay if your app reaches a certain number of API requests.
     12. After your app is upgraded, we must edit `firebase.json` again. In the 'functions' key, change the 'source' key to `dist/apps/server-firebase`, this is just changing it from the default to our build folder. Also add `"runtime": "nodejs18"` to that 'functions' object. Finally switch out `ignore` key for `"predeploy": []`. Also in your `storage.rules` change the `if false` to `if true`.
-    13. Once your app is initialized, run `npm run build` and then `firebase deploy`. If all was done correctly then you should be able to navigate to the URL provided and see our default app.
+    13. Once your app is initialized, run `npm run build` and then `firebase deploy`. If all was done correctly then you should be able to navigate to the URL provided and see our default app. NOTE: The `package.json` in the `dist/apps/server-firebase` folder should be the same as the `package.json` inside the `apps/server/src` folder. If not then copy the `package.json` in the `apps/server/src` folder and overwrite the same file in the `dist/apps/server-firebase` folder.
 
 3. Google Login
    1. Use this article to help with your apps Google login, https://blog.logrocket.com/guide-adding-google-login-react-app/.
@@ -99,5 +109,5 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
    1. Testing your code. Two folders are provided for you to create tests for your code, `server-e2e` and `frontend-e2e`.
    2. Building tests are a great way to make sure any edits in your code do not accidentally break something elsewhere. To use run `npx nx e2e SPECIFIC-FOLDER --skip-cache`.
-   3. Coding some tests on the frontend require a backend, like the tests provided in `frontend-e2e` folder (tests that require CRUD functionality). This means that you must have your localhost backend running when calling this folder to test the application.
-   4. Tests from the frontend that require a backend will also fail in Github actions because of the need for a running server. In the `tests.yml` file, which is commented out for now, you will see that command to run `frontend-e2e` folder is called, but these tests will not pass in Github actions because no server is set up inside of Github.
+   3. Coding some tests on the frontend require a backend, like the tests provided in `frontend-e2e` folder (tests that require CRUD functionality). This means that you must have your localhost backend running when calling this folder to test the application. NOTE: in the `tests.yml` file there is an example of how to have your backend server running while you use the testing command.
+   4. To get CRUD functionality working in Github actions we need to first set up some Github secrets. In your repo go to 'Settings' -> 'Secrets and variables' -> 'Actions' and create a new secret called `FIREBASE_ADMINSDK_KEY` and then set it to the value in your `.env` file. Next we have to allow your Google Project to allow Github access. To do this create another secret and call it `GCP_PRIVATE_KEY` and set it to your Google Cloud Key. NOTE: if you do not have the key saved somewhere, then you can just create a new one, go to the google cloud console and select your project, navigate to 'IAM & Admin' -> 'Service Accounts' -> 'Keys' and create a JSON key.
