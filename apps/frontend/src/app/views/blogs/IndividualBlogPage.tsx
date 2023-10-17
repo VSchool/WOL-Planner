@@ -73,12 +73,18 @@ export default function IndividualBlogPage() {
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <h3 className='mt-4'>{blog?.author}</h3>
-              <h3
-                className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
-              >
-                {blog?.date}
-              </h3>
+              <li className="text-md leading-6 mt-8 pt-8 dark:border-zinc-700/40">
+                <p className="font-semibold text-gray-900">
+                  <span className="absolute inset-0" />
+                  Author: {blog?.author}
+                </p>
+              </li>
+              <li className="text-md leading-6 mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40">
+                <p className="font-semibold text-gray-900">
+                  <span className="absolute inset-0" />
+                  Date: {blog?.date}
+                </p>
+              </li>
             </ul>
           </div>
         </div>
