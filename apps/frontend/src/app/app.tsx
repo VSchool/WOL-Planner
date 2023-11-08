@@ -38,7 +38,7 @@ export function App() {
     <BrowserRouter>
       <div className="flex flex-col h-screen">
         <div style={{ flex: '1 1 0' }}>
-          <Header></Header>
+          {/* <Header></Header> */}
           <Router></Router>
         </div>
         <Footer></Footer>
