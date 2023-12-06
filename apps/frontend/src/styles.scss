@@ -9,3 +9,5 @@
 html {
     font-feature-settings: FEATURES;
 }
+input[type='text']:focus { box-shadow: none; }
+input[type='password']:focus { box-shadow: none; }
