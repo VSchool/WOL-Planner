@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Footer from './components/footer/footer';
-import Header from './components/header/header';
+// import Header from './components/header/header';
 import Router from './views/router/router';
 import './app.module.scss';
 

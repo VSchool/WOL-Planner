@@ -10,6 +10,7 @@ import IndividualBlogPage from '../blogs/IndividualBlogPage';
 import AdminPage from '../admin/AdminPage';
 import { ForgotPassword } from '../forgotPassword/ForgotPassword';
 import {SignUp} from "../signup/SignUp"
+import { Dashboard } from '../dashboard/Dashboard';
 
 export default function Router() {
 
@@ -25,6 +26,7 @@ export default function Router() {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     );
- }
+}
