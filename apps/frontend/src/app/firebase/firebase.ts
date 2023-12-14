@@ -8,7 +8,7 @@ export const settings = {
 };
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBBiN0i2T47tZkQmVwRcp7TAdtKESP5aQ8",
+  apiKey: process.env.SECRET,
   authDomain: "wol-planner-7e216.firebaseapp.com",
   databaseURL: "https://wol-planner-7e216-default-rtdb.firebaseio.com",
   projectId: "wol-planner-7e216",
