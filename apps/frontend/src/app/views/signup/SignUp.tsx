@@ -13,26 +13,46 @@ export const SignUp = () => {
 
     const [isDisabled, setIsDisabled] = React.useState(true)
     const [authError, setAuthError] = React.useState("")
+    const [emailError, setEmailError] = React.useState(true)
     const navigate = useNavigate()
+    const [firstName, setFirstName] = React.useState('')
+    const [lastName, setLastName] = React.useState('')
+    const [username, setUsername] = React.useState('')
+    const [email, setEmail] = React.useState('')
+    const [password, setPassword] = React.useState('')
+    const [inputError, setInputError] = React.useState(false)
 
-    // useEffect(() => {
-    //     const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
-    //     if (!emailRegex.test(email)) {
-    //       setIsDisabled(true)
-    //     } else {
-    //       setIsDisabled(false)
-    //     }
-    //   })
-    // const createUser = async () => {
-    //     try {
-    //         await createUserWithEmailAndPassword(auth, email, password)
-    //         navigate("/login")
-    //     }
-    //     catch(err: any) {
-    //         console.error(err.message)
-    //         setAuthError(err.message)
-    //     }
+    // const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+    // if(!emailRegex.test(email)) {
+    //     setEmailError(true)
+    // } else {
+    //     setEmailError(false)
     // }
+
+    useEffect(() => {
+        const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+        if (!emailRegex.test(email)) {
+            setEmailError(true)
+        } else {
+            setEmailError(false)
+        }
+    })
+    const createUser = async () => {
+        if(firstName.length < 1 || lastName.length < 1 || username.length < 1 || emailError === true || password.length < 7) {
+            setInputError(true)
+        } 
+        else {
+            try {
+                await createUserWithEmailAndPassword(auth, email, password)
+                navigate("/dashboard")
+            }
+            catch(err: any) {
+                console.error(err.message)
+                setInputError(true)
+                // setAuthError(err.message)
+            }
+        } 
+    }
 
     return (
         <AuthLayout>
@@ -49,40 +69,49 @@ export const SignUp = () => {
                     <img src={loginCrystalBall} alt="" className="signupCrystalBall"/>
                     </div>
                 </div>
+                <div className="signupIndicatesRequiredContainer">
+                    <p className="signupIndicatesRequired">* Indicates Required</p>
+                </div>
                 <div className="signupFirstNameContainer">
                     <h2 className="signupFirstName">First Name</h2>
                     <div className="signupFirstNameInputContainer">
-                        <input className="signupFirstNameInput"/>
+                        <input className="signupFirstNameInput" onChange={(e) => setFirstName(e.target.value)}/>
                     </div>
                 </div>
                 <div className="signupLastNameContainer">
                     <h2 className="signupLastName">Last Name</h2>
                     <div className="signupLastNameInputContainer">
-                        <input className="signupLastNameInput"/>
+                        <input className="signupLastNameInput" onChange={(e) => setLastName(e.target.value)}/>
                     </div>
                 </div>
                 <div className="signupUsernameContainer">
                     <h2 className="signupUsername">Username</h2>
                     <div className="signupUsernameInputContainer">
-                        <input className="signupUsernameInput"/>
+                        <input className="signupUsernameInput" onChange={(e) => setUsername(e.target.value)}/>
                     </div>
                 </div>
                 <div className="signupEmailContainer">
                     <h2 className="signupEmail">Email</h2>
                     <div className="signupEmailInputContainer">
-                        <input className="signupEmailInput"/>
+                        <input className="signupEmailInput" onChange={(e) => setEmail(e.target.value)}/>
                     </div>
+                </div>
+                <div className="signupEmailErrorContainer">
+                    <p className="signupEmailError">Please enter a valid email address</p>
                 </div>
                 <div className="signupPasswordContainer">
                     <h2 className="signupPassword">Password</h2>
                     <div className="signupPasswordInputContainer">
-                        <input className="signupPasswordInput"/>
+                        <input className="signupPasswordInput" onChange={(e) => setPassword(e.target.value)}/>
                     </div>
                 </div>
                 <div className="signupButtonContainer">
-                    <button className="signupButton">
+                    <button className="signupButton" onClick={createUser} disabled={isDisabled} style={{backgroundColor: isDisabled ? "#6F6F6F" : "#000"}}>
                         <span className="signupButtonText">Submit</span>
                     </button>
+                </div>
+                <div className="signupPasswordErrorContainer">
+                    <p className="signupPasswordError">Password must be at least 8 characters</p>
                 </div>
             </div>
         </AuthLayout>

@@ -293,3 +293,41 @@
     display: grid;
     grid-template-rows: 40px 147px 98px 76px 100px 76px 96px 110px;
 }
+.signupIndicatesRequiredContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signupIndicatesRequired {
+    color: #F00;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
+.signupEmailErrorContainer {
+
+}
+.signupEmailError {
+    color: var(--Primary-Red, #F00);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
+.signupPasswordErrorContainer {
+
+}
+.signupPasswordError {
+    color: #F00;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+}
