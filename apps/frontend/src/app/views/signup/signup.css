@@ -291,6 +291,5 @@
 }
 .signupLayout {
     display: grid;
-    grid-template-rows: 40px 137px 98px 66px 116px 66px 96px 106px;
-    padding: 12px 16px 12px 16px;
+    grid-template-rows: 40px 147px 98px 76px 100px 76px 96px 110px;
 }
