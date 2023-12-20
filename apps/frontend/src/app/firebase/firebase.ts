@@ -8,14 +8,14 @@ export const settings = {
 };
 
 const firebaseConfig = {
-  apiKey: process.env.SECRET,
-  authDomain: "wol-planner-7e216.firebaseapp.com",
-  databaseURL: "https://wol-planner-7e216-default-rtdb.firebaseio.com",
+  apiKey: process.env.NX_API_KEY,
+  authDomain: process.env.NX_AUTH_DOMAIN,
+  databaseURL: process.env.NX_DATABASE_URL,
   projectId: "wol-planner-7e216",
-  storageBucket: "wol-planner-7e216.appspot.com",
-  messagingSenderId: "1092456040603",
+  storageBucket: process.env.NX_STORAGE_BUCKET,
+  messagingSenderId: process.env.NX_MESSAGING_SENDER_ID,
   appId: "1:1092456040603:web:83a5c56785f71e0ff81e3e",
-  measurementId: "G-J1J4WPZG89"
+  measurementId: process.env.NX_MEASUREMENT_ID
 };
 
 // Initialize Firebase
