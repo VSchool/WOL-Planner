@@ -1,4 +1,5 @@
 import React from "react"
+import './dashboard.css'
 import bSmith from '../../images/dash/b_smith.svg'
 import balance from '../../images/dash/balance_btn.svg'
 import cashFlow from '../../images/dash/cashflow_btn.svg'
@@ -12,26 +13,35 @@ export const Dashboard = () => {
 
 
     return (
-        <div className="images">
+        <div className="page">
+
+            <button className="burger">
             <img src={hamburger_menu} alt="" className="hamburger_menu_dash" />
+            </button>
+            <div className="profile_dash">
             <img src={profile} alt="" className="profile_dash" />
-            <img src={bSmith} alt="" className="bsmith" />
+            </div>
+            <div className="bsmith">
+            <img src={bSmith} alt="" className="bsmith" id="bsmith" />
+            </div>
+            <div className="text">
             <img src={text} alt="" className="text" />
+            </div>
+            <div className="networth">
             <img src={netWorth} alt="" className="networth" />
-<button>
-
+            </div>
+            <button className="balance">
             <img src={balance} alt="" className="balance" />
-</button>
+            </button>
 
 
-                <button>
+                <button className="balance">
             <img src={cashFlow} alt="" className="cashFlow" />
                 </button>
 
-                <button>
+                <button className="userBtn">
             <img src={userBtn} alt="" className="userBtn" />
                 </button>
-
-        </div>
+                </div>
     )
 }

@@ -1,0 +1,48 @@
+.page{
+    display: grid;
+    grid-template-rows: 140px 170px 98px 66px 116px 50px 95px 80px;
+}
+
+
+
+.burger{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+
+.bsmith{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.networth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_dash{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.balance{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #FFF */
+}
+
+.userBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
