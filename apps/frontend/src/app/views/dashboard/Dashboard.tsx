@@ -5,7 +5,7 @@ import hamburger_menu from '../../images/dash/hamburger_menu.svg'
 import hankHill from '../../images/dash/Hank_Hill.webp'
 
 export const Dashboard = () => {
-    //testing
+  //new
 
     return (
         <AuthLayout className="h-screen">
