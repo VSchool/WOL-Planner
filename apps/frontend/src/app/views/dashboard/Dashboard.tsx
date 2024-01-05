@@ -2,8 +2,6 @@ import React from "react"
 import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import './dashboard.css'
 import hamburger_menu from '../../images/dash/hamburger_menu.svg'
-import profile from '../../images/dash/profile.svg'
-import userBtn from '../../images/dash/user_btn.svg'
 import hankHill from '../../images/dash/Hank_Hill.webp'
 
 export const Dashboard = () => {
