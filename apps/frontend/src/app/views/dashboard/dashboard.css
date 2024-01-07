@@ -1,17 +1,16 @@
 .page {
   display: grid;
-  grid-template-rows: 140px 170px 98px 66px 116px 50px 95px 80px;
+  grid-template-rows: 40px 137px 98px 66px 116px 66px 96px 106px;
 }
-
 .burger {
   display: flex;
-  justify-content: left;
+  /* justify-content: left; */
   align-items: left;
 }
 
 .bsmith {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 .text {
@@ -23,12 +22,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: inline-flex;
+  padding: 17px 106px 16px 105px;
 }
 
 .profile_dash {
-  width: 32px;
-  height: 32px;
   flex-shrink: 0;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+}
+
+.profile-dash-div {
+  display: flex;
+  justify-content: center;
 }
 
 .greeting-text {
@@ -39,15 +46,21 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 
 .balance {
-  display: inline-flex;
+  display: flex;
   padding: 17px 106px 16px 105px;
   justify-content: center;
   align-items: center;
   border-radius: 100px;
   background: var(--Primary-Blue, #148cfb);
+  border-radius: 100px;
+  background: var(--Primary-Blue, #148cfb);
+  width: 345px;
 }
 
 .cash-flow {
@@ -56,6 +69,8 @@
   padding: 17px 0px 16px 0px;
   justify-content: center;
   align-items: center;
+  border-radius: 100px;
+  background: var(--Primary-Blue, #148cfb);
 }
 
 .page-font {
@@ -90,8 +105,13 @@
 
 .userBtn {
   display: inline-flex;
-  padding: 12px 10px;
+  /* padding: 12px 10px; */
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.image-103 {
+    display: flex;
+    justify-content: center;
 }
