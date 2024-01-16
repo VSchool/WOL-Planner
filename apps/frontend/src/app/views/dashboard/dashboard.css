@@ -29,13 +29,15 @@
 .profile_dash {
   flex-shrink: 0;
   border-radius: 100px;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
 }
 
 .profile-dash-div {
+  position: relative;
   display: flex;
   justify-content: center;
+  /* top: -75px; */
 }
 
 .greeting-text {
@@ -66,7 +68,7 @@
 .cash-flow {
   display: flex;
   width: 345px;
-  padding: 17px 0px 16px 0px;
+  padding: 17px 0px 16px 10px;
   justify-content: center;
   align-items: center;
   border-radius: 100px;
@@ -74,6 +76,9 @@
 }
 
 .page-font {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #000;
   font-feature-settings: "clig" off, "liga" off;
   font-family: Sofia Pro;
@@ -84,6 +89,9 @@
 }
 
 .numbers-font {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #000;
   font-feature-settings: "clig" off, "liga" off;
   font-family: Sofia Pro;
@@ -112,6 +120,6 @@
 }
 
 .image-103 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
