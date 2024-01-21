@@ -20,7 +20,7 @@ export const Dashboard = () => {
                     id="HomePageDashboardRoot"
                     className="bg-white flex flex-col justify-between gap-[112px] w-full font-['Sofia_Pro'] items-start pt-3 pb-16 px-6 rounded-[40px]"
                 >
-                    <div className="flex flex-col justify-between gap-16 w-full font-['FONTSPRING_DEMO_-_Capitana_Medium'] items-start">
+                    <div className="flex flex-col justify-between gap-16 w-full font-['FONTSPRING_DEMO_-_Capitana_Medium'] items-start ">
                         <div className="flex flex-col gap-8 w-2/3 h-24 items-start">
                             <img
                                 src={image103}
@@ -71,13 +71,16 @@ export const Dashboard = () => {
                     <div className="font-bold border-solid flex flex-row ml-24 w-2/5 h-10 items-start pt-2 px-2 border-black border-2 rounded-[20px]">
                         First Time User ?
                     </div>
+
                 </div>
+
             ) :
                 (
-                    <div onClick={() => setIsOpen(!isOpen)} className="transition ease-in-out delay-150">
+                    <div onClick={() => setIsOpen(!isOpen)}>
                         <HamburgerNav />
                     </div>
                 )
+
             }
         </AuthLayout>
 

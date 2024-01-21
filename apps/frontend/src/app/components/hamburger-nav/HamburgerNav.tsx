@@ -5,20 +5,20 @@ import lineList from '../../images/dash/line-md_list-3-filled.svg'
 import image103 from '../../images/logos/loginGroup103.svg'
 import hamburger_menu from '../../images/dash/hamburger_menu.svg'
 import hankHill from '../../images/dash/Hank_Hill.webp'
-import { useState } from 'react'
+import { Link } from "react-router-dom";
+import path from 'path'
 
 export default function HamburgerNav() {
-    const [isClosed, setIsCLosed] = useState(true)
     return (
         <div className="nav">
             <div className="nav-container">
-                <div id="FlyoutMenuContainer" className="absolute inset-0">
+                <div id="FlyoutMenuContainer" className="  absolute inset-0">
                     <div id="FlyoutMenu-bg" className="absolute inset-0 w-full h-full bg-gray-900 opacity-50 "></div>
                     <div
                         id="FlyoutMenuRoot"
-                        className="transition delay-500 ease-in duration-1000 bg-black absolute left-0 top-0 flex flex-col gap-10 w-64 h-full font-['FONTSPRING_DEMO_-_Capitana_Medium'] items-start pl-2 py-16  "
+                        className=" bg-black absolute left-0 top-0 flex flex-col gap-10 w-64 h-full font-['FONTSPRING_DEMO_-_Capitana_Medium'] items-start pl-2 py-16  "
                     >
-                        <div className="flex flex-row ml-4 gap-4 w-24 items-start">
+                        <div className="ease-in-out duration-1000 flex flex-row ml-4 gap-4 w-24 items-start">
                             <div className="flex flex-row gap-1 w-16 items-start">
                                 <div className="flex flex-row gap-1 w-10 items-start">
                                     <div className="text-lg text-white"></div>
@@ -42,28 +42,26 @@ export default function HamburgerNav() {
                         </div>
                         <div className="relative flex flex-row w-full font-['Sofia_Pro'] items-start">
                             <div className="font-bold text-white border-solid border-t border-[#6f6f6f] w-full h-10 absolute top-0 left-0 flex flex-row justify-center pt-3 items-start">
-                                Dashboard
+                                <Link to="/dashboard"> Dashboard </Link>
                             </div>
                             <div className="font-bold text-white border-solid border-t border-[#6f6f6f] w-full h-10 absolute top-10 left-0 flex flex-row justify-center pt-3 items-start">
-                                Cash Flow
+                                <Link to="/"> Cash Flow </Link>
                             </div>
                             <div className="font-bold text-white border-solid border-t border-[#6f6f6f] w-full h-10 absolute top-20 left-0 flex flex-row justify-center pt-3 items-start">
-                                Assets
+                                <Link to="/">  Assets</Link>
                             </div>
                             <div className="font-bold text-white border-solid border-t border-[#6f6f6f] w-full h-10 absolute top-32 left-0 flex flex-row justify-center pt-3 items-start">
-                                Liabilities
+                                <Link to="/"> Liabilities</Link>
                             </div>
                             <div className="font-bold text-white border-solid border-[#6f6f6f] w-full h-10 absolute top-40 left-0 flex flex-row justify-center pt-3 items-start border-y">
-                                Logout
+                                <Link to="/">  Logout </Link>
                             </div>
                             <div className="font-bold text-white border-solid border-b border-[#6f6f6f] relative flex flex-row justify-center mt-48 pt-3 w-full h-10 items-start">
-                                Settings
+                                <Link to="/">  Settings </Link>
                             </div>
                         </div>
                     </div>
-                    <div id='closeButton' className="text-xl text-white absolute inset-y-0 right-0 w-16">
-                        <button onClick={() => setIsCLosed(!isClosed)}>X</button>
-                    </div>
+
                 </div>
 
             </div>
