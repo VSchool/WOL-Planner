@@ -29,6 +29,8 @@ export const SignUp = () => {
     //     setEmailError(false)
     // }
 
+    // testing for commit change
+
     useEffect(() => {
         const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
         if (!emailRegex.test(email)) {
@@ -44,7 +46,7 @@ export const SignUp = () => {
         else {
             try {
                 await createUserWithEmailAndPassword(auth, email, password)
-                navigate("/dashboard")
+                navigate("/namepage")
             }
             catch(err: any) {
                 console.error(err.message)
