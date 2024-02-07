@@ -46,7 +46,7 @@ export const SignUp = () => {
         else {
             try {
                 await createUserWithEmailAndPassword(auth, email, password)
-                navigate("/dashboard")
+                navigate("/namepage")
             }
             catch(err: any) {
                 console.error(err.message)

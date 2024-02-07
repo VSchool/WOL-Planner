@@ -11,6 +11,7 @@ import AdminPage from '../admin/AdminPage';
 import { ForgotPassword } from '../forgotPassword/ForgotPassword';
 import {SignUp} from "../signup/SignUp"
 import { Dashboard } from '../dashboard/Dashboard';
+import { NamePage } from "../namePage/NamePage"
 
 export default function Router() {
 
@@ -27,6 +28,7 @@ export default function Router() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/namepage" element={<NamePage />}/>
       </Routes>
     );
 }
