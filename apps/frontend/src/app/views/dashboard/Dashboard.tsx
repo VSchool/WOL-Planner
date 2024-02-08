@@ -5,7 +5,7 @@ import hamburger_menu from '../../images/dash/hamburger_menu.svg'
 import hankHill from '../../images/dash/Hank_Hill.webp'
 import image103 from '../../images/logos/loginGroup103.svg'
 import HamburgerNav from "../../components/hamburger-nav/HamburgerNav";
-// export const Dashboard = () => {
+import './dashboard.css'
 
 
 
@@ -14,21 +14,21 @@ export const Dashboard = () => {
 
     return (
 
-        <AuthLayout>
+        <AuthLayout className="">
             {!isOpen ? (
                 <div
                     id="HomePageDashboardRoot"
-                    className="bg-white flex flex-col justify-between gap-[112px] w-full font-['Sofia_Pro'] items-start pt-3 pb-16 px-6 rounded-[40px]"
+                    className=" md:w-834 md:h-1192 bg-white flex flex-col justify-between gap-[112px] w-full font-['Sofia_Pro'] items-start pt-3 pb-16 px-6 rounded-[40px]"
                 >
                     <div className="flex flex-col justify-between gap-16 w-full font-['FONTSPRING_DEMO_-_Capitana_Medium'] items-start ">
                         <div className="flex flex-col gap-8 w-2/3 h-24 items-start">
                             <img
                                 src={image103}
                                 alt="top_image"
-                                className="ml-[109px]"
+                                className="ml-[109px] md:invisible"
                             />
 
-                            <div className="flex flex-row justify-between w-4/5 items-start">
+                            <div className="flex md:w-fit-content md:h-fit-content flex-row justify-between w-4/5 items-start">
 
                                 <button onClick={() => setIsOpen(!isOpen)}>
                                     <img
@@ -46,7 +46,7 @@ export const Dashboard = () => {
 
 
                         </div>
-                        <div className="text-4xl ml-20">Hi, Bsmith</div>
+                        <div id="hello" className="text-4xl ml-20">Hi, Bsmith</div>
                         <div className="flex flex-col gap-16 w-full font-['Sofia_Pro'] items-start">
                             <div className="flex flex-col ml-20 gap-6 w-1/2 items-start">
                                 <div className="text-5xl font-bold">###.##</div>
