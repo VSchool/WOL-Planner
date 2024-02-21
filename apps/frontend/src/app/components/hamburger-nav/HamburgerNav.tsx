@@ -48,7 +48,7 @@ export default function HamburgerNav() {
                                 <Link to="/"> Cash Flow </Link>
                             </div>
                             <div className="font-bold text-white border-solid border-t border-[#6f6f6f] w-full h-10 absolute top-20 left-0 flex flex-row justify-center pt-3 items-start">
-                                <Link to="/">  Assets</Link>
+                                <Link to="/assets">  Assets</Link>
                             </div>
                             <div className="font-bold text-white border-solid border-t border-[#6f6f6f] w-full h-10 absolute top-32 left-0 flex flex-row justify-center pt-3 items-start">
                                 <Link to="/"> Liabilities</Link>
