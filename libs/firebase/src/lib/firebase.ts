@@ -1,4 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+// connection to firebase
+// provides credentials, and functions to manipulate the data in the database
+
+
 import * as admin from 'firebase-admin';
 import { initializeApp, getApps } from 'firebase-admin/app';
 import { getDatabase } from 'firebase-admin/database';
@@ -197,8 +202,8 @@ export const getDataByField = async (
 };
 
 interface FindOneInterface {
-  collection: string;
-  field: string;
+  collection: string; 
+  field: string; 
   matches: string;
 }
 
