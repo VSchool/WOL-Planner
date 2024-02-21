@@ -1,21 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import hankHill from '../../images/dash/Hank_Hill.webp';
 import image103 from '../../images/logos/loginGroup103.svg';
 import HamburgerNav from '../../components/hamburger-nav/HamburgerNav';
+import DropdownSelect from '../../components/dropdown-select/DropdownSelect';
 import './assets.css';
+import styles from '../../app.module.scss';
 
 export const Assets = () => {
   const navigate = useNavigate();
   const initInputs = {
-    select_month: 'Jan',
-    select_year: '2024',
+    select_month: '',
+    select_year: '',
   };
 
   const [inputs, setInputs] = useState(initInputs);
-  const isDisabled = !(inputs.select_month && inputs.select_year);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(!(initInputs.select_month && initInputs.select_year));
+
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -33,16 +37,46 @@ export const Assets = () => {
     console.log('new page');
     navigate('/assets/input');
   };
+
+  useEffect(() => {
+    // Update isDisabled whenever select_month or select_year changes
+    setIsDisabled(!(inputs.select_month && inputs.select_year));
+  }, [inputs]);
   return (
-    <div>
-      <img src={hamburger_menu} alt="" />
+    <AuthLayout>
+      {!isOpen ? (
+        <div className={styles['hamburger-menu-section']}>
+          <button onClick={() => setIsOpen(!isOpen)}>
+            <img
+              src={hamburger_menu}
+              alt="HamburgerMenu"
+              className={styles['profile-image']}
+            />
+          </button>
+          <div className="dashboard-content">
+            <img
+              src={hankHill}
+              alt="Frame2"
+              className={styles['profile-image']}
+            />
+          </div>
+        </div>
+      ) : (
+        <div onClick={() => setIsOpen(!isOpen)}>
+          <HamburgerNav />
+        </div>
+      )}
+
       <div className="headline">
-        <p className="p_headline">
+        <p>
           Let's get an understanding of your assets this month
         </p>
       </div>
+      
+  
+
       <div>
-        <p className='p_select_month'>Select Month</p>
+        <p className="p_select_month">Select Month</p>
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -65,8 +99,6 @@ export const Assets = () => {
         </div>
         <p className="p_select_year">Select Year</p>
         <div className="year_input">
-          
-          
           <div className="select_year_div">
             <select
               className="input"
@@ -94,11 +126,11 @@ export const Assets = () => {
           type="submit"
           className="asset_button_large"
           disabled={isDisabled}
-          
         >
           Submit
         </button>
       </form>
-    </div>
+    </AuthLayout>
   );
 };
+  

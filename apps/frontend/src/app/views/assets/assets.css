@@ -1,7 +1,7 @@
 .headline {
 width: 345px;
 height: 110px;
-top: 147px;
+top: 100px;
 left: 24px;
 font-family: FONTSPRING DEMO - Capitana Extrabold;
 font-size: 20px;
@@ -9,8 +9,17 @@ font-weight: 800;
 line-height: 30px;
 letter-spacing: 0px;
 text-align: center;
+padding-left: 60px;
+padding-right: 60px;
 }
 
+.button-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+}
 .select_month_div {
     width: 345px;
     height: 120px;
@@ -20,13 +29,7 @@ text-align: center;
     border: 4px, 0px, 4px, 0px;
 }
 
-/* .select_month_text_div {
-    width: 345px;
-height: 16px;
-top: 297px;
-left: 24px
 
-} */
 
 .select_year_div {
     width: 345px;
@@ -101,6 +104,28 @@ color: white;
 margin-bottom: 2px;
 }
 
+.add_btn {
+    width: Hug (142px);
+    height: Fixed (40px);
+    top: 281px;
+    left: 126px;
+    padding: 10px;
+    border-radius: 80px;
+    gap: 10px;
+    background: #148CFB;
+    color: white;
+    margin-bottom: 2px;
+}
+
+.button-and-form-container {
+    display: flex;
+    align-items: center;
+}
+.form-container {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
 .value_div {
     padding-top:20px;
 
@@ -121,8 +146,9 @@ font-size: 20px;
 font-weight: 800;
 line-height: 30px;
 letter-spacing: 0px;
+flex-grow: 1;
 text-align: center;
-
+margin-right: 10px;
 }
 
 .horizontal_line {
@@ -154,8 +180,27 @@ margin-top: 20px;
 
 }
 
-.asset_p_value {
+.asset-form {
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.asset-form-button {
+    
+    width: 300px;
+    height: 50px;
+   border-radius: 100px;
+    background: #148CFB;
+    color: white;
     font-family: FONTSPRING DEMO - Capitana Extrabold;
+    font-size: 20px;
+    margin-bottom: 2px;
+    margin-top: 20px;
+}
+
+.asset_p_value {
+font-family: FONTSPRING DEMO - Capitana Extrabold;
 font-size: 20px;
 font-weight: 800;
 line-height: 30px;
