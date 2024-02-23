@@ -3,8 +3,8 @@
 import React, { ChangeEvent, useEffect } from 'react';
 import { UserContext } from '../../app';
 import { useGoogleLogin } from '@react-oauth/google';
-// import axios from 'axios';
-// import { createUserData } from '../../api-client/apiModules/users';
+import axios from 'axios';
+import { createUserData } from '../../api-client/apiModules/users';
 import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import { Link, useNavigate } from 'react-router-dom';
 import  googleGImage from "../../images/logos/googleGImage.svg"
@@ -27,38 +27,39 @@ export const Login = () => {
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => (
-          setSignIn(codeResponse),
-          navigate("/dashboard")
+          setSignIn(codeResponse)
+
           // window.location.replace(localhost:4200/dashboard) 
           //`${window.location.origin}/whatever`
         ),
         onError: (error) => console.log('Login Failed:', error)
     });
 
-    // useEffect(
-    //     () => {
-    //         const signInUser = async () => {
-    //             if (signIn) {
-    //                 axios
-    //                     .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${signIn.access_token}`, {
-    //                         headers: {
-    //                             Authorization: `Bearer ${signIn.access_token}`,
-    //                             Accept: 'application/json'
-    //                         }
-    //                     })
-    //                     .then(async (res) => {
-    //                         const userData = await createUserData({name: res.data.name, email: res.data.email, picture: res.data.picture});
-    //                         setUser(userData);
-    //                         console.log("useEffect signed in user", userData)
-    //                         localStorage.setItem('user', JSON.stringify(userData));
-    //                     })
-    //                     .catch((err) => console.log(err));
-    //             }
-    //         }
-    //         signInUser();
-    //     },
-    //     [ signIn ]
-    // );
+    useEffect(
+        () => {
+            const signInUser = async () => {
+                if (signIn) {
+                    axios
+                        .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${signIn.access_token}`, {
+                            headers: {
+                                Authorization: `Bearer ${signIn.access_token}`,
+                                Accept: 'application/json'
+                            }
+                        })
+                        .then(async (res) => {
+                            const userData = await createUserData({name: res.data.name, email: res.data.email, picture: res.data.picture});
+                            setUser(userData);
+                            console.log("useEffect signed in user", userData)
+                            localStorage.setItem('user', JSON.stringify(userData))
+                            navigate("/dashboard")
+                        })
+                        .catch((err) => console.log(err));
+                }
+            }
+            signInUser();
+        },
+        [ signIn ]
+    );
     useEffect(() => {
       const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
       if (!emailRegex.test(email)) {

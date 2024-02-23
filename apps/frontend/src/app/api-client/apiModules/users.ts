@@ -76,3 +76,9 @@ export const allFilesForUser = async (path: string) => {
 
     return allItems
 }
+
+export const signUpUser = async (data: any) => {
+    const userData = await apiClientWithAuth.post(apiEndpoints.users + "/signup", data)
+    console.log(data)
+    return userData.data
+}
