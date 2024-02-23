@@ -60,74 +60,75 @@ export const SignUp = () => {
     //     } 
     // }
     const signUp = async () => {
-        try {
-            await signUpUser({email, password, firstName, lastName, username})
-            // navigate("/dashboard")
-        }
-        catch(err: any) {
-            console.log(err.message)
-            setInputError(true)
+        const response = await signUpUser({email, password, firstName, lastName, username})
+        if(response.success === true) {
+            // set user here
+            navigate("/dashboard")
+        } else {
+            alert(response.message)
         }
     } 
 
     return (
         <AuthLayout>
             <div className="signupLayout">
-                <div className='signupGroup103Container'>
-                    <img src={loginGroup103} alt="" className="signupGroup103" style={{gridRowStart: "1", gridRowEnd: "2"}}/>
+                <div className='signupGroup103Container' style={{gridRowStart: "1", gridRowEnd: "2"}}>
+                    <img src={loginGroup103} alt="" className="signupGroup103" />
                 </div>
-                <div className='signupLogoContainer'>
-                    <div className="signupLogo" style={{gridRowStart: "2", gridRowEnd: "3"}}>
-                    <h1 className="signupW">W</h1>
-                    <img src={loginListThreeFilled} alt="" className="signupListThreeFilled"/>
-                    <h1 className="signupL">L</h1>
-                    <img src={loginVector} alt="" className="signupVector"/>
-                    <img src={loginCrystalBall} alt="" className="signupCrystalBall"/>
+                <div className='signupLogoContainer' style={{gridRowStart: "2", gridRowEnd: "3"}}>
+                    <div className="signupLogo" >
+                        <h1 className="signupW">W</h1>
+                        <img src={loginListThreeFilled} alt="" className="signupListThreeFilled"/>
+                        <h1 className="signupL">L</h1>
+                        <img src={loginVector} alt="" className="signupVector"/>
+                        <img src={loginCrystalBall} alt="" className="signupCrystalBall"/>
                     </div>
                 </div>
-                <div className="signupIndicatesRequiredContainer">
+                <div className="signupIndicatesRequiredContainer" style={{gridRowStart: "3", gridRowEnd: "4"}}>
                     <p className="signupIndicatesRequired">* Indicates Required</p>
                 </div>
-                <div className="signupFirstNameContainer">
-                    <h2 className="signupFirstName"><span className="signupAsterisk">*</span>First Name</h2>
-                    <div className="signupFirstNameInputContainer">
-                        <input className="signupFirstNameInput" type="text" onChange={(e) => setFirstName(e.target.value)}/>
+                <div className="signupBodyContainer">
+                    <div className="signupFirstNameContainer" style={{gridRowStart: "1", gridRowEnd: "2"}}>
+                        <h2 className="signupFirstName" ><span className="signupAsterisk">*</span>First Name</h2>
+                        <div className="signupFirstNameInputContainer">
+                            <input className="signupFirstNameInput" type="text" onChange={(e) => setFirstName(e.target.value)}/>
+                        </div>
                     </div>
-                </div>
-                <div className="signupLastNameContainer">
-                    <h2 className="signupLastName"><span className="signupAsterisk">*</span>Last Name</h2>
-                    <div className="signupLastNameInputContainer">
-                        <input className="signupLastNameInput" type="text" onChange={(e) => setLastName(e.target.value)}/>
+                    <div className="signupLastNameContainer" style={{gridRowStart: "2", gridRowEnd: "3"}}>
+                        <h2 className="signupLastName"><span className="signupAsterisk">*</span>Last Name</h2>
+                        <div className="signupLastNameInputContainer">
+                            <input className="signupLastNameInput" type="text" onChange={(e) => setLastName(e.target.value)}/>
+                        </div>
                     </div>
-                </div>
-                <div className="signupUsernameContainer">
-                    <h2 className="signupUsername"><span className="signupAsterisk">*</span>Username</h2>
-                    <div className="signupUsernameInputContainer">
-                        <input className="signupUsernameInput" type="text" onChange={(e) => setUsername(e.target.value)}/>
+                    <div className="signupUsernameContainer" style={{gridRowStart: "3", gridRowEnd: "4"}}>
+                        <h2 className="signupUsername"><span className="signupAsterisk">*</span>Username</h2>
+                        <div className="signupUsernameInputContainer">
+                            <input className="signupUsernameInput" type="text" onChange={(e) => setUsername(e.target.value)}/>
+                        </div>
                     </div>
-                </div>
-                <div className="signupEmailContainer">
-                    <h2 className="signupEmail"><span className="signupAsterisk">*</span>Email</h2>
-                    <div className="signupEmailInputContainer">
-                        <input className="signupEmailInput" type="text" onChange={(e) => setEmail(e.target.value)}/>
+                    <div className="signupEmailContainer" style={{gridRowStart: "4", gridRowEnd: "5"}}>
+                        <h2 className="signupEmail"><span className="signupAsterisk">*</span>Email</h2>
+                        <div className="signupEmailInputContainer">
+                            <input className="signupEmailInput" type="text" onChange={(e) => setEmail(e.target.value)}/>
+                        </div>
                     </div>
-                </div>
-                <div className="signupEmailErrorContainer">
-                    <p className="signupEmailError">Please enter a valid email address</p>
-                </div>
-                <div className="signupPasswordContainer">
-                    <h2 className="signupPassword"><span className="signupAsterisk">*</span>Password</h2>
-                    <div className="signupPasswordInputContainer">
-                        <input className="signupPasswordInput" required type="password" onChange={(e) => setPassword(e.target.value)}/>
+                    <div className="signupEmailErrorContainer" style={{gridRowStart: "5", gridRowEnd: "6"}}>
+                        <p className="signupEmailError">Please enter a valid email address</p>
                     </div>
-                </div>
-                <div className="signupPasswordErrorContainer">
-                    <p className="signupPasswordError">Password must be at least 8 characters</p>
-                </div>
-                <div className="signupButtonContainer">
-                    <button className="signupButton" onClick={signUp}  disabled={isDisabled} style={{backgroundColor: isDisabled ? "#6F6F6F" : "#000"}}>
-                        <span className="signupButtonText">Submit</span>
-                    </button>
+                    <div className="signupPasswordContainer" style={{gridRowStart: "6", gridRowEnd: "7"}}>
+                        <h2 className="signupPassword"><span className="signupAsterisk">*</span>Password</h2>
+                        <div className="signupPasswordInputContainer">
+                            <input className="signupPasswordInput" required type="password" onChange={(e) => setPassword(e.target.value)}/>
+                        </div>
+                    </div>
+                    <div className="signupPasswordErrorContainer" style={{gridRowStart: "7", gridRowEnd: "8"}}>
+                        <p className="signupPasswordError">Password must be at least 8 characters</p>
+                    </div>
+                    <div className="signupButtonContainer" style={{gridRowStart: "8", gridRowEnd: "9"}}>
+                        <button className="signupButton" onClick={signUp}  disabled={isDisabled} style={{backgroundColor: isDisabled ? "#6F6F6F" : "#000"}}>
+                            <span className="signupButtonText">Submit</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </AuthLayout>

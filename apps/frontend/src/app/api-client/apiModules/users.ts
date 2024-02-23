@@ -79,6 +79,17 @@ export const allFilesForUser = async (path: string) => {
 
 export const signUpUser = async (data: any) => {
     const userData = await apiClientWithAuth.post(apiEndpoints.users + "/signup", data)
-    console.log(data)
+    // console.log(userData)
     return userData.data
+    // if it is a successful sign up
+// // if property 'id' exists then it was a success
+//     if(userData.data.success === true){
+//         console.log('user was created', userData)
+//     }
+//     // unsuccessful attempt, property 'id' wouldn't exist
+//     else {
+//     // this should be the error object you sent back
+//         console.log(userData)
+//         alert("email already in use")
+//  }
 }
