@@ -1,7 +1,24 @@
-
-.opaque-container{
+/* hamburger.css */
+.nav-container {
   position: absolute;
-  inset:0;
+  top: 0;
+  left: 0;
+  width: 250px; /* Adjust as needed */
+  height: 100%;
+  background-color: black;
+  transition: transform 1s ease;
+}
+
+.showSideBar {
+  transform: translateX(0);
+}
+
+.hideSideBar {
+  transform: translateX(-250px); /* Adjust as needed */
+}
+
+.opaque-container {
+  position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -10,7 +27,6 @@
 }
 
 .fly-out-menu-root {
-
   background-color: black;
   position: absolute;
   left: 0;
@@ -18,9 +34,8 @@
   display: flex;
   flex-direction: column;
   gap: 5%;
-  width: 50%;
+  width: 100%; /* Adjust as needed */
   height: 100%;
-
 }
 
 .trademark-container {
@@ -37,7 +52,6 @@
   font-size: large;
   color: white; 
 }
-
 
 .trademark-letter {
   font-size: large;

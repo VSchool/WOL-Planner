@@ -13,10 +13,7 @@ export const Dashboard = () => {
     return (
         <AuthLayout>
             <form onSubmit={(e) => e.preventDefault()}>
-                {/* <div className={`content ${displaySideBar ? 'nav-active' : ''}`}>
-                    <HamburgerNav />
-                </div> */}
-                {displaySideBar && <HamburgerNav/>}
+                <HamburgerNav/>
                 <div className='hamburger-menu-section'>
                     <button onClick={toggleSideBar}>
                         <img

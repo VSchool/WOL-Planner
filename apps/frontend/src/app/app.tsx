@@ -45,7 +45,7 @@ export function App() {
               {/* <Header></Header> */}
               <Router></Router>
             </div>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
           </div>
         </BrowserRouter>
       </UIProvider>
