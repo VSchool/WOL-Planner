@@ -14,7 +14,7 @@ import { signUpUser, getUsersFromSearch } from "../../api-client/apiModules/user
 export const SignUp = () => {
 
     const [isDisabled, setIsDisabled] = React.useState(true)
-    const [authError, setAuthError] = React.useState("")
+    const [authError, setAuthError] = React.useState(false)
     const [emailError, setEmailError] = React.useState(true)
     const navigate = useNavigate()
     const [firstName, setFirstName] = React.useState('')
@@ -24,25 +24,19 @@ export const SignUp = () => {
     const [password, setPassword] = React.useState('')
     const [inputError, setInputError] = React.useState(false)
 
-    // const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
-    // if(!emailRegex.test(email)) {
-    //     setEmailError(true)
-    // } else {
-    //     setEmailError(false)
-    // }
-
-    // testing for commit change
-
     useEffect(() => {
         const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
         if (!emailRegex.test(email)) {
-            setEmailError(true)
+            setIsDisabled(true)
+        } else if(password.length < 8) {
             setIsDisabled(true)
         } else {
-            setEmailError(false)
             setIsDisabled(false)
         }
     })
+    // const resetInputs = () => {
+
+    // }
     // const createUser = async () => {
     //     if(firstName.length < 1 || lastName.length < 1 || username.length < 1 || emailError === true || password.length < 7) {
     //         setInputError(true)
@@ -61,10 +55,12 @@ export const SignUp = () => {
     // }
     const signUp = async () => {
         const response = await signUpUser({email, password, firstName, lastName, username})
-        if(response.success === true) {
+        console.log(response)
+        if(response.success !== false) {
             // set user here
             navigate("/dashboard")
         } else {
+            setAuthError(true)
             alert(response.message)
         }
     } 
@@ -85,44 +81,44 @@ export const SignUp = () => {
                     </div>
                 </div>
                 <div className="signupIndicatesRequiredContainer" style={{gridRowStart: "3", gridRowEnd: "4"}}>
-                    <p className="signupIndicatesRequired">* Indicates Required</p>
+                    <p className="signupIndicatesRequired">{authError ? "* Indicates Required" : <>&nbsp;</>}</p>
                 </div>
                 <div className="signupBodyContainer">
                     <div className="signupFirstNameContainer" style={{gridRowStart: "1", gridRowEnd: "2"}}>
-                        <h2 className="signupFirstName" ><span className="signupAsterisk">*</span>First Name</h2>
+                        <h2 className="signupFirstName" ><span className="signupAsterisk">{authError ? "*" : " "}</span>First Name</h2>
                         <div className="signupFirstNameInputContainer">
                             <input className="signupFirstNameInput" type="text" onChange={(e) => setFirstName(e.target.value)}/>
                         </div>
                     </div>
                     <div className="signupLastNameContainer" style={{gridRowStart: "2", gridRowEnd: "3"}}>
-                        <h2 className="signupLastName"><span className="signupAsterisk">*</span>Last Name</h2>
+                        <h2 className="signupLastName"><span className="signupAsterisk">{authError ? "*" : " "}</span>Last Name</h2>
                         <div className="signupLastNameInputContainer">
                             <input className="signupLastNameInput" type="text" onChange={(e) => setLastName(e.target.value)}/>
                         </div>
                     </div>
                     <div className="signupUsernameContainer" style={{gridRowStart: "3", gridRowEnd: "4"}}>
-                        <h2 className="signupUsername"><span className="signupAsterisk">*</span>Username</h2>
+                        <h2 className="signupUsername"><span className="signupAsterisk">{authError ? "*" : " "}</span>Username</h2>
                         <div className="signupUsernameInputContainer">
                             <input className="signupUsernameInput" type="text" onChange={(e) => setUsername(e.target.value)}/>
                         </div>
                     </div>
                     <div className="signupEmailContainer" style={{gridRowStart: "4", gridRowEnd: "5"}}>
-                        <h2 className="signupEmail"><span className="signupAsterisk">*</span>Email</h2>
+                        <h2 className="signupEmail"><span className="signupAsterisk">{authError ? "*" : " "}</span>Email</h2>
                         <div className="signupEmailInputContainer">
                             <input className="signupEmailInput" type="text" onChange={(e) => setEmail(e.target.value)}/>
                         </div>
                     </div>
                     <div className="signupEmailErrorContainer" style={{gridRowStart: "5", gridRowEnd: "6"}}>
-                        <p className="signupEmailError">Please enter a valid email address</p>
+                        <p className="signupEmailError">{authError ? "Please enter a valid email address" : ""}</p>
                     </div>
                     <div className="signupPasswordContainer" style={{gridRowStart: "6", gridRowEnd: "7"}}>
-                        <h2 className="signupPassword"><span className="signupAsterisk">*</span>Password</h2>
+                        <h2 className="signupPassword"><span className="signupAsterisk">{authError ? "*" : " "}</span>Password</h2>
                         <div className="signupPasswordInputContainer">
                             <input className="signupPasswordInput" required type="password" onChange={(e) => setPassword(e.target.value)}/>
                         </div>
                     </div>
                     <div className="signupPasswordErrorContainer" style={{gridRowStart: "7", gridRowEnd: "8"}}>
-                        <p className="signupPasswordError">Password must be at least 8 characters</p>
+                        <p className="signupPasswordError">{authError ? "Password must be at least 8 characters" : ""}</p>
                     </div>
                     <div className="signupButtonContainer" style={{gridRowStart: "8", gridRowEnd: "9"}}>
                         <button className="signupButton" onClick={signUp}  disabled={isDisabled} style={{backgroundColor: isDisabled ? "#6F6F6F" : "#000"}}>

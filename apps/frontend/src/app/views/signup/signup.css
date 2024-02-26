@@ -292,13 +292,13 @@
 }
 .signupLayout {
     display: grid;
-    grid-template-rows: 40px 97px 48px;
+    grid-template-rows: 40px 97px 60px;
 }
 .signupIndicatesRequiredContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 24px;
+    padding-top: 34px;
 }
 .signupIndicatesRequired {
     color: #F00;
@@ -356,5 +356,5 @@
 }
 .signupBodyContainer {
     display: grid;
-    grid-template-rows: 84px 84px 84px 80px 16px 80px 16px 76px;
+    grid-template-rows: 102px 86px 98px 86px 16px 66px 16px 124px;
 }

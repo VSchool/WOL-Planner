@@ -47,7 +47,7 @@ export class UsersService {
   }
 
   async signUpUser(body): Promise<any> {
-    console.log(body, "======")
+    // console.log(body, "======")
     try{
         const user = await getDataByField({
             collection: 'users',
