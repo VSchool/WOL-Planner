@@ -23,7 +23,7 @@ const HamburgerNav: React.FC<HamburgerNavProps> = ({ show }) => {
             L
           </div>
           <div className="vertical-line">
-            " "
+            "
             <img
               src={crystalBall}
               alt="CrystalBall"

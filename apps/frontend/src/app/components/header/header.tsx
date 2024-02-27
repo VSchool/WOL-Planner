@@ -4,6 +4,13 @@ import { UserContext } from '../../app';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import HamburgerNav from '../hamburger-nav/HamburgerNav';
 
+import crystalBall from '../../images/dash/crystal-ball.svg';
+import lineList from '../../images/dash/line-md_list-3-filled.svg';
+import hankHill from '../../images/dash/Hank_Hill.webp';
+
+
+import './header.css'
+
 export default function Header() {
   const { user, setUser } = React.useContext(UserContext);
 
@@ -75,99 +82,122 @@ export default function Header() {
   }
 
     return (
-        <header className="py-5 bg-white lg:bg-black">
-          <nav className="relative z-50 flex justify-center">
-            <div className="flex w-full flex-wrap items-center justify-start px-3">
-              <button
-                  onClick={toggleSidebar}
-                  className="border-0 bg-transparent px-2 text-xl leading-none Transition-shadow duration-150 ease-in-out lg:hidden"
-                  type="button"
-                  data-te-collapse-init
-                  data-te-target="#navbarSupportedContentY"
-                  aria-controls="navbarSupportedContentY"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <img
-                    src={hamburger_menu}
-                    alt="Hamburger Menu"
-                    className="w-10 h-10"
-                  />
-              </button>
-              <div onClick={toggleSidebar} className='lg:hidden'>
-              <HamburgerNav 
-                show={showSidebar} 
+    <header className="py-5 bg-white lg:bg-black">
+      <nav className="relative z-50 flex justify-center">
+        <div className="flex w-full flex-wrap items-center justify-start px-3">
+          <button
+              onClick={toggleSidebar}
+              className="border-0 bg-transparent px-2 text-xl leading-none Transition-shadow duration-150 ease-in-out lg:hidden"
+              type="button"
+              data-te-collapse-init
+              data-te-target="#navbarSupportedContentY"
+              aria-controls="navbarSupportedContentY"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <img
+                src={hamburger_menu}
+                alt="Hamburger Menu"
+                className="w-10 h-10"
+              />
+          </button>
+          <div onClick={toggleSidebar} className='lg:hidden'>
+          <HamburgerNav 
+            show={showSidebar} 
+            />
+          </div>
+          <div
+              className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7 flex justify-between"
+              id="navbarSupportedContentY"
+              data-te-collapse-item
+            >
+            <div className="flex tradmark-container">
+              <div id="W" className="trademark-letter">
+                W
+              </div>
+              <img src={lineList} alt="lineList" id="lineList" className="trademark-symbol" />
+              <div id="L" className="trademark-letter">
+                L
+              </div>
+              <div className="vertical-line">
+                " "
+                <img
+                  src={crystalBall}
+                  alt="CrystalBall"
+                  id="CrystalBall"
+                  className="mb-0 mt-1"
                 />
               </div>
-              <div
-                  className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7 flex justify-center"
-                  id="navbarSupportedContentY"
-                  data-te-collapse-item
-                >
-                  <ul className="flex flex-col lg:flex-row" 
-                  >
-
-                    <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                      <NavLink
-                        className={`block transition duration-150 ease-in-out lg:p-2 ${
-                          currentHeader === "about" ? "text-white bg-black rounded" : ""
-                        }`}
-                        to="/dashboard"
-                        data-te-nav-link-ref
-                        data-te-ripple-init
-                        data-te-ripple-color="light"
-                        onClick={() => onMenuItemClick("dashboard")}
-                      >
-                        Dashboard
-                      </NavLink>
-                    </li>
-                    <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                      <NavLink
-                        className={`block transition duration-150 ease-in-out lg:p-2 ${
-                          currentHeader === "about" ? "text-white bg-black rounded" : ""
-                        }`}
-                        to="/cashflow"
-                        data-te-nav-link-ref
-                        data-te-ripple-init
-                        data-te-ripple-color="light"
-                        onClick={() => onMenuItemClick("cashflow")}
-                      >
-                        Cash Flow
-                      </NavLink>
-                    </li>
-                    <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                      <NavLink
-                        className={`block transition duration-150 ease-in-out lg:p-2 ${
-                          currentHeader === "about" ? "text-white bg-black rounded" : ""
-                        }`}
-                        to="/assets"
-                        data-te-nav-link-ref
-                        data-te-ripple-init
-                        data-te-ripple-color="light"
-                        onClick={() => onMenuItemClick("assets")}
-                      >
-                        Assets
-                      </NavLink>
-                    </li>
-                    <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                      <NavLink
-                        className={`block transition duration-150 ease-in-out lg:p-2 ${
-                          currentHeader === "about" ? "text-white bg-black rounded" : ""
-                        }`}
-                        to="/liabilities"
-                        data-te-nav-link-ref
-                        data-te-ripple-init
-                        data-te-ripple-color="light"
-                        onClick={() => onMenuItemClick("liabilities")}
-                      >
-                        Liabilities
-                      </NavLink>
-                    </li>
-                  </ul>
-              </div>
             </div>
-          </nav>
-        </header>
-        
+            
+            <ul className="flex flex-col lg:flex-row text-white" 
+            >
+
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                <NavLink
+                  className={`block transition duration-150 ease-in-out lg:p-2 ${
+                    currentHeader === "about" ? "text-white bg-black rounded" : ""
+                  }`}
+                  to="/dashboard"
+                  data-te-nav-link-ref
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                  onClick={() => onMenuItemClick("dashboard")}
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                <NavLink
+                  className={`block transition duration-150 ease-in-out lg:p-2 ${
+                    currentHeader === "about" ? "text-white bg-black rounded" : ""
+                  }`}
+                  to="/cashflow"
+                  data-te-nav-link-ref
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                  onClick={() => onMenuItemClick("cashflow")}
+                >
+                  Cash Flow
+                </NavLink>
+              </li>
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                <NavLink
+                  className={`block transition duration-150 ease-in-out lg:p-2 ${
+                    currentHeader === "about" ? "text-white bg-black rounded" : ""
+                  }`}
+                  to="/assets"
+                  data-te-nav-link-ref
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                  onClick={() => onMenuItemClick("assets")}
+                >
+                  Assets
+                </NavLink>
+              </li>
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                <NavLink
+                  className={`block transition duration-150 ease-in-out lg:p-2 ${
+                    currentHeader === "about" ? "text-white bg-black rounded" : ""
+                  }`}
+                  to="/liabilities"
+                  data-te-nav-link-ref
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                  onClick={() => onMenuItemClick("liabilities")}
+                >
+                  Liabilities
+                </NavLink>
+              </li>
+            </ul>
+            <img
+              src={hankHill}
+              alt="Frame2"
+              className='profile-image'
+            />
+          </div>
+        </div>
+      </nav>
+    </header>
   )
 }

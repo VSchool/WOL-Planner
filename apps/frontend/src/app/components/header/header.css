@@ -28,3 +28,47 @@
 .SidebarWrap {
   width: 100%;
 }
+
+.trademark-container {
+	padding-top: 25%;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	align-items: space-around;
+	justify-content: center;
+	gap: 1rem;
+  }
+  
+  .trademark-image {
+	font-size: large;
+	color: white;
+	
+  }
+  
+  .trademark-letter {
+	font-size: large;
+	color: white;
+	margin-top: 0.25rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+  }
+  
+  .vertical-line {
+	position: relative;
+	display: flex;
+  }
+  
+  .vertical-line::before {
+	content: '';
+	position: absolute;
+	top: 0.5rem;
+	bottom: 0.25rem;
+	left: 0.02rem;
+	width: 1px;
+	background-color: rgb(255, 255, 255);
+  }
+  
+  .trademark-symbol {
+	margin-top: 0.25rem;
+	width: 1.25rem;
+  }

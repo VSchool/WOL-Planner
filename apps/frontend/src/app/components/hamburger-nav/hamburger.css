@@ -12,7 +12,6 @@
   left: 0;
 }
 
-
 .nav-container {
   position: absolute;
   top: 0;
@@ -53,7 +52,8 @@
 }
 
 .trademark-container {
-  padding-top: 25%;
+  padding-top: 15%;
+  padding-bottom: 15%;
   display: flex;
   align-items: center;
   width: 100%;
@@ -71,26 +71,30 @@
   font-size: large;
   color: white;
   margin-top: 0.25rem;
+
 }
 
 .vertical-line {
-  position: relative;
-  display: flex;
+	position: relative;
+	display: flex;
+  
+ 
 }
 
 .vertical-line::before {
-  content: '';
   position: absolute;
+  height: calc(100% - 0.5rem);
+  width: 1px;
   top: 0;
   bottom: 0;
   left: 0;
-  width: 1px;
+  margin: auto;
+  content: '';
   background-color: rgb(255, 255, 255);
 }
 
-.trademark-symbol {
-  margin-top: 0.25rem;
-  width: 1.25rem;
+.crystalball {
+  padding-left: 1rem;
 }
 
 .link-container {
@@ -117,3 +121,8 @@
 .hamburger-link:hover {
   text-decoration: underline;
 }
+
+.profile-image {
+  margin-right: 5%;
+}
+

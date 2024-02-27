@@ -13,7 +13,7 @@ export const Dashboard = () => {
                     <img
                         src={hankHill}
                         alt="Frame2"
-                        className='profile-image'
+                        className='profile-image lg:hidden'
                     />
 
                     <div id="hello" className='greeting-text'>Hi, Bsmith</div>
