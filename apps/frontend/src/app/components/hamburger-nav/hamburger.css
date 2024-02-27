@@ -51,50 +51,56 @@
   height: 100%;
 }
 
-.trademark-container {
-  padding-top: 15%;
+.ham-trademark-container {
+  padding-top: 25%;
   padding-bottom: 15%;
   display: flex;
   align-items: center;
   width: 100%;
-  align-items: space-around;
   justify-content: center;
   gap: 1rem;
+  height: 10rem;
 }
 
-.trademark-image {
-  font-size: large;
-  color: white; 
-}
-
-.trademark-letter {
-  font-size: large;
+.ham-trademark-letter {
+  font-size: 1.5rem;
   color: white;
-  margin-top: 0.25rem;
+  padding: 0px;
+  margin: 0px;
+  bottom: 0px;
+}
+
+.ham-trademark-symbol {
+	width: 1.55rem;
+  height: 1.55rem;
+  padding: 0px;
+  margin: 0px;
 
 }
 
-.vertical-line {
+.ham-vertical-line {
 	position: relative;
 	display: flex;
   
- 
 }
 
-.vertical-line::before {
-  position: absolute;
-  height: calc(100% - 0.5rem);
-  width: 1px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  content: '';
-  background-color: rgb(255, 255, 255);
+.ham-vertical-line::before {
+	content: '';
+	position: absolute;
+	top: 0rem;
+	bottom: 0rem;
+	left: 0.02rem;
+	width: 1px;
+	background-color: rgb(255, 255, 255);
 }
 
-.crystalball {
-  padding-left: 1rem;
+.ham-crystalball {
+  width: 1.95rem;
+  height: 1.95rem;
+  padding: 0px;
+  margin: 0px;
+  
+  padding-left: 0.5rem;
 }
 
 .link-container {
@@ -110,7 +116,7 @@
 .hamburger-link {
   font-weight: bold;
   color: white;
-  border-top: 1px solid #6f6f6f;
+  border-top: 1px solid #6F6F6F;
   width: 100%;
   height: 2.5rem;
   display: flex;

@@ -11,24 +11,24 @@ interface HamburgerNavProps {
 
 const HamburgerNav: React.FC<HamburgerNavProps> = ({ show }) => {
   return (
-    <div className={`sidebar ${show ? 'show' : 'hide'}`}>
+    <div className={`sidebar ${show ? 'show' : ''}`}>
 
       <aside id="FlyoutMenuRoot" className="fly-out-menu-root">
-        <div className="trademark-container">
-          <div id="W" className="trademark-letter">
+        <div className="ham-trademark-container">
+          <div id="W" className="ham-trademark-letter">
             W
           </div>
-          <img src={lineList} alt="lineList" id="lineList" className="trademark-symbol" />
-          <div id="L" className="trademark-letter">
+          <img src={lineList} alt="lineList" id="lineList" className="ham-trademark-symbol" />
+          <div id="L" className="ham-trademark-letter">
             L
           </div>
-          <div className="vertical-line">
+          <div className="ham-vertical-line">
             "
             <img
               src={crystalBall}
               alt="CrystalBall"
               id="CrystalBall"
-              className="crystalball mb-0 mt-1"
+              className="ham-crystalball mb-0 mt-1"
             />
           </div>
         </div>
