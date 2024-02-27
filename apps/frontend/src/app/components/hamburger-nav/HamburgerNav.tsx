@@ -1,4 +1,3 @@
-// HamburgerNav.js
 import React, { useContext } from 'react';
 import crystalBall from '../../images/dash/crystal-ball.svg';
 import lineList from '../../images/dash/line-md_list-3-filled.svg';
@@ -6,14 +5,14 @@ import { Link } from 'react-router-dom';
 import { UIContext } from '../../UIContext';
 import './hamburger.css';
 
-export default function HamburgerNav() {
-  const { displaySideBar, toggleSideBar } = useContext(UIContext);
+interface HamburgerNavProps {
+    show: boolean;
+  }
 
+const HamburgerNav: React.FC<HamburgerNavProps> = ({ show }) => {
   return (
-    <div
-      className={`nav-container ${displaySideBar ? 'showSideBar' : 'hideSideBar'}`}
-      onClick={() => toggleSideBar()}
-    >
+    <div className={`sidebar ${show ? 'show' : 'hide'}`}>
+
       <aside id="FlyoutMenuRoot" className="fly-out-menu-root">
         <div className="trademark-container">
           <div id="W" className="trademark-letter">
@@ -56,4 +55,5 @@ export default function HamburgerNav() {
       </aside>
     </div>
   );
-}
+};
+export default HamburgerNav;

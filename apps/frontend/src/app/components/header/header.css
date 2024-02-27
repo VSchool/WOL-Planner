@@ -1,0 +1,30 @@
+.SidebarNav {
+	background: #15171c;
+	width: 250px;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	transition: 650ms;
+	z-index: 999;
+  color: black;
+}
+
+.HideSidebarNav {
+	background: #15171c;
+	width: 250px;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: -100%;
+	transition: 650ms;
+	z-index: 10;
+}
+
+.SidebarWrap {
+  width: 100%;
+}
