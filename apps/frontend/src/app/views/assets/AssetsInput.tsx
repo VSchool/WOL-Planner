@@ -12,6 +12,7 @@ import './assets.css';
 import styles from '../../app.module.scss';
 // import { AssetModal } from './AssetModal';
 import { InfoTooltip, InfoTooltipProps } from './InfoTooltip';
+import toast, { Toaster } from 'react-hot-toast';
 
 export const AssetsInput = (props: any) => {
   const navigate = useNavigate();
@@ -33,6 +34,20 @@ export const AssetsInput = (props: any) => {
     navigate('/assets/update');
   };
 
+  const assetToast = () => {
+    console.log("asset added")
+    
+    toast('Asset added', {
+      position: 'top-center',
+      icon: '👍',
+      style: {
+        borderRadius: '20px',
+        backgroundColor: "#008000",
+        color: 'white'
+      }
+      });
+  };
+
   const handleUpButtonClick = (sectionName: string) => {
     //pops out input form based on the sectionName selected
     setShowInputForm(sectionName);
@@ -45,7 +60,7 @@ export const AssetsInput = (props: any) => {
       asset: '',
       amount: 0,
     });
-    handleOpenModal();
+    assetToast();
     console.log('modal opened');
   };
 
@@ -82,11 +97,13 @@ export const AssetsInput = (props: any) => {
     setShowModal(false);
   };
 
+
   console.log(showCategoryDropdown);
   console.log(inputs);
   console.log(value);
   return (
     <AuthLayout>
+      <Toaster />
       {!isOpen ? (
         <div className={styles['hamburger-menu-section']}>
           <button onClick={() => setIsOpen(!isOpen)}>
@@ -127,7 +144,6 @@ export const AssetsInput = (props: any) => {
                 <img src={upArrow} alt="" className="add-button" />
               </button>
               <InfoTooltip
-              
                 data-html="true"
                 tooltiptext=" * Property (your home, rental house, or 
              commercial property)
@@ -220,9 +236,8 @@ Exchange traded funds (ETFs)
 Annuities
 Crypto
 Derivatives (futures or options contracts, swaps)"
-                
-                circleI={circleI}>
-              </InfoTooltip>
+                circleI={circleI}
+              ></InfoTooltip>
 
               {showInputForm === 'investable' && (
                 <div className="form-container">
@@ -293,9 +308,13 @@ Derivatives (futures or options contracts, swaps)"
               <button onClick={() => handleUpButtonClick('non-investable')}>
                 <img src={upArrow} alt="" className="add-button" />
               </button>
-             <InfoTooltip data-html="true" tooltiptext='Real estate or factory equipment
+              <InfoTooltip
+                data-html="true"
+                tooltiptext="Real estate or factory equipment
 Intellectual property (copyrighted or patented material)
-Retirement accounts' circleI={circleI}></InfoTooltip>
+Retirement accounts"
+                circleI={circleI}
+              ></InfoTooltip>
 
               {showInputForm === 'non-investable' && (
                 <div className="form-container">
@@ -380,8 +399,8 @@ Retirement accounts' circleI={circleI}></InfoTooltip>
             Update Assets
           </button>
         </div>
-      
       </div>
+      
     </AuthLayout>
   );
 };

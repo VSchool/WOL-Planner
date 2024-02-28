@@ -3,6 +3,7 @@ import circleI from '../../images/logos/circleI.svg';
 import { ReactNode } from 'react';
 import './assets.css';
 
+
 export interface InfoTooltipProps {
   tooltiptext: string;
   circleI?: string;
