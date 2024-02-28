@@ -24,7 +24,7 @@ export default function Router() {
         <Route path='/account' element={<AccountPage/>} />
         <Route path='/admin' element={<AdminPage/>} />
         <Route path="*" element={<Navigate to="/" />} />
-        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>

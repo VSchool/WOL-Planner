@@ -321,7 +321,7 @@
     font-size: 14px;
     font-style: italic;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 6px;
     letter-spacing: 0px;
     text-align: left;
     padding-left: 10px;
@@ -338,7 +338,7 @@
     font-size: 14px;
     font-style: italic;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 26px;
     letter-spacing: 0px;
     text-align: left;
     padding-left: 10px;
@@ -356,5 +356,5 @@
 }
 .signupBodyContainer {
     display: grid;
-    grid-template-rows: 102px 86px 98px 86px 16px 66px 16px 124px;
+    grid-template-rows: 102px 86px 98px 86px 20px 66px 20px 124px;
 }

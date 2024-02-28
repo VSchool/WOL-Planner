@@ -9,9 +9,12 @@ import { auth } from "../../firebase/firebase"
 import { useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import { signUpUser, getUsersFromSearch } from "../../api-client/apiModules/users"
+import { UserContext } from "../../../app/app"
 
 
 export const SignUp = () => {
+
+    const context = useContext(UserContext)
 
     const [isDisabled, setIsDisabled] = React.useState(true)
     const [authError, setAuthError] = React.useState(false)
@@ -23,6 +26,7 @@ export const SignUp = () => {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     const [inputError, setInputError] = React.useState(false)
+    
 
     useEffect(() => {
         const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
@@ -34,36 +38,22 @@ export const SignUp = () => {
             setIsDisabled(false)
         }
     })
-    // const resetInputs = () => {
 
-    // }
-    // const createUser = async () => {
-    //     if(firstName.length < 1 || lastName.length < 1 || username.length < 1 || emailError === true || password.length < 7) {
-    //         setInputError(true)
-    //     } 
-    //     else {
-    //         try {
-    //             await createUserWithEmailAndPassword(auth, email, password)
-    //             navigate("/namepage")
-    //         }
-    //         catch(err: any) {
-    //             console.error(err.message)
-    //             setInputError(true)
-    //             // setAuthError(err.message)
-    //         }
-    //     } 
-    // }
     const signUp = async () => {
         const response = await signUpUser({email, password, firstName, lastName, username})
         console.log(response)
         if(response.success !== false) {
-            // set user here
+            context.setUser(response)
             navigate("/dashboard")
+            // console.log(context.user)
         } else {
             setAuthError(true)
             alert(response.message)
         }
     } 
+    function whiteSpace() {
+        return <span style={{paddingLeft: "5px"}}>{""}</span>
+    }
 
     return (
         <AuthLayout>
@@ -85,25 +75,25 @@ export const SignUp = () => {
                 </div>
                 <div className="signupBodyContainer">
                     <div className="signupFirstNameContainer" style={{gridRowStart: "1", gridRowEnd: "2"}}>
-                        <h2 className="signupFirstName" ><span className="signupAsterisk">{authError ? "*" : " "}</span>First Name</h2>
+                        <h2 className="signupFirstName" ><span className="signupAsterisk">{authError ? "*" : whiteSpace()}</span>First Name</h2>
                         <div className="signupFirstNameInputContainer">
                             <input className="signupFirstNameInput" type="text" onChange={(e) => setFirstName(e.target.value)}/>
                         </div>
                     </div>
                     <div className="signupLastNameContainer" style={{gridRowStart: "2", gridRowEnd: "3"}}>
-                        <h2 className="signupLastName"><span className="signupAsterisk">{authError ? "*" : " "}</span>Last Name</h2>
+                        <h2 className="signupLastName"><span className="signupAsterisk">{authError ? "*" : whiteSpace()}</span>Last Name</h2>
                         <div className="signupLastNameInputContainer">
                             <input className="signupLastNameInput" type="text" onChange={(e) => setLastName(e.target.value)}/>
                         </div>
                     </div>
                     <div className="signupUsernameContainer" style={{gridRowStart: "3", gridRowEnd: "4"}}>
-                        <h2 className="signupUsername"><span className="signupAsterisk">{authError ? "*" : " "}</span>Username</h2>
+                        <h2 className="signupUsername"><span className="signupAsterisk">{authError ? "*" : whiteSpace()}</span>Username</h2>
                         <div className="signupUsernameInputContainer">
                             <input className="signupUsernameInput" type="text" onChange={(e) => setUsername(e.target.value)}/>
                         </div>
                     </div>
                     <div className="signupEmailContainer" style={{gridRowStart: "4", gridRowEnd: "5"}}>
-                        <h2 className="signupEmail"><span className="signupAsterisk">{authError ? "*" : " "}</span>Email</h2>
+                        <h2 className="signupEmail"><span className="signupAsterisk">{authError ? "*" : whiteSpace()}</span>Email</h2>
                         <div className="signupEmailInputContainer">
                             <input className="signupEmailInput" type="text" onChange={(e) => setEmail(e.target.value)}/>
                         </div>
@@ -112,7 +102,7 @@ export const SignUp = () => {
                         <p className="signupEmailError">{authError ? "Please enter a valid email address" : ""}</p>
                     </div>
                     <div className="signupPasswordContainer" style={{gridRowStart: "6", gridRowEnd: "7"}}>
-                        <h2 className="signupPassword"><span className="signupAsterisk">{authError ? "*" : " "}</span>Password</h2>
+                        <h2 className="signupPassword"><span className="signupAsterisk">{authError ? "*" : whiteSpace()}</span>Password</h2>
                         <div className="signupPasswordInputContainer">
                             <input className="signupPasswordInput" required type="password" onChange={(e) => setPassword(e.target.value)}/>
                         </div>
