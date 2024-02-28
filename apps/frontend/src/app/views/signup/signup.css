@@ -27,6 +27,7 @@
     width: 320px;
     justify-content: center;
     align-items: center;
+    border: none;
 }
 .signupFirstNameInputContainer {
     display: flex;
@@ -291,12 +292,13 @@
 }
 .signupLayout {
     display: grid;
-    grid-template-rows: 40px 147px 98px 76px 100px 76px 96px 110px;
+    grid-template-rows: 40px 97px 48px 84px 84px 84px 80px 16px 80px 16px 76px;
 }
 .signupIndicatesRequiredContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 24px;
 }
 .signupIndicatesRequired {
     color: #F00;
@@ -308,7 +310,7 @@
     line-height: normal;
 }
 .signupEmailErrorContainer {
-
+    padding-left: 6px;
 }
 .signupEmailError {
     color: var(--Primary-Red, #F00);
@@ -320,7 +322,7 @@
     line-height: normal;
 }
 .signupPasswordErrorContainer {
-
+    padding-left: 6px;
 }
 .signupPasswordError {
     color: #F00;
@@ -330,4 +332,15 @@
     font-style: italic;
     font-weight: 400;
     line-height: normal;
+}
+.signupAsterisk {
+    font-family: Arial;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #ff0000;
+    padding-right: 4px;
 }

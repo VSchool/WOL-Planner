@@ -40,3 +40,6 @@ Thumbs.db
 
 # api keys
 .env
+
+# service account
+wol-planner-7e216-cf2ab387f459.json
