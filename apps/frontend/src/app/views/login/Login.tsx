@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, useEffect, useContext } from 'react';
 import { UserContext } from '../../app';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
@@ -90,7 +90,7 @@ export const Login = () => {
     const loginEP = async () => {
       const response = await loginEmailAndPassword({email, password})
       console.log(response)
-      
+
     }
   //   const signUp = async () => {
   //     const response = await signUpUser({email, password, firstName, lastName, username})

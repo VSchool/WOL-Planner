@@ -82,6 +82,8 @@ export const loginEmailAndPassword = async (data: any) => {
     return userData.data
 }
 
+// export const passwordReset = (email) => auth.sendPasswordResetEmail(email) 
+
 export const signUpUser = async (data: any) => {
     const userData = await apiClientWithAuth.post(apiEndpoints.users + "/signup", data)
     // console.log(userData)
