@@ -82,7 +82,7 @@ export default function Header() {
   }
 
     return (
-    <header className="py-5 bg-white lg:bg-black hidden sm:flex md:flex">
+    <header className="py-5 bg-white lg:bg-black">
       <nav className="relative z-50 flex justify-center">
         <div className="flex w-full flex-wrap items-center justify-start px-3">
           <button
@@ -113,16 +113,16 @@ export default function Header() {
             >
 
             <div
-              className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7"
+              className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7 justify-around w-full"
               id="navbarSupportedContentY"
               data-te-collapse-item>
-            <ul className="mr-auto flex flex-col lg:flex-row">
+            <ul className="mr-auto flex flex-col lg:flex-row justify-around w-full">
             <li>
-            <div className="head-tradmark-container flex">
+            <div className="head-tradmark-container flex pr-10">
               <div id="W" className="trademark-letter">
                 W
               </div>
-              <img src={lineList} alt="lineList" id="lineList" className="head-trademark-symbol" />
+              <img src={lineList} alt="lineList" id="lineList" className="head-trademark-lineList" />
               <div id="L" className="trademark-letter">
                 L
               </div>
@@ -137,18 +137,15 @@ export default function Header() {
               </div>
             </div>
             </li>
-            <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+            <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
                   <NavLink
+                    className="block lg:p-2"
                     to='/dashboard'
-                    data-te-nav-link-ref
-                    data-te-ripple-init
-                    data-te-ripple-color="light"
-                    onClick={() => onMenuItemClick('dashboard')}
                     >
                       Dashboard
                   </NavLink>
               </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white">
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
                 <NavLink
                   className="block lg:p-2"
                   to="/cashflow"
@@ -156,7 +153,7 @@ export default function Header() {
                   Cash Flow
                 </NavLink>
               </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white">
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
                 <NavLink
                   className="block lg:p-2"
                   to="/assets"
@@ -164,7 +161,7 @@ export default function Header() {
                   Assets
                 </NavLink>
               </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white">
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
                 <NavLink
                   className="block lg:p-2" 
                   to="/liabilities"
@@ -175,7 +172,7 @@ export default function Header() {
               <li>
               <button 
                 id="FirstTimeUserBTN"
-                className='header-first-time-user-text'
+                className='header-first-time-user-text pr-10'
               >
                   First Time User?
               </button>
