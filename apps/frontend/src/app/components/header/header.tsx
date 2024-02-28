@@ -81,116 +81,105 @@ export default function Header() {
     return classes.filter(Boolean).join(' ');
   }
 
-    return (
+  return (
     <header className="py-5 bg-white lg:bg-black">
       <nav className="relative z-50 flex justify-center">
         <div className="flex w-full flex-wrap items-center justify-start px-3">
           <button
-              onClick={toggleSidebar}
-              className="border-0 bg-transparent px-2 text-xl leading-none Transition-shadow duration-150 ease-in-out lg:hidden"
-              type="button"
-              data-te-collapse-init
-              data-te-target="#navbarSupportedContentY"
-              aria-controls="navbarSupportedContentY"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <img
-                src={hamburger_menu}
-                alt="Hamburger Menu"
-                className="w-10 h-10"
-              />
+            onClick={toggleSidebar}
+            className="border-0 bg-transparent px-2 text-xl leading-none Transition-shadow duration-150 ease-in-out lg:hidden"
+            type="button"
+            data-te-collapse-init
+            data-te-target="#navbarSupportedContentY"
+            aria-controls="navbarSupportedContentY"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <img
+              src={hamburger_menu}
+              alt="Hamburger Menu"
+              className="w-10 h-10"
+            />
           </button>
-          <div onClick={toggleSidebar} className='lg:hidden'>
-          <HamburgerNav 
-            show={showSidebar} 
-          />
+          <div onClick={toggleSidebar} className="lg:hidden">
+            <HamburgerNav show={showSidebar} />
           </div>
           <div
-              className="header-container"
-              id="navbarSupportedContentY"
-              data-te-collapse-item
-            >
-
+            className="header-container"
+            id="navbarSupportedContentY"
+            data-te-collapse-item
+          >
             <div
               className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7 justify-around w-full"
               id="navbarSupportedContentY"
-              data-te-collapse-item>
-            <ul className="mr-auto flex flex-col lg:flex-row justify-around w-full">
-            <li>
-            <div className="head-tradmark-container flex pr-10">
-              <div id="W" className="trademark-letter">
-                W
-              </div>
-              <img src={lineList} alt="lineList" id="lineList" className="head-trademark-lineList" />
-              <div id="L" className="trademark-letter">
-                L
-              </div>
-              <div className="head-vertical-line">
-                " "
-                <img
-                  src={crystalBall}
-                  alt="CrystalBall"
-                  id="CrystalBall"
-                  className="mb-0 mt-1"
-                />
-              </div>
-            </div>
-            </li>
-            <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
-                  <NavLink
-                    className="block lg:p-2"
-                    to='/dashboard'
-                    >
-                      Dashboard
+              data-te-collapse-item
+            >
+              <ul className="unordered-list">
+                <li>
+                  <div className="head-tradmark-container flex pr-10">
+                    <div id="W" className="trademark-letter">
+                      W
+                    </div>
+                    <img
+                      src={lineList}
+                      alt="lineList"
+                      id="lineList"
+                      className="head-trademark-lineList"
+                    />
+                    <div id="L" className="trademark-letter">
+                      L
+                    </div>
+                    <div className="head-vertical-line">
+                      " "
+                      <img
+                        src={crystalBall}
+                        alt="CrystalBall"
+                        id="CrystalBall"
+                        className="mb-0 mt-1"
+                      />
+                    </div>
+                  </div>
+                </li>
+                <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
+                  <NavLink className="block lg:p-2" to="/dashboard">
+                    Dashboard
                   </NavLink>
-              </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
-                <NavLink
-                  className="block lg:p-2"
-                  to="/cashflow"
-                >
-                  Cash Flow
-                </NavLink>
-              </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
-                <NavLink
-                  className="block lg:p-2"
-                  to="/assets"
-                >
-                  Assets
-                </NavLink>
-              </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
-                <NavLink
-                  className="block lg:p-2" 
-                  to="/liabilities"
-                >
-                  Liabilities
-                </NavLink>
-              </li>
-              <li>
-              <button 
-                id="FirstTimeUserBTN"
-                className='header-first-time-user-text pr-10'
-              >
-                  First Time User?
-              </button>
-              </li>
-              <li>
-              <img
-                src={hankHill}
-                alt="Frame2"
-                className='head-profile-image'
-            />
-            </li>
-            </ul>
-          </div>
-
-
+                </li>
+                <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
+                  <NavLink className="block lg:p-2" to="/cashflow">
+                    Cash Flow
+                  </NavLink>
+                </li>
+                <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
+                  <NavLink className="block lg:p-2" to="/assets">
+                    Assets
+                  </NavLink>
+                </li>
+                <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
+                  <NavLink className="block lg:p-2" to="/liabilities">
+                    Liabilities
+                  </NavLink>
+                </li>
+                <li>
+                  <button
+                    id="FirstTimeUserBTN"
+                    className="header-first-time-user-text pr-10"
+                  >
+                    First Time User?
+                  </button>
+                </li>
+                <li>
+                  <img
+                    src={hankHill}
+                    alt="Frame2"
+                    className="head-profile-image"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
     </header>
-  )
+  );
 }
