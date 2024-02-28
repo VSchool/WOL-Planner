@@ -7,6 +7,7 @@ import image103 from '../../images/logos/loginGroup103.svg';
 import HamburgerNav from '../../components/hamburger-nav/HamburgerNav';
 import DropdownSelect from '../../components/dropdown-select/DropdownSelect';
 import './assets.css';
+import downArrow from '../../images/dash/downArrow.svg'
 import styles from '../../app.module.scss';
 
 export const Assets = () => {
@@ -34,7 +35,7 @@ export const Assets = () => {
   };
 
   const navigateToNewPage = () => {
-    console.log('new page');
+    // console.log('new page');
     navigate('/assets/input');
   };
 
@@ -53,7 +54,7 @@ export const Assets = () => {
               className={styles['profile-image']}
             />
           </button>
-          <div className="dashboard-content">
+          <div className={styles['asset-content']}>
             <img
               src={hankHill}
               alt="Frame2"
@@ -122,13 +123,15 @@ export const Assets = () => {
             </select>
           </div>
         </div>
+        <div className={styles['button-section']}>
         <button
           type="submit"
-          className="asset_button_large"
+          className={styles['dashboard-button']}
           disabled={isDisabled}
         >
           Submit
         </button>
+        </div>
       </form>
     </AuthLayout>
   );

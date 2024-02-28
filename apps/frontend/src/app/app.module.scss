@@ -37,6 +37,20 @@ body {
   gap: 5vh;
 }
 
+.asset-content {
+  padding-top: 5vh;
+  display: grid;
+  grid-template-rows: auto 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  height: 10vh;
+  grid-row: 3 / span 10;
+  grid-column: 1 / span 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5vh;
+}
+
 .hamburger-menu-section {
   padding-top: 8vh;
   grid-row: 1 / span 1;

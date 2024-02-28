@@ -14,10 +14,13 @@ import { Dashboard } from '../dashboard/Dashboard';
 import { NamePage } from "../namePage/NamePage"
 import { Assets } from "../assets/Assets"
 import { AssetsInput } from "../assets/AssetsInput"
+import { UpdateAssets } from '../assets/UpdateAssets';
+import { AssetProvider } from '../assets/AssetContext';
 
 export default function Router() {
 
     return (
+      <AssetProvider>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path='/' element={<Home />} />
@@ -33,6 +36,9 @@ export default function Router() {
         <Route path="/namepage" element={<NamePage />}/>
         <Route path="/assets" element={<Assets />} />
         <Route path="/assets/input" element={<AssetsInput />} />
+        <Route path="/assets/update" element={<UpdateAssets />} />
       </Routes>
+
+      </AssetProvider>
     );
 }

@@ -121,8 +121,12 @@ margin-bottom: 2px;
     display: flex;
     align-items: center;
 }
+
+.button-and-form-container input {
+    margin-right: 10px;
+}
 .form-container {
-    flex-grow: 1;
+    
     margin-left: 20px;
 }
 
@@ -207,5 +211,65 @@ line-height: 30px;
 letter-spacing: 0px;
 text-align: right;
 margin-right: 80px;
+
+}
+
+.add-button {
+    max-width: none !important;
+}
+
+
+.asset-form-input {
+    border-radius: 7px;
+}
+
+/* .asset-modal-div {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    transform: 'translate(-50%, -50%)';
+    background: #008000;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+
+} */
+
+.asset-modal-text {
+    font-family: Sofia Pro;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+modal-btn {
+   
+    
+    font-family: Sofia Pro;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.info-tool-tip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-div {
+    position: absolute;
+    background:  #148CFB;
+    width: 364px;
+    height: 160px;
+    border-radius: 32px;
+    color: white;
+    font: 16px Sofia Pro;
+    margin-top: 15px;
+    margin-left: 31px;
+    padding: 10px;
+    white-space: pre-line;
+    
+
 
 }
