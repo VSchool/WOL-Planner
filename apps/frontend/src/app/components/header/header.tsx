@@ -82,7 +82,7 @@ export default function Header() {
   }
 
     return (
-    <header className="py-5 bg-white lg:bg-black">
+    <header className="py-5 bg-white lg:bg-black hidden sm:flex md:flex">
       <nav className="relative z-50 flex justify-center">
         <div className="flex w-full flex-wrap items-center justify-start px-3">
           <button
@@ -104,22 +104,29 @@ export default function Header() {
           <div onClick={toggleSidebar} className='lg:hidden'>
           <HamburgerNav 
             show={showSidebar} 
-            />
+          />
           </div>
           <div
-              className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7 flex justify-between"
+              className="header-container"
               id="navbarSupportedContentY"
               data-te-collapse-item
             >
-            <div className="flex tradmark-container">
+
+            <div
+              className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7"
+              id="navbarSupportedContentY"
+              data-te-collapse-item>
+            <ul className="mr-auto flex flex-col lg:flex-row">
+            <li>
+            <div className="head-tradmark-container flex">
               <div id="W" className="trademark-letter">
                 W
               </div>
-              <img src={lineList} alt="lineList" id="lineList" className="trademark-symbol" />
+              <img src={lineList} alt="lineList" id="lineList" className="head-trademark-symbol" />
               <div id="L" className="trademark-letter">
                 L
               </div>
-              <div className="vertical-line">
+              <div className="head-vertical-line">
                 " "
                 <img
                   src={crystalBall}
@@ -129,72 +136,61 @@ export default function Header() {
                 />
               </div>
             </div>
-            
-            <ul className="flex flex-col lg:flex-row text-white" 
-            >
-
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                <NavLink
-                  className={`block transition duration-150 ease-in-out lg:p-2 ${
-                    currentHeader === "about" ? "text-white bg-black rounded" : ""
-                  }`}
-                  to="/dashboard"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                  onClick={() => onMenuItemClick("dashboard")}
-                >
-                  Dashboard
-                </NavLink>
+            </li>
+            <li className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                  <NavLink
+                    to='/dashboard'
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                    onClick={() => onMenuItemClick('dashboard')}
+                    >
+                      Dashboard
+                  </NavLink>
               </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white">
                 <NavLink
-                  className={`block transition duration-150 ease-in-out lg:p-2 ${
-                    currentHeader === "about" ? "text-white bg-black rounded" : ""
-                  }`}
+                  className="block lg:p-2"
                   to="/cashflow"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                  onClick={() => onMenuItemClick("cashflow")}
                 >
                   Cash Flow
                 </NavLink>
               </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white">
                 <NavLink
-                  className={`block transition duration-150 ease-in-out lg:p-2 ${
-                    currentHeader === "about" ? "text-white bg-black rounded" : ""
-                  }`}
+                  className="block lg:p-2"
                   to="/assets"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                  onClick={() => onMenuItemClick("assets")}
                 >
                   Assets
                 </NavLink>
               </li>
-              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+              <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white">
                 <NavLink
-                  className={`block transition duration-150 ease-in-out lg:p-2 ${
-                    currentHeader === "about" ? "text-white bg-black rounded" : ""
-                  }`}
+                  className="block lg:p-2" 
                   to="/liabilities"
-                  data-te-nav-link-ref
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                  onClick={() => onMenuItemClick("liabilities")}
                 >
                   Liabilities
                 </NavLink>
               </li>
-            </ul>
-            <img
-              src={hankHill}
-              alt="Frame2"
-              className='profile-image'
+              <li>
+              <button 
+                id="FirstTimeUserBTN"
+                className='header-first-time-user-text'
+              >
+                  First Time User?
+              </button>
+              </li>
+              <li>
+              <img
+                src={hankHill}
+                alt="Frame2"
+                className='head-profile-image'
             />
+            </li>
+            </ul>
+          </div>
+
+
           </div>
         </div>
       </nav>

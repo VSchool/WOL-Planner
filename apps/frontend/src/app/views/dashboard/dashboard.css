@@ -117,8 +117,11 @@
   border-radius: 20px;
 }
 
+.first-time-user-text {
+  @apply lg:hidden
+}
 .first-time-user-text:hover {
-  text-decoration: underline;
+  @apply underline;
 }
 
 .dashboard-root {
@@ -128,8 +131,8 @@
 
 .hamburger-button {
   position: absolute;
-  top: 20px; /* Adjust as needed */
-  left: 20px; /* Adjust as needed */
+  top: 20px;
+  left: 20px; 
   z-index: 100;
 }
 
