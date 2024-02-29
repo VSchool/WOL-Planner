@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { UIProvider } from './UIContext';
 import Footer from './components/footer/footer';
-// import Header from './components/header/header';
+import Header from './components/header/header';
 import Router from './views/router/router';
 import './app.module.scss';
 
@@ -14,7 +15,6 @@ export function App() {
   const [user, setUser] = React.useState<any>({firstName: null, lastName: null, id: null, joinDate: null, email: null, userType: 'Reader', picture: null, name: null, roles: ['None']});
 
 
-  
   useEffect(() => {
     const user = localStorage.getItem('user');
     if(user){
@@ -38,15 +38,17 @@ export function App() {
 
   return (
     <UserContext.Provider value={{user, setUser}}>
-    <BrowserRouter>
-      <div className="flex flex-col h-screen">
-        <div style={{ flex: '1 1 0' }}>
-          {/* <Header></Header> */}
-          <Router></Router>
-        </div>
-        <Footer></Footer>
-      </div>
-    </BrowserRouter>
+      <UIProvider>
+        <BrowserRouter>
+          <div className="flex flex-col h-screen">
+            <div style={{ flex: '1 1 0' }}>
+              <Header></Header>
+              <Router></Router>
+            </div>
+            {/* <Footer></Footer> */}
+          </div>
+        </BrowserRouter>
+      </UIProvider>
     </UserContext.Provider>
   );
 }

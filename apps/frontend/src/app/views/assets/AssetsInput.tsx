@@ -17,28 +17,6 @@ export const AssetsInput = () => {
   }
   return (
     <AuthLayout>
-      {!isOpen ? (
-        <div className={styles['hamburger-menu-section']}>
-          <button onClick={() => setIsOpen(!isOpen)}>
-            <img
-              src={hamburger_menu}
-              alt="HamburgerMenu"
-              className={styles['profile-image']}
-            />
-          </button>
-          <div className="dashboard-content">
-            <img
-              src={hankHill}
-              alt="Frame2"
-              className={styles['profile-image']}
-            />
-          </div>
-        </div>
-      ) : (
-        <div onClick={() => setIsOpen(!isOpen)}>
-          <HamburgerNav />
-        </div>
-      )}
       <div>
         <div className="headline">
           <p className="p_headline">
