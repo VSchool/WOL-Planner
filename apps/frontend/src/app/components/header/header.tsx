@@ -110,7 +110,7 @@ export default function Header() {
             data-te-collapse-item
           >
             <div
-              className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto ml-7 justify-around w-full"
+              className="!visible hidden grow basis-[100%] lg:!flex header-sub-container"
               id="navbarSupportedContentY"
               data-te-collapse-item
             >
@@ -140,22 +140,22 @@ export default function Header() {
                     </div>
                   </div>
                 </li>
-                <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
+                <li className="li-navlink">
                   <NavLink className="block lg:p-2" to="/dashboard">
                     Dashboard
                   </NavLink>
                 </li>
-                <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
+                <li className="li-navlink">
                   <NavLink className="block lg:p-2" to="/cashflow">
                     Cash Flow
                   </NavLink>
                 </li>
-                <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
+                <li className="li-navlink">
                   <NavLink className="block lg:p-2" to="/assets">
                     Assets
                   </NavLink>
                 </li>
-                <li className="hover:underline mb-4 lg:mb-0 lg:pr-2 text-white font-bold">
+                <li className="li-navlink">
                   <NavLink className="block lg:p-2" to="/liabilities">
                     Liabilities
                   </NavLink>
@@ -163,7 +163,7 @@ export default function Header() {
                 <li>
                   <button
                     id="FirstTimeUserBTN"
-                    className="header-first-time-user-text pr-10"
+                    className="header-first-time-user-text"
                   >
                     First Time User?
                   </button>
@@ -172,7 +172,7 @@ export default function Header() {
                   <img
                     src={hankHill}
                     alt="Frame2"
-                    className="head-profile-image"
+                    className="header-profile-image"
                   />
                 </li>
               </ul>

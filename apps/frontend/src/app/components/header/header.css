@@ -32,8 +32,21 @@
 .header-container {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	width: 100%;
+	flex-basis: auto;
 }
+
+.header-sub-container {
+	justify-content: space-around;
+	margin-left: 1.75rem;
+	width: 100%;
+	align-items: center;
+	width: 100%;
+	flex-basis: auto;
+	flex-grow: 1;
+}
+
 
 .trademark-image,
 .trademark-letter {
@@ -72,32 +85,6 @@
 	justify-content: space-around;
 }
 
-.header-first-time-user-text {
-	font-family: 'Sofia Pro', sans-serif;
-	font-size: 1rem;
-	font-weight: 800;
-	letter-spacing: 0px;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-width: 3px;
-	padding: 1rem 2rem;
-	height: 2rem;
-	border-color: white;
-	border-radius: 30px;
-	color: white;
-}
-
-.header-first-time-user-text:hover {
-	text-decoration: underline;
-}
-
-.head-profile-image {
-	height: 2rem;
-	width: 2rem;
-	border-radius: 10rem;
-}
 
 .head-trademark-container {
 	padding-top: 25%;
@@ -157,6 +144,42 @@
 	padding: 0;
 }
 
-ul li {
-	margin-right: 0;
+.li-navlink {
+	color: white;
+	font-weight: bold;
+	margin-bottom: 0;
+	padding-right: 0.5rem;
+}
+
+.li-navlink:hover {
+	text-decoration: underline;
+}
+
+.header-first-time-user-text {
+	font-family: 'Sofia Pro', sans-serif;
+	font-size: 1rem;
+	font-weight: 800;
+	letter-spacing: 0px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-width: 3px;
+	padding: 1rem 2.5rem 1rem 2.5rem;
+	height: 2rem;
+	border-color: white;
+	border-radius: 30px;
+	color: white;
+}
+
+.header-first-time-user-text:hover {
+	text-decoration: underline;
+}
+
+
+
+.header-profile-image {
+	height: 2rem;
+	width: 2rem;
+	border-radius: 10rem;
 }
