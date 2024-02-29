@@ -47,17 +47,17 @@ export class UsersService {
   }
 
   async signUpUser(body): Promise<any> {
-    console.log(body, "======")
+    // console.log(body, "======")
     try{
         const user = await getDataByField({
             collection: 'users',
             field: 'email',
             matches: body['email']
         })
-
         if(user.length > 0) {
-          console.log("user already exists")
-            return user[0]
+          // console.log("user already exists")
+            // return user[0]
+            return {success: false, message: "User already exists."} 
         }
 
         body['joinDate'] = new Date()
@@ -78,7 +78,7 @@ export class UsersService {
 
         body['id'] = userIdObj.id
         return body
-    } catch (error) {
+    } catch (error)  {
         console.log(error)
         return error
     }

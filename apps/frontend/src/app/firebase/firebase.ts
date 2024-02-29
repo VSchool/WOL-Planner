@@ -18,7 +18,7 @@ const firebaseConfig = {
   appId: "1:1092456040603:web:83a5c56785f71e0ff81e3e",
   measurementId: process.env.NX_MEASUREMENT_ID 
 };
-console.log(firebaseConfig)
+// console.log(firebaseConfig)
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
