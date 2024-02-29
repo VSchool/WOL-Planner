@@ -1,11 +1,11 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { AccountPage } from '../account/AccountsPage';
 import { BlogsPage } from '../blogs/BlogsPage';
 import { Home } from '../home/home';
 import {About} from '../about/about';
 import {Login} from '../login/Login';
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import IndividualBlogPage from '../blogs/IndividualBlogPage';
 import AdminPage from '../admin/AdminPage';
 import { ForgotPassword } from '../forgotPassword/ForgotPassword';

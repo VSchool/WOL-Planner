@@ -2,7 +2,6 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   purge: ['./apps/frontend/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
-  theme: {},
   variants: {},
   plugins: [
     require('@tailwindcss/forms'),
@@ -10,6 +9,13 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
   theme: {
+        screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -102,4 +108,3 @@ module.exports = {
     }
   },
 };
-
