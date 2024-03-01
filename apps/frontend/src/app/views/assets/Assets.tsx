@@ -7,7 +7,6 @@ import image103 from '../../images/logos/loginGroup103.svg';
 import HamburgerNav from '../../components/hamburger-nav/HamburgerNav';
 import DropdownSelect from '../../components/dropdown-select/DropdownSelect';
 import './assets.css';
-import downArrow from '../../images/dash/downArrow.svg'
 import styles from '../../app.module.scss';
 
 export const Assets = () => {
@@ -35,7 +34,7 @@ export const Assets = () => {
   };
 
   const navigateToNewPage = () => {
-    // console.log('new page');
+    console.log('new page');
     navigate('/assets/input');
   };
 
@@ -45,28 +44,6 @@ export const Assets = () => {
   }, [inputs]);
   return (
     <AuthLayout>
-      {!isOpen ? (
-        <div className={styles['hamburger-menu-section']}>
-          <button onClick={() => setIsOpen(!isOpen)}>
-            <img
-              src={hamburger_menu}
-              alt="HamburgerMenu"
-              className={styles['profile-image']}
-            />
-          </button>
-          <div className={styles['asset-content']}>
-            <img
-              src={hankHill}
-              alt="Frame2"
-              className={styles['profile-image']}
-            />
-          </div>
-        </div>
-      ) : (
-        <div onClick={() => setIsOpen(!isOpen)}>
-          <HamburgerNav />
-        </div>
-      )}
 
       <div className="headline">
         <p>
@@ -123,15 +100,13 @@ export const Assets = () => {
             </select>
           </div>
         </div>
-        <div className={styles['button-section']}>
         <button
           type="submit"
-          className={styles['dashboard-button']}
+          className="asset_button_large"
           disabled={isDisabled}
         >
           Submit
         </button>
-        </div>
       </form>
     </AuthLayout>
   );

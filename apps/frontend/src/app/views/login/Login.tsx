@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, useEffect, useContext } from 'react';
 import { UserContext } from '../../app';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
@@ -15,6 +15,7 @@ import  loginGroup103 from "../../images/logos/loginGroup103.svg"
 import "./login.css"
 import { auth } from "../../firebase/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
+import { signUpUser, getUsersFromSearch, loginEmailAndPassword } from "../../api-client/apiModules/users"
 
 export const Login = () => {
     const [ signIn, setSignIn ] = React.useState<any>([]);
@@ -86,6 +87,23 @@ export const Login = () => {
           setAuthError(err.message)
       }
     }
+    const loginEP = async () => {
+      const response = await loginEmailAndPassword({email, password})
+      console.log(response)
+
+    }
+  //   const signUp = async () => {
+  //     const response = await signUpUser({email, password, firstName, lastName, username})
+  //     console.log(response)
+  //     if(response.success !== false) {
+  //         context.setUser(response)
+  //         navigate("/dashboard")
+  //         // console.log(context.user)
+  //     } else {
+  //         setAuthError(true)
+  //         alert(response.message)
+  //     }
+  // } 
 
     return (
       <AuthLayout className="h-screen">
