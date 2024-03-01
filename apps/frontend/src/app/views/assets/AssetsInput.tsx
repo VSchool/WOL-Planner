@@ -93,6 +93,7 @@ export const AssetsInput = (props: any) => {
   console.log(value);
   return (
     <AuthLayout>
+      <Toaster />
       <div>
         <div className="headline">
           <p className="p_headline">
