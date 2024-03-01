@@ -1,38 +1,30 @@
-import { useState, useEffect } from 'react';
-import { useData } from './AssetContext';
-import axios from 'axios';
-// import Assets from './Assets.json'
+import { useContext } from 'react';
+import { AssetContext } from './AssetContext';
 
-interface Assets {
-  asset: string;
-  amount: number;
-}
 
-export const UpdateAssets = () => {
-//   const [assets, setAssets] = useState<Assets[]>([]);
-//   useEffect(() => {
-//     const fetchJson = async () => {
-//       try {
-//         const response = await fetch('./Assets.json');
-//         const data = await response.json();
-//         setAssets(data);
-//       } catch (error) {
-//         console.error('Error fetching JSON:', error);
-//       }
-//     };
-//     fetchJson();
-//   }, []);
+
+export const UpdateAssets = (props: any) => {
+  const assetContext = useContext(AssetContext);
+  if (!assetContext) {
+    throw new Error('AssetContext is not provided');
+  }
+  const { assets } = assetContext;
+  console.log(assets)
+  if (!assets) { 
+    return <div>Loading...</div>
+  }
 
   return (
-    // <div>
-    //   {assets.map((asset, index) => (
-    //     <div key={index}>
-    //       <div>Asset: {asset.asset}</div>
-    //       <div>Amount: {asset.amount}</div>
-    //     </div>
-    //   ))}
-    // </div>
-
-    <div>Assets deletion page</div>
+    <div>
+      {assets.map(asset => (
+        <div key={asset.asset}>
+          <p>Asset: {asset.asset}</p>
+          <p>Amount: {asset.amount}</p>
+        </div>
+      ))}
+    </div>
   );
 };
+
+
+

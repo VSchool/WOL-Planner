@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
@@ -11,7 +11,7 @@ import circleI from '../../images/logos/circleI.svg';
 import './assets.css';
 import styles from '../../app.module.scss';
 // import { AssetModal } from './AssetModal';
-import { InfoTooltip, InfoTooltipProps } from './InfoTooltip';
+import { InfoTooltip } from './InfoTooltip';
 import toast, { Toaster } from 'react-hot-toast';
 
 export const AssetsInput = (props: any) => {
@@ -27,7 +27,6 @@ export const AssetsInput = (props: any) => {
     amount: 0,
   });
   const [value, setValue] = useState<number>(0);
-  const [showModal, setShowModal] = useState<boolean>(false);
 
   const navigateToNewPage = () => {
     // console.log('new page');
@@ -35,17 +34,17 @@ export const AssetsInput = (props: any) => {
   };
 
   const assetToast = () => {
-    console.log("asset added")
-    
+    console.log('asset added');
+
     toast('Asset added', {
       position: 'top-center',
       icon: '👍',
       style: {
         borderRadius: '20px',
-        backgroundColor: "#008000",
-        color: 'white'
-      }
-      });
+        backgroundColor: '#008000',
+        color: 'white',
+      },
+    });
   };
 
   const handleUpButtonClick = (sectionName: string) => {
@@ -88,15 +87,6 @@ export const AssetsInput = (props: any) => {
     const { name, value } = e.target;
     setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
   };
-
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
 
   console.log(showCategoryDropdown);
   console.log(inputs);
@@ -356,7 +346,6 @@ Retirement accounts"
                         className="category-input"
                         name="non-investable-type"
                         onChange={handleChange}
-                        // onBlur={handleBlur}
                       >
                         <option value="realestate">
                           Real estate or factory equipment
@@ -400,7 +389,6 @@ Retirement accounts"
           </button>
         </div>
       </div>
-      
     </AuthLayout>
   );
 };

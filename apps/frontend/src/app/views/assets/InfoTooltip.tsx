@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import circleI from '../../images/logos/circleI.svg';
-import { ReactNode } from 'react';
+
+
 import './assets.css';
 
 
