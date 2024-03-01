@@ -12,13 +12,17 @@ interface HamburgerNavProps {
 const HamburgerNav: React.FC<HamburgerNavProps> = ({ show }) => {
   return (
     <div className={`sidebar ${show ? 'show' : ''}`}>
-
       <aside id="FlyoutMenuRoot" className="fly-out-menu-root">
         <div className="ham-trademark-container">
           <div id="W" className="ham-trademark-letter">
             W
           </div>
-          <img src={lineList} alt="lineList" id="lineList" className="ham-trademark-symbol" />
+          <img
+            src={lineList}
+            alt="lineList"
+            id="lineList"
+            className="ham-trademark-symbol"
+          />
           <div id="L" className="ham-trademark-letter">
             L
           </div>
@@ -40,7 +44,7 @@ const HamburgerNav: React.FC<HamburgerNavProps> = ({ show }) => {
             <Link to="/">Cash Flow</Link>
           </div>
           <div className="hamburger-link">
-            <Link to="/">Assets</Link>
+            <Link to="/assets">Assets</Link>
           </div>
           <div className="hamburger-link">
             <Link to="/">Liabilities</Link>

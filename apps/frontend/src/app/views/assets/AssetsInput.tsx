@@ -1,22 +1,99 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import hankHill from '../../images/dash/Hank_Hill.webp';
-import image103 from '../../images/logos/loginGroup103.svg';
 import HamburgerNav from '../../components/hamburger-nav/HamburgerNav';
+import circlePlus from '../../images/logos/circlePlus.svg';
+import upArrow from '../../images/logos/upArrow.svg';
+import downArrow from '../../images/logos/downArrow.svg';
+import circleI from '../../images/logos/circleI.svg';
 import './assets.css';
 import styles from '../../app.module.scss';
+// import { AssetModal } from './AssetModal';
+import { InfoTooltip } from './InfoTooltip';
+import toast, { Toaster } from 'react-hot-toast';
 
-export const AssetsInput = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [showInputForm, setShowInputForm] = useState<string>('')
+export const AssetsInput = (props: any) => {
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handleAddButtonClick = (sectionName: string) => {
-    setShowInputForm(sectionName)
-  }
+  const [showInputForm, setShowInputForm] = useState<string>('');
+
+  const [showCategoryDropdown, setShowCategoryDropdown] =
+    useState<boolean>(false);
+  const [inputs, setInputs] = useState<{ asset: string; amount: number }>({
+    asset: '',
+    amount: 0,
+  });
+  const [value, setValue] = useState<number>(0);
+
+  const navigateToNewPage = () => {
+    // console.log('new page');
+    navigate('/assets/update');
+  };
+
+  const assetToast = () => {
+    console.log('asset added');
+
+    toast('Asset added', {
+      position: 'top-center',
+      icon: '👍',
+      style: {
+        borderRadius: '20px',
+        backgroundColor: '#008000',
+        color: 'white',
+      },
+    });
+  };
+
+  const handleUpButtonClick = (sectionName: string) => {
+    //pops out input form based on the sectionName selected
+    setShowInputForm(sectionName);
+  };
+
+  const handleAddAssetClick = (sectionName: string) => {
+    const { asset, amount } = inputs;
+    setValue(value + amount);
+    setInputs({
+      asset: '',
+      amount: 0,
+    });
+    assetToast();
+    console.log('modal opened');
+  };
+
+  const handleSelectCategory = (e: any) => {
+    e.preventDefault();
+    //populates drop down menu specific to the sectionName selected
+    setShowCategoryDropdown((prevState) => !prevState);
+    console.log('category selected!');
+  };
+
+  const handleUpdateAssets = () => {
+    navigateToNewPage();
+    //routes to slide to delete page
+    //which lists all assets and allows them to be deleted
+    //once deleted, they will be removed from the total (value) amount
+    console.log('slide to delete page appears');
+  };
+
+  const handleDownArrowClick = (sectionName: string) => {
+    //collapses the input form for the selected sectionName
+    console.log('form collapses');
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setInputs((prevInputs) => ({ ...prevInputs, [name]: value }));
+  };
+
+  console.log(showCategoryDropdown);
+  console.log(inputs);
+  console.log(value);
   return (
     <AuthLayout>
+      <Toaster />
       <div>
         <div className="headline">
           <p className="p_headline">
@@ -31,62 +108,263 @@ export const AssetsInput = () => {
           <div className="button-div">
             <p className="asset_p">Personal</p>
             <div className="button-and-form-container">
-             
-            <button className="add_btn" onClick={() => handleAddButtonClick('personal')}>Add</button>
-            {showInputForm === 'personal' && (
-                <div className='form-container'>
-                    <form className='asset-form'>
-                        <input type='text'placeholder='Asset Name'></input>
-                        <input type='text' placeholder='$00.00'></input>
-                        <button className='asset-form-button'>Select Category</button>
-                    </form>
+              <button onClick={() => handleUpButtonClick('personal')}>
+                <img src={upArrow} alt="" className="add-button" />
+              </button>
+              <InfoTooltip
+                data-html="true"
+                tooltiptext=" * Property (your home, rental house, or 
+             commercial property)
+
+*	Classic cars
+* Gold/jewelry/coins
+*	Collectibles/art
+*	Life insurance policies, etc"
+                circleI={circleI}
+              ></InfoTooltip>
+              {showInputForm === 'personal' && (
+                <div className="form-container">
+                  <form className="asset-form">
+                    <input
+                      type="text"
+                      className="asset-form-input"
+                      name="asset"
+                      placeholder="Asset Name"
+                      value={inputs.asset}
+                      onChange={(e) =>
+                        setInputs((prevInputs) => ({
+                          ...prevInputs,
+                          asset: e.target.value,
+                        }))
+                      }
+                    ></input>
+                    <input
+                      type="text"
+                      className="asset-form-input"
+                      name="amount"
+                      placeholder="$00.00"
+                      value={inputs.amount}
+                      onChange={(e) =>
+                        setInputs((prevInputs) => ({
+                          ...prevInputs,
+                          amount: parseFloat(e.target.value) || 0,
+                        }))
+                      }
+                    ></input>
+                    <button
+                      className="asset-form-button"
+                      onClick={handleSelectCategory}
+                    >
+                      Select Category
+                    </button>
+                    {showCategoryDropdown && (
+                      <select
+                        className="category-input"
+                        name="personal-type"
+                        onChange={handleChange}
+                      >
+                        <option value="property">Property</option>
+                        <option value="cars">Classic Cars</option>
+                        <option value="gold">Gold/Jewelry/Coins</option>
+                        <option value="art">Collectibles/art</option>
+                        <option value="insurance">
+                          Life insurance policies
+                        </option>
+                      </select>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => handleAddAssetClick('personal')}
+                    >
+                      <img src={circlePlus} alt="" />
+                    </button>
+                    <button onClick={() => handleDownArrowClick('personal')}>
+                      <img src={downArrow} alt="" className="add-button" />
+                    </button>
+                  </form>
                 </div>
-            )}
-          </div>
+              )}
+            </div>
           </div>
           <hr className="horizontal_line"></hr>
           <div className="button-div">
             <p className="asset_p">Investable</p>
             <div className="button-and-form-container">
-             
-            <button className="add_btn" onClick={() => handleAddButtonClick('investable')}>Add</button>
-            {showInputForm === 'investable' && (
-                <div className='form-container'>
-                    <form className='asset-form'>
-                        <input type='text'placeholder='Asset Name'></input>
-                        <input type='text' placeholder='$00.00'></input>
-                        <button className='asset-form-button'>Select Category</button>
-                    </form>
+              <button onClick={() => handleUpButtonClick('investable')}>
+                <img src={upArrow} alt="" className="add-button" />
+              </button>
+              <InfoTooltip
+                data-html="true"
+                tooltiptext="Stocks (blue chip, dividend paying, value, growth)
+Bonds
+Cash (money market funds, treasury bills, certificates of deposit [CDs])
+Mutual funds
+Index funds
+Exchange traded funds (ETFs)
+Annuities
+Crypto
+Derivatives (futures or options contracts, swaps)"
+                circleI={circleI}
+              ></InfoTooltip>
+
+              {showInputForm === 'investable' && (
+                <div className="form-container">
+                  <form className="asset-form">
+                    <input
+                      type="text"
+                      className="asset-form-input"
+                      name="asset"
+                      placeholder="Asset Name"
+                      value={inputs.asset}
+                      onChange={(e) =>
+                        setInputs((prevInputs) => ({
+                          ...prevInputs,
+                          asset: e.target.value,
+                        }))
+                      }
+                    ></input>
+                    <input
+                      type="text"
+                      className="asset-form-input"
+                      name="amount"
+                      placeholder="$00.00"
+                      value={inputs.amount}
+                      onChange={(e) =>
+                        setInputs((prevInputs) => ({
+                          ...prevInputs,
+                          amount: parseFloat(e.target.value) || 0,
+                        }))
+                      }
+                    ></input>
+                    <button
+                      className="asset-form-button"
+                      onClick={handleSelectCategory}
+                    >
+                      Select Category
+                    </button>
+                    {showCategoryDropdown && (
+                      <select
+                        className="category-input"
+                        name="investable-type"
+                        onChange={handleChange}
+                      >
+                        <option value="stocks">Stocks</option>
+                        <option value="bonds">Bonds</option>
+                        <option value="crypto">Crypto</option>
+                        <option value="cash">Cash</option>
+                        <option value="derivatives">Derivatives</option>
+                      </select>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => handleAddAssetClick('investable')}
+                    >
+                      <img src={circlePlus} alt="" />
+                    </button>
+                    <button onClick={() => handleDownArrowClick('investable')}>
+                      <img src={downArrow} alt="" className="add-button" />
+                    </button>
+                  </form>
                 </div>
-                
-            )}
+              )}
             </div>
           </div>
           <hr className="horizontal_line"></hr>
           <div className="button-div">
             <p className="asset_p">Non-Investable</p>
             <div className="button-and-form-container">
-             
-            <button className="add_btn" onClick={() => handleAddButtonClick('non-investable')}>Add</button>
-            {showInputForm === 'non-investable' && (
-                <div className='form-container'>
-                    <form className='asset-form'>
-                        <input type='text'placeholder='Asset Name'></input>
-                        <input type='text' placeholder='$00.00'></input>
-                        <button className='asset-form-button'>Select Category</button>
-                    </form>
+              <button onClick={() => handleUpButtonClick('non-investable')}>
+                <img src={upArrow} alt="" className="add-button" />
+              </button>
+              <InfoTooltip
+                data-html="true"
+                tooltiptext="Real estate or factory equipment
+Intellectual property (copyrighted or patented material)
+Retirement accounts"
+                circleI={circleI}
+              ></InfoTooltip>
+
+              {showInputForm === 'non-investable' && (
+                <div className="form-container">
+                  <form className="asset-form">
+                    <input
+                      type="text"
+                      className="asset-form-input"
+                      name="asset"
+                      placeholder="Asset Name"
+                      value={inputs.asset}
+                      onChange={(e) =>
+                        setInputs((prevInputs) => ({
+                          ...prevInputs,
+                          asset: e.target.value,
+                        }))
+                      }
+                    ></input>
+                    <input
+                      type="text"
+                      className="asset-form-input"
+                      name="amount"
+                      placeholder="$00.00"
+                      value={inputs.amount}
+                      onChange={(e) =>
+                        setInputs((prevInputs) => ({
+                          ...prevInputs,
+                          amount: parseFloat(e.target.value) || 0,
+                        }))
+                      }
+                    ></input>
+                    <button
+                      className="asset-form-button"
+                      onClick={handleSelectCategory}
+                    >
+                      Select Category
+                    </button>
+                    {showCategoryDropdown && (
+                      <select
+                        className="category-input"
+                        name="non-investable-type"
+                        onChange={handleChange}
+                      >
+                        <option value="realestate">
+                          Real estate or factory equipment
+                        </option>
+                        <option value="intellectual">
+                          Intellectual property
+                        </option>
+                        <option value="retirement">Retirement account</option>
+                      </select>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => handleAddAssetClick('non-investable')}
+                    >
+                      <img src={circlePlus} alt="" />
+                    </button>
+                    <button
+                      onClick={() => handleDownArrowClick('non-investable')}
+                    >
+                      <img src={downArrow} alt="" className="add-button" />
+                    </button>
+                  </form>
                 </div>
-                
-            )}
+              )}
             </div>
-            
           </div>
           <hr className="horizontal_line"></hr>
           <div className="value_div">
-            <p className="asset_p_value">Value:</p>
+            <p className="asset_p_value">Value: {value}.00</p>
           </div>
-          <button className="asset_button_large">Use Last Month</button>
-          <button className="asset_button_large">Update Assets</button>
+          <button
+            className="asset_button_large"
+            onClick={() =>
+              console.log("retrieved last month's data from database!")
+            }
+          >
+            Use Last Month
+          </button>
+          <button className="asset_button_large" onClick={handleUpdateAssets}>
+            Update Assets
+          </button>
         </div>
       </div>
     </AuthLayout>
