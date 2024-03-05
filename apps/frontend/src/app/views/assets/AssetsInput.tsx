@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
@@ -13,21 +13,57 @@ import styles from '../../app.module.scss';
 // import { AssetModal } from './AssetModal';
 import { InfoTooltip } from './InfoTooltip';
 import toast, { Toaster } from 'react-hot-toast';
+import { v4 as uuidv4 } from 'uuid';
+import { AssetContext } from '../../app';
+// import { AssetContextType } from './AssetContextType';
 
-export const AssetsInput = (props: any) => {
+interface Asset {
+  id: string;
+  asset: string;
+  amount: number;
+}
+
+// interface AssetsInputProps {
+//   saveAssets: (assets: Asset[]) => void; // Adjust the type of saveAssets function
+// }
+
+
+export const AssetsInput: React.FC<object> = (props: any) => {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const {  assets, addNewAsset } = useContext(AssetContext)
+  const assetContext = useContext(AssetContext);
+  // const [isOpen, setIsOpen] = useState<boolean>(false);
   const [showInputForm, setShowInputForm] = useState<string>('');
-
   const [showCategoryDropdown, setShowCategoryDropdown] =
-    useState<boolean>(false);
-  const [inputs, setInputs] = useState<{ asset: string; amount: number }>({
-    asset: '',
-    amount: 0,
-  });
+  useState<boolean>(false);
+  const [inputs, setInputs] = useState<Asset>({ id: uuidv4(), asset: '', amount: 0 })
   const [value, setValue] = useState<number>(0);
 
+
+
+  if (!assetContext) {
+    // Handle case where context is undefined
+    return null;
+
+  }
+ 
+
+  // const { saveAssets } = assetContext as AssetContextType
+
+  const saveAssets = (assets: Asset[]) => {
+    try {
+      localStorage.setItem('inputs', JSON.stringify(inputs));
+    } catch (err) {
+      console.error("error saving to local storage", err);
+    }
+  };
+  
+
+// console.log(assets)
+//     interface AssetsInputProps {
+//   saveAssets: (assets: Asset[]) => void; // Adjust the type of saveAssets function
+// }
+  
   const navigateToNewPage = () => {
     // console.log('new page');
     navigate('/assets/update');
@@ -53,15 +89,24 @@ export const AssetsInput = (props: any) => {
   };
 
   const handleAddAssetClick = (sectionName: string) => {
-    const { asset, amount } = inputs;
+    const { id, asset, amount } = inputs;
     setValue(value + amount);
+    console.log(inputs)
+    console.log(asset)
+    addNewAsset({id, asset, amount})
+    
+    saveAssets([{ id, asset, amount}])
     setInputs({
+      id: uuidv4(),
       asset: '',
       amount: 0,
+      
     });
     assetToast();
-    console.log('modal opened');
+    
   };
+
+
 
   const handleSelectCategory = (e: any) => {
     e.preventDefault();
@@ -90,6 +135,7 @@ export const AssetsInput = (props: any) => {
 
   console.log(showCategoryDropdown);
   console.log(inputs);
+  console.log(assets)
   console.log(value);
   return (
     <AuthLayout>

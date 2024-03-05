@@ -1,30 +1,32 @@
-import { useContext } from 'react';
-import { AssetContext } from './AssetContext';
+import { useState, useContext } from 'react';
+// import { AssetContext } from './AssetContext';
+import { AssetContext } from '../../app';
 
-
+import './assets.css';
 
 export const UpdateAssets = (props: any) => {
-  const assetContext = useContext(AssetContext);
-  if (!assetContext) {
-    throw new Error('AssetContext is not provided');
-  }
-  const { assets } = assetContext;
-  console.log(assets)
-  if (!assets) { 
-    return <div>Loading...</div>
-  }
+  const { removeAsset, assets } =
+    useContext(AssetContext);
+ 
+  
+
+  console.log(assets);
 
   return (
     <div>
-      {assets.map(asset => (
-        <div key={asset.asset}>
+        Slide to delete
+      {assets.map((asset) => (
+        <div key={asset.id}>
           <p>Asset: {asset.asset}</p>
           <p>Amount: {asset.amount}</p>
+          <div>
+            <button type="button" className="asset_type_button" onClick={() => removeAsset(asset)}>
+              Delete
+            </button>
+          </div>
+          <br></br>
         </div>
       ))}
     </div>
   );
 };
-
-
-

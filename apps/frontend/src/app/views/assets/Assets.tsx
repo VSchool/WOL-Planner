@@ -17,7 +17,7 @@ export const Assets = () => {
   };
 
   const [inputs, setInputs] = useState(initInputs);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(!(initInputs.select_month && initInputs.select_year));
 
 
