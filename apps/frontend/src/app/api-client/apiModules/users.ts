@@ -100,3 +100,7 @@ export const signUpUser = async (data: any) => {
 //         alert("email already in use")
 //  }
 }
+export const sendVerificationCode = async (data: any) => {
+    const userData = await apiClientWithAuth.post(apiEndpoints.users + "/forgotpassword", data)
+    return userData.data
+}

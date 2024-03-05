@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@nestjs/common';
+import { getAuth, sendPasswordResetEmail } from "firebase/auth"
 import { createData, getCollectionData, getDataByField, getRealtimeDatabase, updateData, updateRealtimeDatabase } from '@nx-template/firebase'
 
 @Injectable()
@@ -83,6 +84,17 @@ export class UsersService {
         return error
     }
   }
+
+  async sendVerificationCode(body): Promise<any> {
+    try {
+      const auth = getAuth();
+      console.log(body.email, "users.service line 91")
+      await sendPasswordResetEmail(auth, body.email)
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  } 
 
   async updateUserData(body): Promise<any> {
     try {

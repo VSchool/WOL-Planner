@@ -1,20 +1,22 @@
-import React, { ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, useEffect, useContext } from 'react';
+import { auth } from "../../firebase/firebase"
+import { sendPasswordResetEmail } from "firebase/auth"
 import { UserContext } from '../../app';
-import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-import { createUserData } from '../../api-client/apiModules/users';
+import { createUserData, sendVerificationCode } from '../../api-client/apiModules/users';
 import { AuthLayout } from '../../components/authlayout/AuthLayout';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 import  googleGImage from "../../images/logos/googleGImage.svg"
 import  loginListThreeFilled from "../../images/logos/loginListThreeFilled.svg"
 import  loginVector from "../../images/logos/loginVector.svg"
 import  loginCrystalBall from "../../images/logos/loginCrystalBall.svg"
 import  loginGroup103 from "../../images/logos/loginGroup103.svg"
 import "./forgotpassword.css"
-import { auth } from "../../firebase/firebase"
-import { signInWithEmailAndPassword } from "firebase/auth"
+// import { useNavigate } from 'react-router-dom';
 
 export const ForgotPassword = () => {
+
+    const context = useContext(UserContext)
 
     const [email, setEmail] = React.useState("")
     const [isDisabled, setIsDisabled] = React.useState(true)
@@ -32,6 +34,22 @@ export const ForgotPassword = () => {
         setEmail(e.target.value)
         // setAuthError("")
     }
+    const reset = async () => {
+        try {
+            const response = await sendVerificationCode(email)
+
+        } catch(error) {
+            console.log(error)
+        }
+        // if(response.success !== false) {
+        //     context.setUser(response)
+        //     // navigate("/dashboard")
+        //     // console.log(context.user)
+        // } else {
+        //     // setAuthError(true)
+        //     alert(response.message)
+        // }
+    } 
 
     return (
         <AuthLayout className="fpLayout">
@@ -57,7 +75,7 @@ export const ForgotPassword = () => {
                 </div>
             </div>
             <div className='loginButtonContainer' style={{gridRowStart: "6", gridRowEnd: "7"}}>
-                <button className="loginButton" type="submit"  disabled={isDisabled} style={{backgroundColor: isDisabled ? "#6F6F6F" : "#000"}}>
+                <button className="loginButton" type="submit" onClick={reset}  disabled={isDisabled} style={{backgroundColor: isDisabled ? "#6F6F6F" : "#000"}}>
                     <span className="loginButtonText">
                         Submit
                     </span>
@@ -66,7 +84,7 @@ export const ForgotPassword = () => {
             <div>
                 <button className="loginSignupButton">
                     <span className="loginSignupButtonText">
-                        <Link to="/signup">Sign Up</Link>
+                        {/* <Link to="/signup">Sign Up</Link> */}
                     </span>
                 </button>
             </div>

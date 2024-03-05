@@ -1,0 +1,57 @@
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 38.6 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+webpack compiled [1m[32msuccessfully[39m[22m (4b101ce79358de8f)
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 38.6 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./apps/server/src/app/users/users.service.ts:[32m[1m91:36[22m[39m[1m[39m[22m
+[90mTS2304: [39mCannot find name 'auth'.
+  [0m [90m 89 |[39m     [36mtry[39m {[0m
+  [0m [90m 90 |[39m       [36mawait[39m sendPasswordResetEmail(auth[33m,[39m body[33m.[39memail)[0m
+  [0m[31m[1m>[22m[39m[90m 91 |[39m     } [36mcatch[39m (error) {[0m
+  [0m [90m    |[39m                                [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+  [0m [90m 92 |[39m       console[33m.[39mlog(error)[0m
+  [0m [90m 93 |[39m       [36mreturn[39m error[0m
+  [0m [90m 94 |[39m     }[0m
+
+webpack compiled with [1m[31m1 error[39m[22m (13187e85ff18c442)
+[1m[31mThere was an error with the build. See above.[39m[22m
+/Users/dan/Desktop/WOL-Planner/dist/apps/server/main.js was not restarted.
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 38.6 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./apps/server/src/app/users/users.service.ts:[32m[1m90:36[22m[39m[1m[39m[22m
+[90mTS2304: [39mCannot find name 'auth'.
+  [0m [90m 88 |[39m   [36masync[39m sendVerificationCode(body)[33m:[39m [33mPromise[39m[33m<[39m[33many[39m[33m>[39m {[0m
+  [0m [90m 89 |[39m     [36mtry[39m {[0m
+  [0m[31m[1m>[22m[39m[90m 90 |[39m       [36mawait[39m sendPasswordResetEmail(auth[33m,[39m body[33m.[39memail)[0m
+  [0m [90m    |[39m                                    [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+  [0m [90m 91 |[39m     } [36mcatch[39m (error) {[0m
+  [0m [90m 92 |[39m       console[33m.[39mlog(error)[0m
+  [0m [90m 93 |[39m       [36mreturn[39m error[0m
+
+webpack compiled with [1m[31m1 error[39m[22m (13187e85ff18c442)
+[1m[31mThere was an error with the build. See above.[39m[22m
+/Users/dan/Desktop/WOL-Planner/dist/apps/server/main.js was not restarted.
+chunk (runtime: main) [1m[32mmain.js[39m[22m (main) 38.6 KiB [1m[33m[entry][39m[22m [1m[32m[rendered][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./apps/server/src/app/users/users.service.ts:[32m[1m8:9[22m[39m[1m[39m[22m
+[90mTS1248: [39mA class member cannot have the 'const' keyword.
+  [0m [90m  6 |[39m [33m@[39m[33mInjectable[39m()[0m
+  [0m [90m  7 |[39m [36mexport[39m [36mclass[39m [33mUsersService[39m {[0m
+  [0m[31m[1m>[22m[39m[90m  8 |[39m   [36mconst[39m auth [33m=[39m getAuth()[33m;[39m[0m
+  [0m [90m    |[39m         [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+  [0m [90m  9 |[39m[0m
+  [0m [90m 10 |[39m   getUsers()[33m:[39m [33mPromise[39m[33m<[39m[33many[39m[33m>[39m {[0m
+  [0m [90m 11 |[39m     console[33m.[39mlog([32m'getUsers'[39m)[0m
+
+[1m[31mERROR[39m[22m in [1m./apps/server/src/app/users/users.service.ts:[32m[1m91:36[22m[39m[1m[39m[22m
+[90mTS2663: [39mCannot find name 'auth'. Did you mean the instance member 'this.auth'?
+  [0m [90m 89 |[39m   [36masync[39m sendVerificationCode(body)[33m:[39m [33mPromise[39m[33m<[39m[33many[39m[33m>[39m {[0m
+  [0m [90m 90 |[39m     [36mtry[39m {[0m
+  [0m[31m[1m>[22m[39m[90m 91 |[39m       [36mawait[39m sendPasswordResetEmail(auth[33m,[39m body[33m.[39memail)[0m
+  [0m [90m    |[39m                                    [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[0m
+  [0m [90m 92 |[39m     } [36mcatch[39m (error) {[0m
+  [0m [90m 93 |[39m       console[33m.[39mlog(error)[0m
+  [0m [90m 94 |[39m       [36mreturn[39m error[0m
+
+webpack compiled with [1m[31m2 errors[39m[22m (786b9fd0c2a9727d)
+[1m[31mThere was an error with the build. See above.[39m[22m
+/Users/dan/Desktop/WOL-Planner/dist/apps/server/main.js was not restarted.

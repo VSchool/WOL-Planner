@@ -19,6 +19,10 @@ export class UsersController {
     signUpUser(@Body() body: any) {
         return this.usersService.signUpUser(body);
     }
+    @Post("/forgotpassword")
+    sendVerificationCode(@Body() body: any) {
+        return this.usersService.sendVerificationCode(body)
+    }
 
     @Put()
     updateUser(@Body() body: any) {

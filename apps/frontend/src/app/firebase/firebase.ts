@@ -3,6 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "@firebase/storage";
 import { getAuth, GoogleAuthProvider } from "firebase/auth"
 import { getFirestore, collection, getDocs } from "firebase/firestore";
+import firebase from "firebase/app"
 
 export const settings = {
   project_id: 'wol-planner-7e216',
