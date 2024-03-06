@@ -35,7 +35,7 @@ export const AssetProvider: React.FC < { children: React.ReactNode }> = ({ child
    getAssets()
 }, [])
 
-//this api endpoint works in Postman but not here
+
 
     return (
         <AssetContext.Provider value={{ assets, setAssets }}>
