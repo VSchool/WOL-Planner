@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import crystalBall from '../../images/dash/crystal-ball.svg';
 import lineList from '../../images/dash/line-md_list-3-filled.svg';
 import { Link } from 'react-router-dom';
-import { UIContext } from '../../UIContext';
+
 import './hamburger.css';
 
 interface HamburgerNavProps {

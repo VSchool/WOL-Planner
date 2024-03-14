@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-// import { UIProvider } from './UIContext';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Router from './views/router/router';
