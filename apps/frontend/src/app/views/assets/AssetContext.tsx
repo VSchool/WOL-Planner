@@ -21,19 +21,21 @@ export const AssetProvider: React.FC < { children: React.ReactNode }> = ({ child
 
   
     
-    useEffect(() => {
-    async function getAssets(){
-        try {
-            const response =  await axios.get<{results: Asset[] }>("https://mocki.io/v1/31ff50e8-8b81-400a-87d1-d7fc37c9005a")
-            setAssets(response.data.results)
-            console.log(response.data.results)
-        }   catch (error) {
-                console.log(error)
+//     useEffect(() => {
+//     async function getAssets(){
+//         try {
+//             const response =  await axios.get<{results: Asset[] }>("https://mocki.io/v1/31ff50e8-8b81-400a-87d1-d7fc37c9005a")
+//             setAssets(response.data.results)
+//             console.log(response.data.results)
+//         }   catch (error) {
+//                 console.log(error)
                 
-        }
-    }
-   getAssets()
-}, [])
+//         }
+//     }
+//    getAssets()
+// }, [])
+
+
 
 
 

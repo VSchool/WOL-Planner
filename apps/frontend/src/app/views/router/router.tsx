@@ -13,6 +13,8 @@ import {SignUp} from "../signup/SignUp"
 import { Dashboard } from '../dashboard/Dashboard';
 import { Assets } from "../assets/Assets"
 import { AssetsInput } from '../assets/AssetsInput';
+import { UpdateAssets } from '../assets/UpdateAssets';
+
 
 export default function Router() {
 
@@ -31,6 +33,7 @@ export default function Router() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/assets" element={<Assets />} />
         <Route path="/assets/input" element={<AssetsInput />} />
+        <Route path="/assets/update" element={<UpdateAssets />} />
       </Routes>
     );
 }
