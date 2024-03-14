@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { UIProvider } from './UIContext';
+// import { UIProvider } from './UIContext';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Router from './views/router/router';
@@ -163,7 +163,7 @@ export function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <AssetContext.Provider value={assetContextValue}>
-        <UIProvider>
+      
           <BrowserRouter>
             <div className="flex flex-col h-screen">
               <div style={{ flex: '1 1 0' }}>
@@ -173,7 +173,7 @@ export function App() {
               {/* <Footer></Footer> */}
             </div>
           </BrowserRouter>
-        </UIProvider>
+        
       </AssetContext.Provider>
     </UserContext.Provider>
   );
