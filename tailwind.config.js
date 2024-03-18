@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors');
 module.exports = {
-  purge: ['./apps/frontend/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./apps/frontend/**/*.{js,ts,jsx,tsx}'],
+  media: false, // or 'media' or 'class'
   variants: {},
   plugins: [
     require('@tailwindcss/forms'),
@@ -95,7 +95,7 @@ module.exports = {
         900: '#3e2723',
       },
       gray: colors.gray,
-      'blue-gray': colors.blueGray,
+      'blue-gray': colors.slate,
     },
     extend: {
       colors: {
