@@ -2,7 +2,6 @@
     display: grid;
     grid-template-rows: 40px 97px 60px;
 }
-
 .signupBodyContainer {
     display: grid;
     grid-template-rows: 102px 86px 98px 86px 20px 66px 20px 124px;
