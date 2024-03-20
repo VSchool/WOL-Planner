@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { UserContext } from '../../app';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import HamburgerNav from '../hamburger-nav/HamburgerNav';
@@ -8,78 +8,33 @@ import crystalBall from '../../images/dash/crystal-ball.svg';
 import lineList from '../../images/dash/line-md_list-3-filled.svg';
 import hankHill from '../../images/dash/Hank_Hill.webp';
 
+import firebase from 'firebase/app'
+import { auth } from '../../firebase/firebase';
+import { signOut } from 'firebase/auth';
 
+import { Logo } from './Logo';
 import './header.css'
 
 export default function Header() {
   const { user, setUser } = React.useContext(UserContext);
-
+  const [error, setError] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
 
-  const container: any = useRef(null);
-  const adminContainer: any = useRef(null);
-
-  const [showUserMenu, setShowUserMenu] = useState(false);
-  const [currentHeader, setCurrentHeader] = useState('');
-
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-
-  const [showAdminMenu, setShowAdminMenu] = useState(false);
-
-  const defaultUserPhotoURL =
-  'https://www.gravatar.com/avatar/00000000000000000000000000000000';
-  const userPhotoURL = user.picture || defaultUserPhotoURL;
-
-  const hasAdminAccess = user.roles?.includes('Admin');
-
-  useEffect(() => {
-    const currentUrl = window.location.pathname.split('/')[1];
-    console.log(currentUrl);
-    setCurrentHeader(currentUrl);
-  }, []);
-
-  useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (!container?.current?.contains(event.target)) {
-        if (!showUserMenu) return;
-        setShowUserMenu(false);
-      }
-    };
-
-    window.addEventListener('click', handleOutsideClick);
-    return () => window.removeEventListener('click', handleOutsideClick);
-  }, [showUserMenu, container]);
-
-  useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (!adminContainer?.current?.contains(event.target)) {
-        if (!showAdminMenu) return;
-        setShowAdminMenu(false);
-      }
-    };
-
-    window.addEventListener('click', handleOutsideClick);
-    return () => window.removeEventListener('click', handleOutsideClick);
-  }, [showAdminMenu, adminContainer]);
-
-  const handleLogout = () => {
-    setUser({ firstName: null, lastName: null, id: null, joinDate: null, email: null, userType: 'Reader', roles: ['None'] });
-    localStorage.clear();
-  }
-
-  const onMenuItemClick = (path: any) => {
-    setShowUserMenu(false);
-    setShowAdminMenu(false);
-    setShowMobileMenu(false);
-    setCurrentHeader(path);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
   };
 
-  function classNames(...classes: any[]) {
-    return classes.filter(Boolean).join(' ');
-  }
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error: any) {
+      setError(error.message);
+    }
+  };
 
   return (
     <header className="py-5 bg-white lg:bg-black">
@@ -173,7 +128,35 @@ export default function Header() {
                     src={hankHill}
                     alt="Frame2"
                     className="header-profile-image"
+                    onClick={toggleDropdown}
+                    style={{cursor: 'pointer'}}
                   />
+                  {dropdownVisible && (
+                    <div style={{ position: 'absolute', top: '50px', right: '10px', backgroundColor: 'white', border: '1px solid black' }}>
+                      <ul>
+                        <NavLink to='signup'>
+                          <li>Sign Up</li>
+                        </NavLink>
+                        <NavLink to="/login">
+                          <li>Login</li>
+                        </NavLink>
+                        <NavLink to='/assets'>
+                          <li>Assets</li>
+                        </NavLink>
+                        <NavLink to='/liabilities'>
+                          <li>Liabilities</li>
+                        </NavLink>
+                        <NavLink to='/cashflow'>
+                          <li>Cash Flow</li>
+                        </NavLink>
+                        <NavLink to='/about'>
+                          <li>About</li>
+                        </NavLink>
+
+                        <li onClick={handleSignOut}>Logout</li>
+                      </ul>
+                    </div>
+                  )}
                 </li>
               </ul>
             </div>
@@ -182,4 +165,8 @@ export default function Header() {
       </nav>
     </header>
   );
+}
+
+function setError(message: any) {
+  throw new Error('Function not implemented.');
 }
