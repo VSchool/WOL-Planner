@@ -10,12 +10,12 @@ import downArrow from '../../images/logos/downArrow.svg';
 import circleI from '../../images/logos/circleI.svg';
 import './assets.css';
 import styles from '../../app.module.scss';
-// import { AssetModal } from './AssetModal';
+
 import { InfoTooltip } from './InfoTooltip';
 import toast, { Toaster } from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
-import { AssetContext } from '../../app';
-// import { AssetContextType } from './AssetContextType';
+import { AssetContext,  } from './AssetContext';
+
 
 interface Asset {
   id: string;
@@ -23,39 +23,33 @@ interface Asset {
   amount: number;
 }
 
-// interface AssetsInputProps {
-//   saveAssets: (assets: Asset[]) => void; // Adjust the type of saveAssets function
-// }
-
-
 export const AssetsInput: React.FC<object> = (props: any) => {
   const navigate = useNavigate();
-  const {  assets, addNewAsset } = useContext(AssetContext)
-  const assetContext = useContext(AssetContext);
-  // const [isOpen, setIsOpen] = useState<boolean>(false);
+  // const { addNewAsset} = useContext(AssetContext) as AssetContextType;
   const [showInputForm, setShowInputForm] = useState<string>('');
   const [showCategoryDropdown, setShowCategoryDropdown] =
   useState<boolean>(false);
   const [inputs, setInputs] = useState<Asset>({ id: uuidv4(), asset: '', amount: 0 })
   const [value, setValue] = useState<number>(0);
+ 
+  
+  // const assetContext = useContext(AssetContext);
+  // const [isOpen, setIsOpen] = useState<boolean>(false);
 
 
 
-  if (!assetContext) {
-    // Handle case where context is undefined
-    return null;
 
-  }
+  // if (!assetContext) {
+  //   // Handle case where context is undefined
+  //   return null;
+
+  // }
  
 
   // const { saveAssets } = assetContext as AssetContextType
 
   const saveAssets = (assets: Asset[]) => {
-    try {
-      localStorage.setItem('inputs', JSON.stringify(inputs));
-    } catch (err) {
-      console.error("error saving to local storage", err);
-    }
+   console.log("asset saved! Or will be once we have the API route set up.")
   };
   
 
@@ -93,7 +87,7 @@ export const AssetsInput: React.FC<object> = (props: any) => {
     setValue(value + amount);
     console.log(inputs)
     console.log(asset)
-    addNewAsset({id, asset, amount})
+    // addNewAsset({id, asset, amount})
     
     saveAssets([{ id, asset, amount}])
     setInputs({
@@ -135,7 +129,7 @@ export const AssetsInput: React.FC<object> = (props: any) => {
 
   console.log(showCategoryDropdown);
   console.log(inputs);
-  console.log(assets)
+ 
   console.log(value);
   return (
     <AuthLayout>
@@ -323,7 +317,7 @@ Derivatives (futures or options contracts, swaps)"
                 <img src={upArrow} alt="" className="add-button" />
               </button>
               <InfoTooltip
-                data-html="true"
+                data-html="true" 
                 tooltiptext="Real estate or factory equipment
 Intellectual property (copyrighted or patented material)
 Retirement accounts"
