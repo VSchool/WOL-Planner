@@ -3,7 +3,10 @@ import { BrowserRouter } from 'react-router-dom';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Router from './views/router/router';
+import { AssetProvider } from './views/assets/AssetContext';
 import './app.module.scss';
+// import { UpdateAssets } from './views/assets/UpdateAssets';
+import { AssetsInput } from './views/assets/AssetsInput';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-explicit-any
 export const UserContext = React.createContext({
@@ -20,38 +23,10 @@ export const UserContext = React.createContext({
   },
   setUser: (user: any) => {},
 });
-interface Asset {
-  id: string;
-  asset: string;
-  amount: number;
-}
 
-//   interface AssetsInputProps {
-//     saveAssets: (assets: Asset[]) => void; // Adjust the type of saveAssets function
-//   }
 
-interface AssetContextType {
-  assets: Asset[];
-  setAssets: React.Dispatch<React.SetStateAction<Asset[]>>;
-  addNewAsset: (newAsset: Asset) => void;
-  saveAssets: (assets: Asset[]) => void;
-  removeAsset: (asset: Asset) => void;
-  getAllAssets: () => void;
-}
 
-export const AssetContext = React.createContext<AssetContextType>({
-  assets: [],
-  setAssets: () => {},
-  addNewAsset: () => {},
-  removeAsset: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  saveAssets: () => {},
-  getAllAssets: () => {},
-});
 
-interface AssetProviderProps {
-  children: React.ReactNode; // Define children prop explicitly
-}
 export function App() {
   const [user, setUser] = React.useState<any>({
     firstName: null,
@@ -64,69 +39,6 @@ export function App() {
     name: null,
     roles: ['None'],
   });
-  const [assets, setAssets] = useState<Asset[]>([]);
-
-  const addNewAsset = (newAsset: Asset) => {
-    return setAssets((prev: Asset[]) => {
-      const newAssets: Asset[] = [...prev, newAsset];
-      setAssets(newAssets);
-      saveAssets(newAssets);
-      console.log(newAssets);
-      return newAssets;
-    });
-  };
-
-  console.log(assets);
-
-  const saveAssets = (assets: Asset[]) => {
-    try {
-      localStorage.setItem('assets', JSON.stringify(assets));
-    } catch (err) {
-      console.error('error saving to local storage', err);
-    }
-  };
-
-  const removeAsset = (asset: Asset) =>
-    setAssets((prev) => {
-      const newAssets = prev.filter((as) => as.id !== asset.id);
-      saveAssets(newAssets);
-      console.log('deleted asset');
-      return newAssets;
-    });
-
-  const getAllAssets = () => {
-    try {
-      const storedAssetsString: string | null = localStorage.getItem('assets');
-
-      if (storedAssetsString !== null) {
-        const storedAssets: Asset[] | Asset = JSON.parse(storedAssetsString);
-
-        if (Array.isArray(storedAssets)) {
-          setAssets(storedAssets);
-        } else {
-          setAssets([storedAssets]);
-          console.log('not saved');
-        }
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  console.log(assets);
-
-  useEffect(() => {
-    getAllAssets();
-  }, []);
-
-  const assetContextValue: AssetContextType = {
-    assets,
-    setAssets,
-    addNewAsset,
-    saveAssets,
-    removeAsset,
-    getAllAssets,
-  };
 
   useEffect(() => {
     const user = localStorage.getItem('user');
@@ -160,21 +72,22 @@ export function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <AssetContext.Provider value={assetContextValue}>
-      
-          <BrowserRouter>
-            <div className="flex flex-col h-screen">
-              <div style={{ flex: '1 1 0' }}>
-                <Header></Header>
-                <Router></Router>
-              </div>
-              {/* <Footer></Footer> */}
-            </div>
-          </BrowserRouter>
+    // <UserContext.Provider value={{ user, setUser }}>
+      // {/* <AssetProvider value={{assets, setAssets, saveAssets, removeAsset, getAllAssets, addNewAsset }} > */}
+        // {/* <UpdateAssets /> */}
         
-      </AssetContext.Provider>
-    </UserContext.Provider>
+        <BrowserRouter>
+          <div className="flex flex-col h-screen">
+            <div style={{ flex: '1 1 0' }}>
+              <Header></Header>
+              <Router></Router>
+             
+            </div>
+         
+          </div>
+        </BrowserRouter>
+      // {/* </AssetProvider> */}
+    // </UserContext.Provider>
   );
 }
 
