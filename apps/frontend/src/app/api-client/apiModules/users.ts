@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { apiClientWithAuth, apiEndpoints } from ".."
-import { storage } from "../../firebase/firebase"
+import { storage, auth } from "../../firebase/firebase"
 import { ref, uploadBytes, getDownloadURL, listAll } from "@firebase/storage";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 export const updateUserData = async (data: any) => {
@@ -86,21 +87,14 @@ export const loginEmailAndPassword = async (data: any) => {
 
 export const signUpUser = async (data: any) => {
     const userData = await apiClientWithAuth.post(apiEndpoints.users + "/signup", data)
-    // console.log(userData)
     return userData.data
-    // if it is a successful sign up
-// // if property 'id' exists then it was a success
-//     if(userData.data.success === true){
-//         console.log('user was created', userData)
-//     }
-//     // unsuccessful attempt, property 'id' wouldn't exist
-//     else {
-//     // this should be the error object you sent back
-//         console.log(userData)
-//         alert("email already in use")
-//  }
 }
 export const sendVerificationCode = async (data: any) => {
     const userData = await apiClientWithAuth.post(apiEndpoints.users + "/forgotpassword", data)
     return userData.data
+}
+export const signInWithEP = async (data: any) => {
+    // const userData = await apiClientWithAuth.post(apiEndpoints.users + "/login", data)
+    const userData = await signInWithEmailAndPassword(auth, data.email, data.password)
+    return userData.user
 }

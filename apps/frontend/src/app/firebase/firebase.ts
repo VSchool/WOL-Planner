@@ -1,7 +1,7 @@
-import { initializeApp } from "@firebase/app";
+import { initializeApp, getApps } from "@firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "@firebase/storage";
-import { getAuth, GoogleAuthProvider } from "firebase/auth"
+import { getAuth, GoogleAuthProvider, initializeAuth } from "firebase/auth"
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import firebase from "firebase/app"
 
@@ -21,10 +21,12 @@ const firebaseConfig = {
 };
 // console.log(firebaseConfig)
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
+const app =
+  getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+export const auth = getAuth(app)
 const analytics = getAnalytics(app);
 export const storage = getStorage(app);
-export const auth = getAuth(app)
 export const googleProvider = new GoogleAuthProvider()
 
 // init services

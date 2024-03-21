@@ -661,11 +661,16 @@
           },
           {
             "file": "apps/frontend/src/app/api-client/apiModules/users.ts",
-            "hash": "2188551045726506449",
+            "hash": "8576112339441485057",
             "dependencies": [
               {
                 "source": "frontend",
                 "target": "npm:@firebase/storage",
+                "type": "static"
+              },
+              {
+                "source": "frontend",
+                "target": "npm:firebase",
                 "type": "static"
               }
             ]
@@ -1023,7 +1028,7 @@
           },
           {
             "file": "apps/frontend/src/app/firebase/firebase.ts",
-            "hash": "17002209609167365937",
+            "hash": "9851192098394350664",
             "dependencies": [
               {
                 "source": "frontend",
@@ -1293,11 +1298,11 @@
           },
           {
             "file": "apps/frontend/src/app/views/forgotPassword/forgotpassword.css",
-            "hash": "7823669471506703996"
+            "hash": "17645574806370493907"
           },
           {
             "file": "apps/frontend/src/app/views/forgotPassword/ForgotPassword.tsx",
-            "hash": "13849456713686235212",
+            "hash": "1306015593126885593",
             "dependencies": [
               {
                 "source": "frontend",
@@ -1306,7 +1311,7 @@
               },
               {
                 "source": "frontend",
-                "target": "npm:@react-oauth/google",
+                "target": "npm:firebase",
                 "type": "static"
               },
               {
@@ -1317,11 +1322,6 @@
               {
                 "source": "frontend",
                 "target": "npm:react-router-dom",
-                "type": "static"
-              },
-              {
-                "source": "frontend",
-                "target": "npm:firebase",
                 "type": "static"
               }
             ]
@@ -1358,7 +1358,7 @@
           },
           {
             "file": "apps/frontend/src/app/views/login/Login.tsx",
-            "hash": "5780010748947121480",
+            "hash": "15133907342000776570",
             "dependencies": [
               {
                 "source": "frontend",
@@ -1378,11 +1378,6 @@
               {
                 "source": "frontend",
                 "target": "npm:react-router-dom",
-                "type": "static"
-              },
-              {
-                "source": "frontend",
-                "target": "npm:firebase",
                 "type": "static"
               }
             ]
@@ -1409,7 +1404,7 @@
           },
           {
             "file": "apps/frontend/src/app/views/signup/SignUp.tsx",
-            "hash": "17796596729749645128",
+            "hash": "2352017324768490538",
             "dependencies": [
               {
                 "source": "frontend",
@@ -1989,7 +1984,7 @@
           },
           {
             "file": "apps/server/src/app/users/users.controller.ts",
-            "hash": "8811922430288851130",
+            "hash": "12460755279941575129",
             "dependencies": [
               {
                 "source": "server",
@@ -2016,11 +2011,16 @@
           },
           {
             "file": "apps/server/src/app/users/users.service.ts",
-            "hash": "18394225636539818000",
+            "hash": "17201013652747745360",
             "dependencies": [
               {
                 "source": "server",
                 "target": "npm:@nestjs/common",
+                "type": "static"
+              },
+              {
+                "source": "server",
+                "target": "npm:firebase",
                 "type": "static"
               },
               {
@@ -16658,6 +16658,11 @@
       },
       {
         "source": "frontend",
+        "target": "npm:firebase",
+        "type": "static"
+      },
+      {
+        "source": "frontend",
         "target": "npm:axios",
         "type": "static"
       },
@@ -16689,11 +16694,6 @@
       {
         "source": "frontend",
         "target": "npm:@firebase/app",
-        "type": "static"
-      },
-      {
-        "source": "frontend",
-        "target": "npm:firebase",
         "type": "static"
       },
       {
@@ -16764,6 +16764,11 @@
       {
         "source": "server",
         "target": "firebase",
+        "type": "static"
+      },
+      {
+        "source": "server",
+        "target": "npm:firebase",
         "type": "static"
       },
       {

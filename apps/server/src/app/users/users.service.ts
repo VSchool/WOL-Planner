@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@nestjs/common';
-import { getAuth, sendPasswordResetEmail } from "firebase/auth"
+import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth"
 import { createData, getCollectionData, getDataByField, getRealtimeDatabase, updateData, updateRealtimeDatabase } from '@nx-template/firebase'
 
 @Injectable()
@@ -48,7 +48,6 @@ export class UsersService {
   }
 
   async signUpUser(body): Promise<any> {
-    // console.log(body, "======")
     try{
         const user = await getDataByField({
             collection: 'users',
@@ -56,9 +55,7 @@ export class UsersService {
             matches: body['email']
         })
         if(user.length > 0) {
-          // console.log("user already exists")
-            // return user[0]
-            return {success: false, message: "User already exists."} 
+          return {success: false, message: "User already exists."} 
         }
 
         body['joinDate'] = new Date()
@@ -86,15 +83,15 @@ export class UsersService {
   }
 
   async sendVerificationCode(body): Promise<any> {
-    try {
-      const auth = getAuth();
-      console.log(body.email, "users.service line 91")
-      await sendPasswordResetEmail(auth, body.email)
-    } catch (error) {
-      console.log(error)
-      return error
-    }
+    const auth = getAuth();
+    console.log(body.email, "users.service line 91")
+    await sendPasswordResetEmail(auth, body.email)
   } 
+
+  async signInWithEP(body): Promise<any> {
+    const auth = getAuth();
+    await signInWithEmailAndPassword(auth, body.email, body.password)
+  }
 
   async updateUserData(body): Promise<any> {
     try {

@@ -1,29 +1,18 @@
 {
   "run": {
-    "command": "nx run-many --all --target=serve --skip-nx-cache",
-    "startTime": "2024-03-01T23:41:25.546Z",
-    "endTime": "2024-03-01T23:41:26.248Z",
+    "command": "nx serve server",
+    "startTime": "2024-03-21T20:30:11.095Z",
+    "endTime": "2024-03-21T20:30:58.255Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "frontend:serve:development",
-      "target": "serve",
-      "projectName": "frontend",
-      "hash": "896d4babdf36c24a1a85f86477aabefd8cf936b274019ca6bc6db694790ed30c",
-      "startTime": "2024-03-01T23:41:25.559Z",
-      "endTime": "2024-03-01T23:41:26.141Z",
-      "params": "",
-      "cacheStatus": "cache-miss",
-      "status": 1
-    },
-    {
       "taskId": "server:serve:development",
       "target": "serve",
       "projectName": "server",
-      "hash": "d8a334ef9915f73423d5d540cc179b97a6362d1cceb63814674a0ce4c62457f6",
-      "startTime": "2024-03-01T23:41:25.559Z",
-      "endTime": "2024-03-01T23:41:26.247Z",
+      "hash": "fa17ba40f2fc52e6990c5d2daf92259045bd5d8ada9f77a1ad6654c8b767d035",
+      "startTime": "2024-03-21T20:30:11.110Z",
+      "endTime": "2024-03-21T20:30:58.255Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

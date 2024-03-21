@@ -45,7 +45,6 @@ export const SignUp = () => {
         if(response.success !== false) {
             context.setUser(response)
             navigate("/dashboard")
-            // console.log(context.user)
         } else {
             setAuthError(true)
             alert(response.message)

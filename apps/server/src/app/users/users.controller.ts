@@ -23,6 +23,10 @@ export class UsersController {
     sendVerificationCode(@Body() body: any) {
         return this.usersService.sendVerificationCode(body)
     }
+    @Post("/login")
+    signInWithEP(@Body() body: any) {
+        return this.usersService.signInWithEP(body)
+    }
 
     @Put()
     updateUser(@Body() body: any) {

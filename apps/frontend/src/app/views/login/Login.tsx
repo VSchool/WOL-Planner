@@ -14,8 +14,7 @@ import  loginCrystalBall from "../../images/logos/loginCrystalBall.svg"
 import  loginGroup103 from "../../images/logos/loginGroup103.svg"
 import "./login.css"
 import { auth } from "../../firebase/firebase"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { signUpUser, getUsersFromSearch, loginEmailAndPassword } from "../../api-client/apiModules/users"
+import { signInWithEP, loginEmailAndPassword } from "../../api-client/apiModules/users"
 
 export const Login = () => {
     const [ signIn, setSignIn ] = React.useState<any>([]);
@@ -77,33 +76,10 @@ export const Login = () => {
       setPassword(e.target.value)
       setAuthError("")
     } 
-    const signInEP = async () => {
-      try {
-          await signInWithEmailAndPassword(auth, email, password)
-          navigate("/dashboard")
-      }
-      catch(err: any) {
-          console.error(err.message)
-          setAuthError(err.message)
-      }
-    }
     const loginEP = async () => {
-      const response = await loginEmailAndPassword({email, password})
+      const response = await signInWithEP({email, password})
       console.log(response)
-
     }
-  //   const signUp = async () => {
-  //     const response = await signUpUser({email, password, firstName, lastName, username})
-  //     console.log(response)
-  //     if(response.success !== false) {
-  //         context.setUser(response)
-  //         navigate("/dashboard")
-  //         // console.log(context.user)
-  //     } else {
-  //         setAuthError(true)
-  //         alert(response.message)
-  //     }
-  // } 
 
     return (
       <AuthLayout className="h-screen">
@@ -158,7 +134,7 @@ export const Login = () => {
             }
           </div>
           <div className='loginButtonContainer' style={{gridRowStart: "6", gridRowEnd: "7"}}>
-            <button className="loginButton" type="submit" onClick={signInEP} disabled={isDisabled} style={{backgroundColor: isDisabled ? "#6F6F6F" : "#000"}}>
+            <button className="loginButton" type="submit" onClick={loginEP} disabled={isDisabled} style={{backgroundColor: isDisabled ? "#6F6F6F" : "#000"}}>
               <span className="loginButtonText">
                 Login
               </span>
@@ -195,13 +171,3 @@ export const Login = () => {
       </AuthLayout>
     );
 }
-        //   <NavLink
-        //   onClick={onSignoutClick}
-        //   exact
-        //   to="/login"
-        //   activeClassName="bg-gray-100"
-        //   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-        //   role="menuitem"
-        // >
-        //   Sign out
-        // </NavLink>
