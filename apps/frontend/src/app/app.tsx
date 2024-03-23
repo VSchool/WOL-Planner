@@ -4,7 +4,8 @@ import Header from './components/header/header';
 import Router from './views/router/router';
 import './app.module.scss';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-explicit-any
+import { useUser } from './context/UserContext'
+
 export const UserContext = React.createContext({
   user: {
     firstName: null,
