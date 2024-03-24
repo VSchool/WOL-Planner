@@ -8,7 +8,6 @@ import { Dashboard } from './views/dashboard/Dashboard';
 import { Assets } from "./views/assets/Assets"
 import { AssetsInput } from './views/assets/AssetsInput';
 import ProtectedRoute from './components/ProtectedRoute'
-import AdminPage from './views/admin/AdminPage';
 
 export default function Router() {
   return (
@@ -17,7 +16,6 @@ export default function Router() {
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
       <Route path="/forgotpassword" element={<ProtectedRoute><ForgotPassword /></ProtectedRoute>} />
       <Route path="/signup" element={<ProtectedRoute><SignUp /></ProtectedRoute>} />
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
