@@ -1,21 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { NavLink, Navigate } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import HamburgerNav from '../hamburger-nav/HamburgerNav';
-
-import crystalBall from '../../images/dash/crystal-ball.svg';
-import lineList from '../../images/dash/line-md_list-3-filled.svg';
 import hankHill from '../../images/dash/Hank_Hill.webp';
-
-import firebase from 'firebase/app'
 import { auth } from '../../firebase/firebase';
 import { signOut } from 'firebase/auth';
+import { useUser } from '../../context/UserContext';
+import HeaderLogo from '../logo/HeaderLogo';
 
 import './header.css'
-
-import { useUser } from '../../context/UserContext';
-import SignUpLogo from '../logo/SignUpLogo';
-import HeaderLogo from '../logo/HeaderLogo';
 
 export default function Header() {
   const [error, setError] = useState(null);
@@ -41,7 +34,7 @@ export default function Header() {
   return (
     <header className="py-5 bg-white lg:bg-black">
       <nav className="relative z-50 flex justify-center">
-        <div className="flex w-full flex-wrap items-center justify-start px-3">
+        <div className="flex w-full flex-wrap items-center">
           <button
             onClick={toggleSidebar}
             className="border-0 bg-transparent px-2 text-xl leading-none Transition-shadow duration-150 ease-in-out lg:hidden"
@@ -68,13 +61,13 @@ export default function Header() {
           >
 
             <div
-              className="!visible hidden grow basis-[100%] lg:!flex header-sub-container"
+              className="!visible hidden grow basis-[100%] lg:!flex"
               id="navbarSupportedContentY"
               data-te-collapse-item
             >
               <ul className="unordered-list">
-                <li className='li-navliink'>
-                <NavLink className="block lg:p-2" to="/dashboard">
+                <li className='li-nav-logo'>
+                <NavLink className="block lg:p-0" to="/dashboard">
                     <HeaderLogo />
                   </NavLink>
                 </li>
