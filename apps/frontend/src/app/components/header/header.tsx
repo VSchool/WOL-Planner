@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, Navigate } from 'react-router-dom';
-import { UserContext } from '../../app';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import HamburgerNav from '../hamburger-nav/HamburgerNav';
 
@@ -15,8 +14,9 @@ import { signOut } from 'firebase/auth';
 import { Logo } from './Logo';
 import './header.css'
 
+import { useUser } from '../../context/UserContext';
+
 export default function Header() {
-  const { user, setUser } = React.useContext(UserContext);
   const [error, setError] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
   const toggleSidebar = () => {
@@ -35,6 +35,7 @@ export default function Header() {
       setError(error.message);
     }
   };
+  const { user } = useUser();
 
   return (
     <header className="py-5 bg-white lg:bg-black">
@@ -151,6 +152,9 @@ export default function Header() {
                         </NavLink>
                         <NavLink to='/about'>
                           <li>About</li>
+                        </NavLink>
+                        <NavLink to='/dashboard'>
+                          <li>dashboard</li>
                         </NavLink>
 
                         <li onClick={handleSignOut}>Logout</li>

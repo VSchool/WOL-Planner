@@ -4,7 +4,6 @@ import Header from './components/header/header';
 import Router from './views/router/router';
 import './app.module.scss';
 
-import { useUser } from './context/UserContext'
 
 export const UserContext = React.createContext({
   user: {
