@@ -32,9 +32,8 @@ export default function Header() {
   const { user } = useUser();
 
   return (
-    <header className="py-5 bg-white lg:bg-black">
-      <nav className="relative z-50 flex justify-center">
-        <div className="flex w-full flex-wrap items-center">
+    <header className="py-3 lg:bg-black">
+      <nav className="relative z-50 flex justify-center w-full">
           <button
             onClick={toggleSidebar}
             className="border-0 bg-transparent px-2 text-xl leading-none Transition-shadow duration-150 ease-in-out lg:hidden"
@@ -140,7 +139,6 @@ export default function Header() {
               </ul>
             </div>
           </div>
-        </div>
       </nav>
     </header>
   );
