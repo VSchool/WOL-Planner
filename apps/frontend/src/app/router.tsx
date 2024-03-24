@@ -1,15 +1,15 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { AccountPage } from '../account/AccountsPage';
-import { Home } from '../home/home';
-import { About } from '../about/about';
-import { Login } from '../login/Login';
-import { ForgotPassword } from '../forgotPassword/ForgotPassword';
-import { SignUp } from "../signup/SignUp"
-import { Dashboard } from '../dashboard/Dashboard';
-import { Assets } from "../assets/Assets"
-import { AssetsInput } from '../assets/AssetsInput';
-import ProtectedRoute from '../../components/ProtectedRoute'
-import AdminPage from '../admin/AdminPage';
+import { AccountPage } from './views/account/AccountsPage';
+import { Home } from './views/home/home';
+import { About } from './views/about/about';
+import { Login } from './views/login/Login';
+import { ForgotPassword } from './views/forgotPassword/ForgotPassword';
+import { SignUp } from "./views/signup/SignUp"
+import { Dashboard } from './views/dashboard/Dashboard';
+import { Assets } from "./views/assets/Assets"
+import { AssetsInput } from './views/assets/AssetsInput';
+import ProtectedRoute from './components/ProtectedRoute'
+import AdminPage from './views/admin/AdminPage';
 
 export default function Router() {
   return (

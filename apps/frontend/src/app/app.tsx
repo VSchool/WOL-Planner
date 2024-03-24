@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Header from './components/header/header';
-import Router from './views/router/router';
+import Router from './router';
 import './app.module.scss';
 
 
