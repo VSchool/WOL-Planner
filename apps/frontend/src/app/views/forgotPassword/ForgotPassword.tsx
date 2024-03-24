@@ -2,7 +2,6 @@ import React, { ChangeEvent, useEffect } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { createUserData } from '../../api-client/apiModules/users';
-import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import { Link, useNavigate } from 'react-router-dom';
 import  googleGImage from "../../images/logos/googleGImage.svg"
 import  loginListThreeFilled from "../../images/logos/loginListThreeFilled.svg"
@@ -33,7 +32,7 @@ export const ForgotPassword = () => {
     }
 
     return (
-        <AuthLayout className="fpLayout">
+        <div className="fpLayout">
             <div className='fpGroup103Container'>
                 <img src={loginGroup103} alt="" className="fpGroup103" style={{gridRowStart: "1", gridRowEnd: "2"}}/>
             </div>
@@ -69,6 +68,6 @@ export const ForgotPassword = () => {
                     </span>
                 </button>
             </div>
-        </AuthLayout>
+        </div>
     )
 }

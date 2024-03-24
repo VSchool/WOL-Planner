@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import hankHill from '../../images/dash/Hank_Hill.webp';
 import HamburgerNav from '../../components/hamburger-nav/HamburgerNav';
@@ -132,7 +131,7 @@ export const AssetsInput: React.FC<object> = (props: any) => {
  
   console.log(value);
   return (
-    <AuthLayout>
+    <div>
       <Toaster />
       <div>
         <div className="headline">
@@ -407,6 +406,6 @@ Retirement accounts"
           </button>
         </div>
       </div>
-    </AuthLayout>
+    </div>
   );
 };

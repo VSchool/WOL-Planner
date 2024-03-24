@@ -1,13 +1,12 @@
 // Dashboard.js
 import React from 'react';
-import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import hankHill from '../../images/dash/Hank_Hill.webp';
 import './dashboard.css';
 
 export const Dashboard = () => {
 
     return (
-        <AuthLayout>
+        <div>
             <form onSubmit={(e) => e.preventDefault()}>
                 <div className='dashboard-content'>
                     <img
@@ -45,6 +44,6 @@ export const Dashboard = () => {
                     </div>
                 </div>
             </form>
-        </AuthLayout>
+        </div>
     );
 };
