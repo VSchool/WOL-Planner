@@ -1,13 +1,8 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { BrowserRouter } from 'react-router-dom';
-
 import Modal from 'react-modal'
-
-
 import App from './app/app';
-
 import { UserProvider } from './app/context/UserContext'
 
 const root = ReactDOM.createRoot(
