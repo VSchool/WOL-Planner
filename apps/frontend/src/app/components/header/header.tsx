@@ -14,6 +14,8 @@ import { signOut } from 'firebase/auth';
 import './header.css'
 
 import { useUser } from '../../context/UserContext';
+import SignUpLogo from '../logo/SignUpLogo';
+import HeaderLogo from '../logo/HeaderLogo';
 
 export default function Header() {
   const [error, setError] = useState(null);
@@ -64,36 +66,17 @@ export default function Header() {
             id="navbarSupportedContentY"
             data-te-collapse-item
           >
+
             <div
               className="!visible hidden grow basis-[100%] lg:!flex header-sub-container"
               id="navbarSupportedContentY"
               data-te-collapse-item
             >
               <ul className="unordered-list">
-                <li>
-                  <div className="head-tradmark-container flex pr-10">
-                    <div id="W" className="trademark-letter">
-                      W
-                    </div>
-                    <img
-                      src={lineList}
-                      alt="lineList"
-                      id="lineList"
-                      className="head-trademark-lineList"
-                    />
-                    <div id="L" className="trademark-letter">
-                      L
-                    </div>
-                    <div className="head-vertical-line">
-                      " "
-                      <img
-                        src={crystalBall}
-                        alt="CrystalBall"
-                        id="CrystalBall"
-                        className="mb-0 mt-1"
-                      />
-                    </div>
-                  </div>
+                <li className='li-navliink'>
+                <NavLink className="block lg:p-2" to="/dashboard">
+                    <HeaderLogo />
+                  </NavLink>
                 </li>
                 <li className="li-navlink">
                   <NavLink className="block lg:p-2" to="/dashboard">
@@ -129,7 +112,7 @@ export default function Header() {
                     alt="Frame2"
                     className="header-profile-image"
                     onClick={toggleDropdown}
-                    style={{cursor: 'pointer'}}
+                    style={{ cursor: 'pointer' }}
                   />
                   {dropdownVisible && (
                     <div style={{ position: 'absolute', top: '50px', right: '10px', backgroundColor: 'white', border: '1px solid black' }}>
