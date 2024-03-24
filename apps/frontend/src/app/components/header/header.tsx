@@ -11,7 +11,6 @@ import firebase from 'firebase/app'
 import { auth } from '../../firebase/firebase';
 import { signOut } from 'firebase/auth';
 
-import { Logo } from './Logo';
 import './header.css'
 
 import { useUser } from '../../context/UserContext';
