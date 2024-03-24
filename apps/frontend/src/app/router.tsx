@@ -1,5 +1,4 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { AccountPage } from './views/account/AccountsPage';
 import { Home } from './views/home/home';
 import { About } from './views/about/about';
 import { Login } from './views/login/Login';
@@ -18,7 +17,6 @@ export default function Router() {
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
       <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
       <Route path="/forgotpassword" element={<ProtectedRoute><ForgotPassword /></ProtectedRoute>} />
       <Route path="/signup" element={<ProtectedRoute><SignUp /></ProtectedRoute>} />
