@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ChangeEvent, useEffect, useContext } from 'react';
-import { UserContext } from '../../app';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { createUserData } from '../../api-client/apiModules/users';
@@ -19,7 +18,6 @@ import { signUpUser, getUsersFromSearch, loginEmailAndPassword } from "../../api
 
 export const Login = () => {
     const [ signIn, setSignIn ] = React.useState<any>([]);
-    const {user, setUser} = React.useContext(UserContext);
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
     const [isDisabled, setIsDisabled] = React.useState(true)
@@ -49,7 +47,6 @@ export const Login = () => {
                         })
                         .then(async (res) => {
                             const userData = await createUserData({name: res.data.name, email: res.data.email, picture: res.data.picture});
-                            setUser(userData);
                             console.log("useEffect signed in user", userData)
                             localStorage.setItem('user', JSON.stringify(userData))
                             navigate("/dashboard")
