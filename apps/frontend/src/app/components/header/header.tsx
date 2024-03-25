@@ -1,22 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { NavLink, Navigate } from 'react-router-dom';
-import { UserContext } from '../../app';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import HamburgerNav from '../hamburger-nav/HamburgerNav';
-
-import crystalBall from '../../images/dash/crystal-ball.svg';
-import lineList from '../../images/dash/line-md_list-3-filled.svg';
 import hankHill from '../../images/dash/Hank_Hill.webp';
-
-import firebase from 'firebase/app'
 import { auth } from '../../firebase/firebase';
 import { signOut } from 'firebase/auth';
+import { useUser } from '../../context/UserContext';
+import HeaderLogo from '../logo/HeaderLogo';
 
-import { Logo } from './Logo';
 import './header.css'
 
 export default function Header() {
-  const { user, setUser } = React.useContext(UserContext);
   const [error, setError] = useState(null);
   const [showSidebar, setShowSidebar] = useState(false);
   const toggleSidebar = () => {
@@ -35,11 +29,11 @@ export default function Header() {
       setError(error.message);
     }
   };
+  const { user } = useUser();
 
   return (
-    <header className="py-5 bg-white lg:bg-black">
-      <nav className="relative z-50 flex justify-center">
-        <div className="flex w-full flex-wrap items-center justify-start px-3">
+    <header className="py-3 lg:bg-black">
+      <nav className="relative z-50 flex justify-center w-full">
           <button
             onClick={toggleSidebar}
             className="border-0 bg-transparent px-2 text-xl leading-none Transition-shadow duration-150 ease-in-out lg:hidden"
@@ -64,36 +58,17 @@ export default function Header() {
             id="navbarSupportedContentY"
             data-te-collapse-item
           >
+
             <div
-              className="!visible hidden grow basis-[100%] lg:!flex header-sub-container"
+              className="!visible hidden grow basis-[100%] lg:!flex"
               id="navbarSupportedContentY"
               data-te-collapse-item
             >
               <ul className="unordered-list">
-                <li>
-                  <div className="head-tradmark-container flex pr-10">
-                    <div id="W" className="trademark-letter">
-                      W
-                    </div>
-                    <img
-                      src={lineList}
-                      alt="lineList"
-                      id="lineList"
-                      className="head-trademark-lineList"
-                    />
-                    <div id="L" className="trademark-letter">
-                      L
-                    </div>
-                    <div className="head-vertical-line">
-                      " "
-                      <img
-                        src={crystalBall}
-                        alt="CrystalBall"
-                        id="CrystalBall"
-                        className="mb-0 mt-1"
-                      />
-                    </div>
-                  </div>
+                <li className='li-nav-logo'>
+                <NavLink className="block lg:p-0" to="/dashboard">
+                    <HeaderLogo />
+                  </NavLink>
                 </li>
                 <li className="li-navlink">
                   <NavLink className="block lg:p-2" to="/dashboard">
@@ -129,7 +104,7 @@ export default function Header() {
                     alt="Frame2"
                     className="header-profile-image"
                     onClick={toggleDropdown}
-                    style={{cursor: 'pointer'}}
+                    style={{ cursor: 'pointer' }}
                   />
                   {dropdownVisible && (
                     <div style={{ position: 'absolute', top: '50px', right: '10px', backgroundColor: 'white', border: '1px solid black' }}>
@@ -152,6 +127,9 @@ export default function Header() {
                         <NavLink to='/about'>
                           <li>About</li>
                         </NavLink>
+                        <NavLink to='/dashboard'>
+                          <li>dashboard</li>
+                        </NavLink>
 
                         <li onClick={handleSignOut}>Logout</li>
                       </ul>
@@ -161,7 +139,6 @@ export default function Header() {
               </ul>
             </div>
           </div>
-        </div>
       </nav>
     </header>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { UserContext } from '../../app';
+// import { UserContext } from '../../app';
 import { Settings } from './Settings';
 import { FormSaveButton } from '../../components/formSaveButton/FormSaveButton';
 import { isFormValid } from '../../shared/validation';
@@ -8,7 +8,7 @@ import { allFilesForUser, downloadStorageDocument, updateUserData, uploadStorage
 import { Login } from '../login/Login';
 
 export const AccountPage = () => {
-    const {user, setUser} = React.useContext(UserContext);
+    // const {user, setUser} = React.useContext(UserContext);
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -23,63 +23,64 @@ export const AccountPage = () => {
     const initialFormValidationState = initYourAccountValidationState();
     const [validation, setValidation] = useState(initialFormValidationState);
 
-    useEffect(() => {
-      const setUserData = async () => {
-        if (user.id) {
-            setFormData({
-                firstName: user.firstName || '',
-                lastName: user.lastName || '',
-                userType: user.userType|| '',
-                id: user.id || '',
-            });
-            const files = await allFilesForUser(user.id)
-            setUploadedFiles(files)
-        }
-      };
-      setUserData();
-    }, [user]);
+    // useEffect(() => {
+    //   const setUserData = async () => {
+    //     if (user.id) {
+    //         setFormData({
+    //             firstName: user.firstName || '',
+    //             lastName: user.lastName || '',
+    //             userType: user.userType|| '',
+    //             id: user.id || '',
+    //         });
+    //         const files = await allFilesForUser(user.id)
+    //         setUploadedFiles(files)
+    //     }
+    //   };
+    //   setUserData();
+    // }, [user]);
 
 
-    const updateFormData = (data: Record<string, any>) => {
-        setFormData({ ...formData, ...data });
-      };
+    // const updateFormData = (data: Record<string, any>) => {
+    //     setFormData({ ...formData, ...data });
+    //   };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLFormElement>) => {
-        const { name, value } = e.target;
+    // const handleInputChange = (e: React.ChangeEvent<HTMLFormElement>) => {
+    //     const { name, value } = e.target;
 
-        if(name === 'file') return;
+    //     if(name === 'file') return;
 
-        updateFormData({ [name]: value });
-      };
+    //     updateFormData({ [name]: value });
+    //   };
 
-    const onSubmit = async () => {
-        setSubmittingForm(true);
-        setValidation(initYourAccountValidationState());
+    // const onSubmit = async () => {
+    //     setSubmittingForm(true);
+    //     setValidation(initYourAccountValidationState());
 
-        try {
-            await updateUserData(formData);
-            const newUser = {...user, ...formData}
-            setUser(newUser)
-            if(file !== ''){
-              await uploadStorageDocument(newUser.id, file)
-            }
-        } catch (e) {
-          console.error('Error submitting form', e);
-          alert('There was an error.');
-        } finally {
-          setSubmittingForm(false);
-        }
-      };
+    //     try {
+    //         await updateUserData(formData);
+    //         const newUser = {...user, ...formData}
+    //         setUser(newUser)
+    //         if(file !== ''){
+    //           await uploadStorageDocument(newUser.id, file)
+    //         }
+    //     } catch (e) {
+    //       console.error('Error submitting form', e);
+    //       alert('There was an error.');
+    //     } finally {
+    //       setSubmittingForm(false);
+    //     }
+    //   };
 
-    function handleFileChange(event: any) {
-        setFile(event.target.files[0]);
-    }
+    // function handleFileChange(event: any) {
+    //     setFile(event.target.files[0]);
+    // }
 
 
     return (
         <>
           <div className="px-1 sm:px-4 lg:px-8 h-screen">
-            {!user.id ? (
+            <p>Account page</p>
+            {/* {!user.id ? (
                 <Login />
             ) : (
             <>
@@ -120,7 +121,7 @@ export const AccountPage = () => {
               />
             </section>
             </>
-            )}
+            )} */}
           </div>
         </>
       );

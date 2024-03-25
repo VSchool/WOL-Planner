@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useEffect } from 'react';
-import { UserContext } from '../../app';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { createUserData } from '../../api-client/apiModules/users';

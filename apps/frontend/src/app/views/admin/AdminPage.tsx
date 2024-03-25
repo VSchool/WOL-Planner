@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../app';
 import { getUsersFromSearch, updateUserData } from '../../api-client/apiModules/users';
 
 
@@ -7,20 +6,10 @@ export default function AdminPage() {
     const [search, setSearch] = useState('')
     const [users, setUsers]: any = useState([])
 
-    const {user, setUser} = useContext(UserContext)
-
-    useEffect(() => {
-        if(!user.roles?.includes('Admin')){
-            window.location.href = '/home'
-        } else {
-            searchUsers()
-        }
-    }, [])
-
 
     const searchUsers = async () => {
         const response: any = await getUsersFromSearch(search)
-        setUsers(response)
+        // setUsers(response)
     }
 
     const activateDeactivateUser = async (user: any) => {
@@ -29,7 +18,7 @@ export default function AdminPage() {
         const usersCopy = [...users]
         const index = usersCopy.findIndex((u) => u.id === user.id)
         usersCopy[index] = user
-        setUsers(usersCopy)
+        // setUsers(usersCopy)
     }
 
 

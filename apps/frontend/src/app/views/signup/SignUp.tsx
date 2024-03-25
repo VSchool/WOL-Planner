@@ -1,16 +1,12 @@
 import { useState, useContext, FormEvent } from "react"
 import { auth } from "../../firebase/firebase"
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from "../../../app/app"
 
 import SignUpLogo from "../../components/logo/SignUpLogo";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import "./signup.css"
 
-
 export const SignUp = () => {
-
-    const context = useContext(UserContext)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
