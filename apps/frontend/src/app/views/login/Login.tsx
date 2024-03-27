@@ -4,7 +4,6 @@ import React, { ChangeEvent, useEffect, useContext } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { createUserData } from '../../api-client/apiModules/users';
-import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import { Link, useNavigate } from 'react-router-dom';
 import  googleGImage from "../../images/logos/googleGImage.svg"
 import  loginListThreeFilled from "../../images/logos/loginListThreeFilled.svg"
@@ -103,7 +102,7 @@ export const Login = () => {
   // } 
 
     return (
-      <AuthLayout className="h-screen">
+      <div className="h-screen">
         <div className="loginLayout">
           <div className='loginGroup103Container'>
             <img src={loginGroup103} alt="" className="loginGroup103" style={{gridRowStart: "1", gridRowEnd: "2"}}/>
@@ -189,7 +188,7 @@ export const Login = () => {
             </button>
           </div>
         </div>
-      </AuthLayout>
+      </div>
     );
 }
         //   <NavLink

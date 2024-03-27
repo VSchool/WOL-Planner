@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthLayout } from '../../components/authlayout/AuthLayout';
 import hamburger_menu from '../../images/dash/hamburger_menu.svg';
 import hankHill from '../../images/dash/Hank_Hill.webp';
 import image103 from '../../images/logos/loginGroup103.svg';
@@ -43,7 +42,7 @@ export const Assets = () => {
     setIsDisabled(!(inputs.select_month && inputs.select_year));
   }, [inputs]);
   return (
-    <AuthLayout>
+    <>
 
       <div className="headline">
         <p>
@@ -108,7 +107,7 @@ export const Assets = () => {
           Submit
         </button>
       </form>
-    </AuthLayout>
+    </>
   );
 };
   
